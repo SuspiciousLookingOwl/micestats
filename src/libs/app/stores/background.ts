@@ -13,13 +13,13 @@ interface UseBackground {
 }
 
 const images = [
-	"http://transformice.com/images/x_transformice/x_evt/x_evt_18/sdnjqj/ninja.jpg",
-	"http://transformice.com/images/x_transformice/x_evt/x_evt_27/map-serre.jpg",
-	"http://transformice.com/images/x_transformice/x_connexion/x_noel2014.jpg",
-	"http://transformice.com/images/x_transformice/x_salon801/x_bar.jpg",
-	"http://transformice.com/images/x_transformice/x_maps/x_noel2017/x_mapAFK.jpg",
-	"http://transformice.com/images/x_transformice/x_connexion/x_indi.jpg",
-	"http://transformice.com/images/x_transformice/x_maps/x_peche2014/x_jungle.jpg",
+	"/img/ninja.jpg",
+	"/img/map-serre.jpg",
+	"/img/x_noel2014.jpg",
+	"/img/x_bar.jpg",
+	"/img/x_mapAFK.jpg",
+	"/img/x_indi.jpg",
+	"/img/x_jungle.jpg",
 ];
 
 const blurLevels = [

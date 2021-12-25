@@ -51,6 +51,13 @@ server {
         proxy_pass http://app;
     }
 
+    location /img {
+        proxy_cache STATIC;
+        proxy_ignore_headers Cache-Control;
+        proxy_cache_valid 1d;
+        proxy_pass http://app;
+    }
+
     location /_app {
         proxy_cache STATIC;
         proxy_pass http://app;
