@@ -18,5 +18,9 @@
 		"ratio": "Ratio",
 		"notFound": "Profile Not Found :("
 	},
+	"error": {
+		"title": "Seems like you are lost",
+		"subtitle": "Go Home"
+	},
 	"languageName": "English"
 }
