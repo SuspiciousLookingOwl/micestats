@@ -1,5 +1,4 @@
-import type { Writable } from "svelte/store";
-import { writable } from "svelte/store";
+import { get, writable, type Writable } from "svelte/store";
 
 interface UseFetch<T> {
 	value: Writable<T>;
@@ -10,7 +9,8 @@ interface UseFetch<T> {
 interface UseFetchOptions {
 	debounce?: number;
 	onError?: (error: unknown) => void;
-	keys?: Writable<any>[];
+	keys?: Writable<unknown>[];
+	strict?: boolean;
 }
 
 export const useFetch = <T = null>(
@@ -21,6 +21,7 @@ export const useFetch = <T = null>(
 	const value = writable<T>(initialValue);
 	const isFetching = writable(false);
 	let timeout: NodeJS.Timeout;
+	const oldKeys: unknown[] = [];
 
 	const fetch = async (): Promise<T> => {
 		return new Promise((resolve, reject) => {
@@ -43,8 +44,19 @@ export const useFetch = <T = null>(
 	};
 
 	if (options.keys) {
-		for (const key of options.keys) {
-			key.subscribe(fetch);
+		for (const [i, key] of options.keys.entries()) {
+			oldKeys.push(get(key));
+
+			key.subscribe(() => {
+				const newKey = get(key);
+
+				if (options.strict && oldKeys[i] !== newKey) {
+					oldKeys[i] = newKey;
+					fetch();
+				} else if (!options.strict) {
+					fetch();
+				}
+			});
 		}
 	}
 
