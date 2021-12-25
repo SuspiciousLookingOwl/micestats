@@ -10,4 +10,11 @@ export class BaseTribeEntity implements BaseTribeProps {
 	constructor(props: BaseTribeProps) {
 		Object.assign(this, props);
 	}
+
+	toProps(): BaseTribeProps {
+		return {
+			id: this.id,
+			name: this.name,
+		};
+	}
 }

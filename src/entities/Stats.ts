@@ -67,6 +67,17 @@ export class StatsEntity {
 	constructor(props: StatsProps) {
 		Object.assign(this, props);
 	}
+
+	toProps(): StatsProps {
+		return {
+			shaman: this.shaman,
+			mouse: this.mouse,
+			survivor: this.survivor,
+			racing: this.racing,
+			defilante: this.defilante,
+			score: this.score,
+		};
+	}
 }
 
 export class PeriodStatsEntity extends StatsEntity {
@@ -76,5 +87,13 @@ export class PeriodStatsEntity extends StatsEntity {
 	constructor(props: PeriodStatsProps) {
 		super(props);
 		Object.assign(this, props);
+	}
+
+	toProps(): PeriodStatsProps {
+		return {
+			...super.toProps(),
+			start: this.start,
+			end: this.end,
+		};
 	}
 }

@@ -32,6 +32,15 @@ class ShopEntity {
 		// TODO DI this
 		return this.outfits.map((o) => `${import.meta.env.VITE_API_BASE_URL}/dressroom/mouse/${o}`);
 	}
+
+	toProps(): ShopProps {
+		return {
+			look: this.look,
+			outfits: this.outfits,
+			mouseColor: this.mouseColor,
+			shamanColor: this.shamanColor,
+		};
+	}
 }
 
 export interface PlayerProps extends BasePlayerProps {
@@ -100,5 +109,18 @@ export class PlayerEntity extends BasePlayerEntity {
 			language,
 		});
 		return result.data[`t_${this.title}`];
+	}
+
+	toProps(): PlayerProps {
+		const { tribe, soulmate, stats, period, shop, ...rest } = this;
+
+		return {
+			...rest,
+			tribe: tribe?.toProps() || null,
+			soulmate: soulmate?.toProps() || null,
+			stats: stats.toProps(),
+			period: period.toProps(),
+			shop: shop.toProps(),
+		};
 	}
 }

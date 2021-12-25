@@ -32,4 +32,13 @@ export class BasePlayerEntity implements BasePlayerProps {
 		const lastId = this.id % 10000;
 		return `https://avatars.atelier801.com/${lastId}/${this.id}_50.jpg`;
 	}
+
+	toProps(): BasePlayerProps {
+		return {
+			id: this.id,
+			name: this.name,
+			cfmRoles: this.cfmRoles,
+			tfmRoles: this.tfmRoles,
+		};
+	}
 }
