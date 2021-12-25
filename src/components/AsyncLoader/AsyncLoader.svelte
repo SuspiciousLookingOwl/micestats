@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { browser } from "$app/env";
 	import { Spinner, type IconSize } from "@components";
 
 	type T = $$Generic;
@@ -7,8 +8,10 @@
 	export let size: IconSize = "md";
 </script>
 
-{#await promise}
-	<Spinner {size} />
-{:then value}
-	<slot {value} />
-{/await}
+{#if browser}
+	{#await promise}
+		<Spinner {size} />
+	{:then value}
+		<slot {value} />
+	{/await}
+{/if}
