@@ -1,4 +1,4 @@
-<div class="h-screen w-screen flex flex-col items-center justify-center">
+<div class="h-screen w-screen fixed flex flex-col justify-center">
 	<div class="max-w-5xl space-y-8">
 		<div class="font-brand text-6xl">Seems like you are lost</div>
 		<div class="text-left text-2xl">
