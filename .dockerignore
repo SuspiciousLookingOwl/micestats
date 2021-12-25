@@ -1,0 +1,6 @@
+.github
+.svelte-kit
+.vscode
+dist
+nginx
+node_modules

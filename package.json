@@ -1,0 +1,48 @@
+{
+	"name": "cfm",
+	"version": "0.0.1",
+	"scripts": {
+		"dev": "svelte-kit dev",
+		"build": "svelte-kit build",
+		"start": "node dist",
+		"package": "svelte-kit package",
+		"preview": "svelte-kit preview",
+		"check": "svelte-check --tsconfig ./tsconfig.json",
+		"check:watch": "svelte-check --tsconfig ./tsconfig.json --watch",
+		"lint": "prettier --ignore-path .gitignore --check --plugin-search-dir=. . && eslint --ignore-path .gitignore .",
+		"format": "prettier --ignore-path .gitignore --write --plugin-search-dir=. ."
+	},
+	"devDependencies": {
+		"@sveltejs/adapter-auto": "next",
+		"@sveltejs/adapter-node": "^1.0.0-next.56",
+		"@sveltejs/kit": "next",
+		"@tsconfig/svelte": "^3.0.0",
+		"@types/qs": "^6.9.7",
+		"@typescript-eslint/eslint-plugin": "^4.31.1",
+		"@typescript-eslint/parser": "^4.31.1",
+		"autoprefixer": "^10.3.7",
+		"cssnano": "^5.0.8",
+		"eslint": "^7.32.0",
+		"eslint-config-prettier": "^8.3.0",
+		"eslint-plugin-svelte3": "^3.2.1",
+		"postcss": "^8.3.9",
+		"postcss-load-config": "^3.1.0",
+		"prettier": "^2.4.1",
+		"prettier-plugin-svelte": "^2.4.0",
+		"svelte": "^3.44.0",
+		"svelte-check": "^2.2.6",
+		"svelte-preprocess": "^4.9.8",
+		"tailwindcss": "^3.0.0",
+		"tslib": "^2.3.1",
+		"typescript": "^4.4.3"
+	},
+	"type": "module",
+	"dependencies": {
+		"@resvg/resvg-js": "^1.1.0",
+		"axios": "^0.24.0",
+		"axios-case-converter": "^0.9.0",
+		"dayjs": "^1.10.7",
+		"qs": "^6.10.2",
+		"svelte-i18n": "^3.3.13"
+	}
+}

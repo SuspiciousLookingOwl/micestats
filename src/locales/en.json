@@ -1,0 +1,22 @@
+{
+	"home": {
+		"topPlayers": "Top Players",
+		"topTribes": "Top Tribes",
+		"play": "Play",
+		"leaderboard": "Leaderboard",
+		"score": "Score",
+		"searchPlaceholder": "Enter username or tribe name..."
+	},
+	"profile": {
+		"shaman": "Shaman",
+		"mouse": "Mouse",
+		"racing": "Racing",
+		"defilante": "Defilante",
+		"mode": "Mode",
+		"score": "Score",
+		"up": "Up",
+		"ratio": "Ratio",
+		"notFound": "Profile Not Found :("
+	},
+	"languageName": "English"
+}

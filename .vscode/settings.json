@@ -1,0 +1,16 @@
+{
+	"i18n-ally.sortKeys": true,
+	"i18n-ally.keepFulfilled": true,
+	"[typescript]": {
+		"editor.codeActionsOnSave": {
+			"source.organizeImports": true
+		}
+	},
+	"[svelte]": {
+		"editor.codeActionsOnSave": {
+			"source.organizeImports": true
+		}
+	},
+	"i18n-ally.localesPaths": ["src/locales"],
+	"i18n-ally.keystyle": "nested"
+}
