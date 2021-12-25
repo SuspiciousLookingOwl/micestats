@@ -23,6 +23,7 @@ jobs:
   deploy:
     needs: [test]
     runs-on: ubuntu-latest
+    environment: production
     steps:
     - name: Deploy
       uses: appleboy/ssh-action@master
@@ -32,6 +33,6 @@ jobs:
         key: ${{ secrets.SSH_KEY }}
         port: ${{ secrets.SSH_PORT }}
         script: |
-          cd ${{ secrets.PATH }}
+          cd ${{ secrets.APP_PATH }}
           git pull origin main
           docker-compose up --build -d
