@@ -19,5 +19,5 @@
 
 <div class="relative !border-0 {classes}">
 	<div class="{baseClass} border-white border-opacity-10 {classes}" />
-	<div class="{baseClass} animate-spin border-transparent border-t-primary-400 {classes}" />
+	<div class="{baseClass} animate-spin border-transparent border-t-primary-200 {classes}" />
 </div>
