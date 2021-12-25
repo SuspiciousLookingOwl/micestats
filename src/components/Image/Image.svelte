@@ -12,12 +12,13 @@
 	let classes = "";
 	export { classes as class };
 
-	let isLoading = true;
+	let isLoading = false;
 	let image: HTMLImageElement;
 	let showModal = false;
 
 	onMount(() => {
 		image.onload = () => (isLoading = false);
+		image.onloadstart = () => (isLoading = true);
 	});
 
 	const onClick = () => {
