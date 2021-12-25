@@ -1,4 +1,5 @@
 <script lang="ts" context="module">
+	import { browser } from "$app/env";
 	import { TransitionedRoutes } from "@components";
 	import { Background, BottomNavigator } from "@libs/app";
 	import type { Load } from "@sveltejs/kit";
@@ -8,14 +9,23 @@
 
 	Object.entries(locales).forEach((l) => addMessages(...l));
 
-	init({
-		fallbackLocale: "en",
-		initialLocale: getLocaleFromQueryString("lang"),
-	});
+	if (browser) {
+		init({
+			fallbackLocale: "en",
+			initialLocale: getLocaleFromQueryString("lang"),
+		});
+	}
 
-	export const load: Load = async ({ page }) => ({
-		props: { path: page.path },
-	});
+	export const load: Load = async ({ page }) => {
+		if (!browser) {
+			init({
+				fallbackLocale: "en",
+				initialLocale: page.query.get("lang"),
+			});
+		}
+
+		return { props: { path: page.path } };
+	};
 </script>
 
 <script lang="ts">
