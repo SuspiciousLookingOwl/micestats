@@ -11,6 +11,7 @@ interface UseSearch {
 }
 
 async function searchPlayer(keyword: string, limit = 5): Promise<BasePlayerEntity[]> {
+	if (!keyword) return [];
 	const response = await PlayersService.search({
 		search: keyword,
 		limit,
