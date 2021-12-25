@@ -51,7 +51,7 @@
 		</div>
 	</Input>
 
-	{#if keyword && isFocused}
+	{#if $keyword && isFocused}
 		<div class="w-full absolute top-16 2xl:mt-2 z-30">
 			<SearchResult players={$searchResult} isFetching={$isSearching} />
 		</div>
