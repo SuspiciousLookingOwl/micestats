@@ -8,6 +8,6 @@
 	});
 </script>
 
-<div class="w-full mt-8">
+<div class="w-full mt-2">
 	<SearchInput {isFocused} />
 </div>
