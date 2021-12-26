@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { DefaultCell, Table, type Row } from "@components";
 	import type { PlayerEntity } from "@entities";
-	import { thousandSeparator } from "@utils";
+	import { thousandSeparator, toPercentage } from "@utils";
 	import { _ } from "svelte-i18n";
 	import { ModeCellContent, UpCellContent } from "..";
 
@@ -61,6 +61,11 @@
 				value: profile.period.racing.finished,
 				format: thousandSeparator,
 			},
+			{
+				key: "ratio",
+				value: profile.stats.ratio.racing.finished,
+				format: toPercentage,
+			},
 		],
 		[
 			{
@@ -78,6 +83,11 @@
 				value: profile.period.racing.podium,
 				format: thousandSeparator,
 			},
+			{
+				key: "ratio",
+				value: profile.stats.ratio.racing.podium,
+				format: toPercentage,
+			},
 		],
 		[
 			{
@@ -94,6 +104,11 @@
 				key: "up",
 				value: profile.period.racing.first,
 				format: thousandSeparator,
+			},
+			{
+				key: "ratio",
+				value: profile.stats.ratio.racing.first,
+				format: toPercentage,
 			},
 		],
 	];

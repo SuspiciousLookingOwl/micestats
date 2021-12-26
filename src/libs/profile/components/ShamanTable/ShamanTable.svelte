@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { DefaultCell, Table } from "@components";
 	import type { PlayerEntity } from "@entities";
-	import { thousandSeparator } from "@utils";
+	import { thousandSeparator, toPercentage } from "@utils";
 	import { _ } from "svelte-i18n";
 	import { ModeCellContent, UpCellContent } from "..";
 
@@ -42,6 +42,11 @@
 				value: profile.period.shaman.savesNormal,
 				format: thousandSeparator,
 			},
+			{
+				key: "ratio",
+				value: profile.stats.ratio.shaman.savesNormal,
+				format: toPercentage,
+			},
 		],
 		[
 			{
@@ -58,6 +63,11 @@
 				key: "up",
 				value: profile.period.shaman.savesHard,
 				format: thousandSeparator,
+			},
+			{
+				key: "ratio",
+				value: profile.stats.ratio.shaman.savesHard,
+				format: toPercentage,
 			},
 		],
 		[
@@ -76,6 +86,11 @@
 				value: profile.period.shaman.savesDivine,
 				format: thousandSeparator,
 			},
+			{
+				key: "ratio",
+				value: profile.stats.ratio.shaman.savesDivine,
+				format: toPercentage,
+			},
 		],
 		[
 			{
@@ -92,6 +107,11 @@
 				key: "up",
 				value: profile.period.shaman.cheese,
 				format: thousandSeparator,
+			},
+			{
+				key: "ratio",
+				value: profile.stats.ratio.shaman.cheese,
+				format: toPercentage,
 			},
 		],
 	];
