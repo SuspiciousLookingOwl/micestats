@@ -1,29 +1,34 @@
 import { get, writable, type Writable } from "svelte/store";
 
+type FetchFn<T> = () => Promise<T>;
+
 interface UseFetch<T> {
 	value: Writable<T>;
 	isFetching: Writable<boolean>;
-	fetch: () => Promise<T>;
+	fetch: () => Promise<T | undefined>;
 }
 
-interface UseFetchOptions {
+interface UseFetchOptions<T> {
 	debounce?: number;
 	onError?: (error: unknown) => void;
 	keys?: Writable<unknown>[];
+	condition?: (value: T) => boolean;
 	strict?: boolean;
 }
 
 export const useFetch = <T = null>(
 	initialValue: T,
-	fetchFn: (...args: unknown[]) => Promise<T>,
-	options: UseFetchOptions = {}
+	fetchFn: FetchFn<T>,
+	options: UseFetchOptions<T> = {}
 ): UseFetch<T> => {
 	const value = writable<T>(initialValue);
 	const isFetching = writable(false);
 	let timeout: NodeJS.Timeout;
 	const oldKeys: unknown[] = [];
 
-	const fetch = async (): Promise<T> => {
+	const fetch = async (): Promise<T | undefined> => {
+		if (options.condition && !options.condition(get(value))) return;
+
 		return new Promise((resolve, reject) => {
 			isFetching.set(true);
 			if (timeout) clearTimeout(timeout);
@@ -60,5 +65,5 @@ export const useFetch = <T = null>(
 		}
 	}
 
-	return { value: value, fetch, isFetching };
+	return { value, fetch, isFetching };
 };
