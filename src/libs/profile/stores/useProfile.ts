@@ -4,14 +4,16 @@ import { useFetch } from "@stores";
 import dayjs from "dayjs";
 import { get, writable, type Writable } from "svelte/store";
 
+type UseProfileValue = PlayerEntity | null;
+
 interface UseProfile {
-	fetch: () => Promise<PlayerEntity | null>;
-	profile: Writable<PlayerEntity | null>;
+	fetch: () => Promise<UseProfileValue | undefined>;
+	profile: Writable<UseProfileValue>;
 	username: Writable<string>;
 	isFetchingProfile: Writable<boolean>;
 }
 
-export async function fetchProfile(name: string): Promise<PlayerEntity | null> {
+export async function fetchProfile(name: string): Promise<UseProfileValue> {
 	if (!name) return null;
 	const response = await PlayersService.getById(name, {
 		start: dayjs(new Date()).subtract(7, "day"),
@@ -21,16 +23,24 @@ export async function fetchProfile(name: string): Promise<PlayerEntity | null> {
 	return new PlayerEntity(response.data);
 }
 
-export const useProfile = (initialUsername?: string): UseProfile => {
+export const useProfile = (
+	initialUsername?: string,
+	initialProfile: UseProfileValue = null
+): UseProfile => {
 	const username = writable<string>(initialUsername);
 
 	const {
 		value: profile,
 		isFetching: isFetchingProfile,
 		fetch,
-	} = useFetch<PlayerEntity | null>(null, () => fetchProfile(get(username)), {
+	} = useFetch<UseProfileValue>(initialProfile, () => fetchProfile(get(username)), {
 		keys: [username],
-		strict: true,
+		condition: (p) => {
+			const storedSlug = p?.slugUsername;
+			const currentUsername = get(username);
+
+			return storedSlug !== currentUsername;
+		},
 	});
 
 	return {

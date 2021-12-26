@@ -42,13 +42,18 @@
 	background.setScale(1.75);
 
 	export let ssrProfile: PlayerProps | null = null;
-	export let username: string;
+	let paramUsername: string;
+	export { paramUsername as username };
 	export let path: string;
 
-	const { username: _username, profile, isFetchingProfile } = useProfile(username);
+	const { username, profile, isFetchingProfile } = useProfile(
+		paramUsername,
+		ssrProfile ? new PlayerEntity(ssrProfile) : null
+	);
 	setContext("profile", profile);
-	if (ssrProfile) $profile = new PlayerEntity(ssrProfile);
-	$: if (username !== $_username) $_username = username;
+
+	// on username change
+	$: if (paramUsername !== $username) $username = paramUsername;
 </script>
 
 <svelte:head>
