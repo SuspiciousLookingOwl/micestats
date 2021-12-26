@@ -52,7 +52,7 @@ server {
         proxy_pass http://app;
     }
 
-    location /img {
+    location ~^ /(img|icon) {
         proxy_cache STATIC;
         proxy_ignore_headers Cache-Control;
         proxy_cache_valid 1d;
