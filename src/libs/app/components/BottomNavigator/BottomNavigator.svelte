@@ -4,7 +4,7 @@
 
 <div class="h-14" />
 
-<div class="grid grid-cols-4 fixed w-screen bottom-0 h-14 bg-gray-900 lg:hidden">
+<div class="bottom-nav">
 	<a class="item" href="/">
 		<Icon name="home" size="lg" class="fill-current mx-auto" />
 	</a>
@@ -20,6 +20,13 @@
 </div>
 
 <style lang="postcss">
+	.bottom-nav {
+		@apply grid grid-cols-4;
+		@apply fixed w-screen bottom-0 h-14;
+		@apply bg-gray-900 lg:hidden;
+		z-index: 1000;
+	}
+
 	.item {
 		@apply flex w-full h-full items-center justify-center;
 	}
