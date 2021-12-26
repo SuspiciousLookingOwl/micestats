@@ -47,6 +47,7 @@ server {
     location /api/dressroom {
         proxy_cache STATIC;
         proxy_ignore_headers Cache-Control;
+        proxy_cache_key $scheme$proxy_host$uri;
         proxy_cache_valid 30d;
         proxy_pass http://app;
     }
