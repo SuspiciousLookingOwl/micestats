@@ -67,7 +67,7 @@
 			content="{import.meta.env.VITE_APP_BASE_URL}/p/{$profile.slugUsername}"
 		/>
 		<meta property="og:type" content="website" />
-		<meta property="og:title" content="Owl#3124 | CheeseForMice" />
+		<meta property="og:title" content="{$profile.name} | CheeseForMice" />
 		<meta property="og:description" content="" />
 		<meta
 			property="og:image"
