@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { Card, Text } from "@components";
+	import { Text } from "@components";
 	import { SearchInput } from "@libs/app";
 	import { onMount } from "svelte";
 	import { _ } from "svelte-i18n";
@@ -52,9 +52,7 @@
 		<Leaderboard title={$_("home.topTribes")} items={$tribeLeaderboardValue} />
 		<div class="flex flex-col space-y-2 pb-2 lg:pb-0 order-first lg:order-last">
 			{#each links as link}
-				<Card hoverable>
-					<Link {...link} />
-				</Card>
+				<Link {...link} />
 			{/each}
 			<div class="flex-auto">
 				<DiscordWidget />
