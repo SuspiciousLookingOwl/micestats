@@ -2,6 +2,7 @@ import angleTop from "./angle-top.svg";
 import close from "./close.svg";
 import cup from "./cup.svg";
 import heart from "./heart.svg";
+import history from "./history.svg";
 import home from "./home.svg";
 import hyperlink from "./hyperlink.svg";
 import leaderboard from "./leaderboard.svg";
@@ -18,6 +19,7 @@ export default {
 	cup,
 	home,
 	leaderboard,
+	history,
 	hyperlink,
 	menu,
 	steam,
