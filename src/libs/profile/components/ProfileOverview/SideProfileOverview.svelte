@@ -38,7 +38,7 @@
 			<!-- look and outfits -->
 			<Carousel items={[profile.outfitUrl, ...profile.shop.outfitUrls]}>
 				<svelte:fragment let:item>
-					<Image src={item} class="h-32 w-24 snap-center" skeleton={false} clickable />
+					<Image src={item} class="h-32 w-24 snap-center" expandable />
 				</svelte:fragment>
 			</Carousel>
 
