@@ -35,7 +35,7 @@
 
 <style lang="postcss">
 	.modal-container {
-		@apply w-screen h-screen flex bg-black bg-opacity-80 items-center justify-center fixed top-0 left-0;
+		@apply w-screen h-screen flex bg-black bg-opacity-80 items-center justify-center fixed top-0 left-0 !m-0;
 		z-index: 10000;
 	}
 
