@@ -54,10 +54,7 @@
 			<!-- soulmate -->
 			{#if profile.soulmate}
 				<div class="pt-4">
-					<a
-						href="/p/{profile.soulmate.slugUsername}"
-						class="flex items-center space-x-2"
-					>
+					<a href="/p/{profile.soulmate.slugName}" class="flex items-center space-x-2">
 						<Icon name="heart" class="fill-white mt-1" />
 						<Text>
 							{profile.soulmate.name}

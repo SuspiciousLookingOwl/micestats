@@ -19,7 +19,7 @@ export class BasePlayerEntity implements BasePlayerProps {
 		return `https://atelier801.com/profile?pr=${this.name.replace("#", "%23")}`;
 	}
 
-	get slugUsername(): string {
+	get slugName(): string {
 		return this.name.replace("#", "-");
 	}
 

@@ -36,7 +36,7 @@ export const useProfile = (
 	} = useFetch<UseProfileValue>(initialProfile, () => fetchProfile(get(username)), {
 		keys: [username],
 		condition: (p) => {
-			const storedSlug = p?.slugUsername;
+			const storedSlug = p?.slugName;
 			const currentUsername = get(username);
 
 			return storedSlug !== currentUsername;

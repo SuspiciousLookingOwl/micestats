@@ -64,7 +64,7 @@
 		<!-- Facebook Meta Tags -->
 		<meta
 			property="og:url"
-			content="{import.meta.env.VITE_APP_BASE_URL}/p/{$profile.slugUsername}"
+			content="{import.meta.env.VITE_APP_BASE_URL}/p/{$profile.slugName}"
 		/>
 		<meta property="og:type" content="website" />
 		<meta property="og:title" content="{$profile.name} | CheeseForMice" />
@@ -74,7 +74,7 @@
 		/>
 		<meta
 			property="og:image"
-			content="{import.meta.env.VITE_APP_BASE_URL}/og/profile/{$profile.slugUsername}"
+			content="{import.meta.env.VITE_APP_BASE_URL}/og/profile/{$profile.slugName}"
 		/>
 		<meta property="og:image:width" content="1200" />
 		<meta property="og:image:height" content="600" />
@@ -83,7 +83,7 @@
 		<meta name="twitter:card" content="summary_large_image" />
 		<meta
 			property="twitter:url"
-			content="{import.meta.env.VITE_APP_BASE_URL}/p/{$profile.slugUsername}"
+			content="{import.meta.env.VITE_APP_BASE_URL}/p/{$profile.slugName}"
 		/>
 		<meta name="twitter:title" content="{$profile.name} | CheeseForMice" />
 		<meta
@@ -92,7 +92,7 @@
 		/>
 		<meta
 			name="twitter:image:src"
-			content="{import.meta.env.VITE_APP_BASE_URL}/og/profile/{$profile.slugUsername}"
+			content="{import.meta.env.VITE_APP_BASE_URL}/og/profile/{$profile.slugName}"
 		/>
 	{:else if !$isFetchingProfile}
 		<title>{$_("profile.notFound")} | CheeseForMice</title>
