@@ -141,11 +141,11 @@ export const get: RequestHandler = async ({ params }) => {
 	// ctx.font = `light ${shamanFontSize}px Roboto`;
 	// ctx.fillText("Shaman Saves", shamanX, shamanY);
 
-	const buffer = canvas.toBuffer("image/jpeg");
+	const buffer = canvas.toBuffer("image/png", { compressionLevel: 1 });
 
 	return {
 		headers: {
-			"Content-Type": "image/jpeg",
+			"Content-Type": "image/png",
 			"Cache-Control": "public, max-age=144400",
 		},
 		body: buffer,
