@@ -16,6 +16,7 @@
 		"score": "Score",
 		"up": "Up",
 		"ratio": "Ratio",
+		"description": "{name} profile",
 		"notFound": "Profile Not Found :("
 	},
 	"error": {

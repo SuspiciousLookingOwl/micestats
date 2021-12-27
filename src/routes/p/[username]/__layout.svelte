@@ -68,7 +68,10 @@
 		/>
 		<meta property="og:type" content="website" />
 		<meta property="og:title" content="{$profile.name} | CheeseForMice" />
-		<meta property="og:description" content="" />
+		<meta
+			property="og:description"
+			content={$_("profile.description", { values: { name: $profile.name } })}
+		/>
 		<meta
 			property="og:image"
 			content="{import.meta.env.VITE_APP_BASE_URL}/og/profile/{$profile.slugUsername}"
@@ -83,7 +86,10 @@
 			content="{import.meta.env.VITE_APP_BASE_URL}/p/{$profile.slugUsername}"
 		/>
 		<meta name="twitter:title" content="{$profile.name} | CheeseForMice" />
-		<meta name="twitter:description" content={$profile.title.toString()} />
+		<meta
+			name="twitter:description"
+			content={$_("profile.description", { values: { name: $profile.name } })}
+		/>
 		<meta
 			name="twitter:image:src"
 			content="{import.meta.env.VITE_APP_BASE_URL}/og/profile/{$profile.slugUsername}"
