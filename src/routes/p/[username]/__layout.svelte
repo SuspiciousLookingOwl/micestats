@@ -94,7 +94,7 @@
 			name="twitter:image:src"
 			content="{import.meta.env.VITE_APP_BASE_URL}/og/profile/{$profile.slugName}"
 		/>
-	{:else if !$isFetchingProfile}
+	{:else if !browser || !$isFetchingProfile}
 		<title>{$_("profile.notFound")} | CheeseForMice</title>
 		<meta name="description" content={$_("profile.notFound")} />
 	{/if}
