@@ -1,11 +1,11 @@
 <script lang="ts">
 	import { browser } from "$app/env";
-	import { Spinner, type IconSize } from "@components";
+	import { Spinner, type SpinnerSize } from "@components";
 
 	type T = $$Generic;
 
 	export let promise: Promise<T>;
-	export let size: IconSize = "md";
+	export let size: SpinnerSize = "md";
 </script>
 
 {#if browser}
