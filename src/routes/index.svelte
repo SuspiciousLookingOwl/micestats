@@ -8,8 +8,4 @@
 	});
 </script>
 
-<svelte:head>
-	<title>CheeseForMice</title>
-</svelte:head>
-
 <Home />

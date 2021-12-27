@@ -32,6 +32,10 @@
 	export let path: string;
 </script>
 
+<svelte:head>
+	<title>CheeseForMice</title>
+</svelte:head>
+
 <Background />
 <div class="w-full max-w-7xl mx-auto p-2 md:p-4">
 	<TransitionedRoutes {path}>
