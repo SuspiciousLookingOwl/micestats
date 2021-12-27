@@ -71,8 +71,10 @@
 		<meta property="og:description" content="" />
 		<meta
 			property="og:image"
-			content="{import.meta.env.VITE_APP_BASE_URL}/api/dressroom/{$profile.shop.look}"
+			content="{import.meta.env.VITE_APP_BASE_URL}/og/profile/{$profile.slugUsername}"
 		/>
+		<meta property="og:image:width" content="1200" />
+		<meta property="og:image:height" content="600" />
 
 		<!-- Twitter Meta Tags -->
 		<meta name="twitter:card" content="summary_large_image" />
@@ -83,8 +85,8 @@
 		<meta name="twitter:title" content="{$profile.name} | CheeseForMice" />
 		<meta name="twitter:description" content={$profile.title.toString()} />
 		<meta
-			name="twitter:image"
-			content="{import.meta.env.VITE_APP_BASE_URL}/api/dressroom/{$profile.shop.look}"
+			name="twitter:image:src"
+			content="{import.meta.env.VITE_APP_BASE_URL}/og/profile/{$profile.slugUsername}"
 		/>
 	{:else if !$isFetchingProfile}
 		<title>{$_("profile.notFound")} | CheeseForMice</title>
