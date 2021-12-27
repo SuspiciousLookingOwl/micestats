@@ -1,6 +1,6 @@
 <script lang="ts" context="module">
 	export type Icons = keyof typeof icons;
-	export type IconSize = "xs" | "sm" | "md" | "lg" | "xl" | "2xl";
+	export type IconSize = "xs" | "sm" | "md" | "lg" | "xl" | "2xl" | "3xl";
 </script>
 
 <script lang="ts">
@@ -18,8 +18,9 @@
 		else if (size === "sm") sizeClasses = "w-3 h-3";
 		else if (size === "md") sizeClasses = "w-4 h-4";
 		else if (size === "lg") sizeClasses = "w-5 h-5";
-		else if (size === "xl") sizeClasses = "w-8 h-8";
-		else if (size === "2xl") sizeClasses = "w-10 h-10";
+		else if (size === "xl") sizeClasses = "w-6 h-6";
+		else if (size === "2xl") sizeClasses = "w-8 h-8";
+		else if (size === "3xl") sizeClasses = "w-10 h-10";
 		else sizeClasses = "w-4 h-4";
 	}
 </script>

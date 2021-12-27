@@ -9,7 +9,7 @@
 		<Icon name="home" size="lg" class="fill-current mx-auto" />
 	</a>
 	<a class="item" href="/leaderboard">
-		<Icon name="leaderboard" size="xl" class="fill-current mx-auto" />
+		<Icon name="leaderboard" size="2xl" class="fill-current mx-auto" />
 	</a>
 	<a class="item" href="/search">
 		<Icon name="search" size="lg" class="fill-current mx-auto" />
