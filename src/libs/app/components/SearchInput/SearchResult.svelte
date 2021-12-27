@@ -50,7 +50,7 @@
 						No search results found for <i>{keyword}</i>
 					</Text>
 				</SearchResultList>
-			{:else if players.length}
+			{:else}
 				{#each players as player, i}
 					<SearchResultList
 						isSelected={selectedIndex === i}
@@ -61,6 +61,9 @@
 						</Text>
 					</SearchResultList>
 				{/each}
+			{/if}
+
+			{#if players.length && $searchHistory.length}
 				<div class="border-t border-white border-opacity-10 my-2" />
 			{/if}
 
