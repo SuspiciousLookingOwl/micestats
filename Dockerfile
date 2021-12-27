@@ -1,10 +1,10 @@
-FROM node:16
+FROM node:16-alpine
 
 WORKDIR /usr/app
 
 RUN npm i -g pm2
 
-RUN apt-get update && apt-get install -yq build-essential libcairo2-dev libpango1.0-dev libjpeg-dev libgif-dev librsvg2-dev
+RUN apk add --no-cache build-base g++ cairo-dev jpeg-dev pango-dev giflib-dev
 
 COPY ./package.json ./
 COPY ./yarn.lock ./
