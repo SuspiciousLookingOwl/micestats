@@ -119,7 +119,9 @@ export const get: RequestHandler = async ({ params }) => {
 	ctx.drawImage(backgroundImage, -100, 310, 1400, 700);
 	const iconX = 1025;
 	const iconY = 25;
-	ctx.drawImage(cheese, iconX, iconY, 80, 48);
+	const iconWidth = 80;
+	const iconHeight = 48;
+	ctx.drawImage(cheese, iconX, iconY, iconWidth, iconHeight);
 
 	// draw cfm
 	ctx.font = `24px Soopafresh`;
@@ -129,8 +131,8 @@ export const get: RequestHandler = async ({ params }) => {
 	ctx.strokeStyle = "#1E1E1E";
 	ctx.lineWidth = 4;
 
-	const { width: cfmWidth } = ctx.measureText(name);
-	const cfmX = iconX - cfmWidth;
+	const { width: cfmWidth } = ctx.measureText("CheeseForMice");
+	const cfmX = iconX + (iconWidth - cfmWidth) / 2;
 	const cfmY = iconY + 50;
 	ctx.strokeText("CheeseForMice", cfmX, cfmY);
 	ctx.fillText("CheeseForMice", cfmX, cfmY);
