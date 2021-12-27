@@ -120,15 +120,16 @@ export const get: RequestHandler = async ({ params }) => {
 	ctx.drawImage(cheese, iconX, iconY, 80, 48);
 
 	// draw cfm
-	const { width: cfmWidth } = ctx.measureText(name);
-	const cfmX = iconX - cfmWidth / 2;
-	const cfmY = iconY + 50;
 	ctx.font = `24px Soopafresh`;
 	ctx.fillStyle = "#BC249A";
 	ctx.shadowColor = "black";
 	ctx.shadowBlur = 4;
 	ctx.strokeStyle = "#1E1E1E";
 	ctx.lineWidth = 4;
+
+	const { width: cfmWidth } = ctx.measureText(name);
+	const cfmX = iconX - cfmWidth;
+	const cfmY = iconY + 50;
 	ctx.strokeText("CheeseForMice", cfmX, cfmY);
 	ctx.fillText("CheeseForMice", cfmX, cfmY);
 
