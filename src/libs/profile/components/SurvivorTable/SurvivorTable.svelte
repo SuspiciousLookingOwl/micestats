@@ -112,7 +112,7 @@
 	];
 </script>
 
-<Table headers={tableHeaders} data={tableData} title="Shaman">
+<Table headers={tableHeaders} data={tableData} title="Survivor">
 	<tr slot="row" let:row>
 		{#each row as cell}
 			{#if cell.key === "mode"}
