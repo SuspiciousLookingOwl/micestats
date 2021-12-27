@@ -44,15 +44,15 @@ server {
 
     limit_req zone=limit burst=30;
 
-    location /api/dressroom {
+    location /og/profile {
         proxy_cache STATIC;
         proxy_ignore_headers Cache-Control;
         proxy_cache_key $scheme$proxy_host$uri;
-        proxy_cache_valid 30d;
+        proxy_cache_valid 12h;
         proxy_pass http://app;
     }
 
-    location ~^ /(img|icon) {
+    location ~^ /(img|icon|font) {
         proxy_cache STATIC;
         proxy_ignore_headers Cache-Control;
         proxy_cache_valid 1d;
