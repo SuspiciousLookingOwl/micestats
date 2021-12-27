@@ -7,6 +7,7 @@
 		RacingTable,
 		ShamanTable,
 		SideProfileOverview,
+		SurvivorTable,
 	} from "../components";
 
 	export let profile: PlayerEntity | null = null;
@@ -28,6 +29,9 @@
 				</Card>
 				<Card class="p-2 md:p-6">
 					<RacingTable {profile} />
+				</Card>
+				<Card class="p-2 md:p-6">
+					<SurvivorTable {profile} />
 				</Card>
 				<Card class="p-2 md:p-6">
 					<DefilanteTable {profile} />
