@@ -1,8 +1,10 @@
 import { PlayerEntity } from "@entities";
 import { renderAsync } from "@resvg/resvg-js";
 import type { RequestHandler } from "@sveltejs/kit";
-import { createCanvas, loadImage, registerFont } from "canvas";
+import canvas from "canvas";
 import { fillTextWithTwemoji as fillTextWithEmoji } from "node-canvas-with-twemoji-and-discord-emoji";
+
+const { createCanvas, loadImage, registerFont } = canvas;
 
 registerFont("./static/font/soopafresh.ttf", { family: "Soopafresh" });
 registerFont("./static/font/Roboto-Bold.ttf", { family: "Roboto", weight: "bold" });
