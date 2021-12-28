@@ -29,7 +29,7 @@
 		[
 			{
 				key: "mode",
-				value: "Mice Saved (Normal)",
+				value: $_("profile.stats.shaman.miceSavedNormal"),
 				icon: "https://www.transformice.com/images/x_transformice/x_divers/x_mc0.jpg",
 			},
 			{
@@ -51,7 +51,7 @@
 		[
 			{
 				key: "mode",
-				value: "Mice Saved (Hard)",
+				value: $_("profile.stats.shaman.miceSavedHard"),
 				icon: "https://www.transformice.com/images/x_transformice/x_divers/x_mc1.jpg",
 			},
 			{
@@ -73,7 +73,7 @@
 		[
 			{
 				key: "mode",
-				value: "Mice Saved (Divine)",
+				value: $_("profile.stats.shaman.miceSavedDivine"),
 				icon: "https://www.transformice.com/images/x_transformice/x_divers/x_mc2.jpg",
 			},
 			{
@@ -95,7 +95,7 @@
 		[
 			{
 				key: "mode",
-				value: "Cheese Gathered",
+				value: $_("profile.stats.shaman.cheeseGatheredShaman"),
 				icon: "https://www.transformice.com/images/x_transformice/x_inventaire/800.jpg",
 			},
 			{
@@ -117,7 +117,7 @@
 	];
 </script>
 
-<Table headers={tableHeaders} data={tableData} title="Shaman">
+<Table headers={tableHeaders} data={tableData} title={$_("profile.stats.shaman.title")}>
 	<tr slot="row" let:row>
 		{#each row as cell}
 			{#if cell.key === "mode"}

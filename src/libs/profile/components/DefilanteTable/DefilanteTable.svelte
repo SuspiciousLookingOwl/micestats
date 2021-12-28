@@ -29,7 +29,7 @@
 		[
 			{
 				key: "mode",
-				value: "Rounds Played",
+				value: $_("profile.stats.defilante.roundsPlayed"),
 				icon: "https://www.transformice.com/images/x_transformice/x_badges/x_288.png",
 			},
 			{
@@ -46,7 +46,7 @@
 		[
 			{
 				key: "mode",
-				value: "Completed Rounds",
+				value: $_("profile.stats.defilante.completedRounds"),
 				icon: "https://www.transformice.com/images/x_transformice/x_badges/x_287.png",
 			},
 			{
@@ -68,7 +68,7 @@
 		[
 			{
 				key: "mode",
-				value: "Points Gathered",
+				value: $_("profile.stats.defilante.pointsGathered"),
 				icon: "https://www.transformice.com/images/x_transformice/x_badges/x_286.png",
 			},
 			{
@@ -90,7 +90,7 @@
 	];
 </script>
 
-<Table headers={tableHeaders} data={tableData} title="Defilante">
+<Table headers={tableHeaders} data={tableData} title={$_("profile.stats.defilante.title")}>
 	<tr slot="row" let:row>
 		{#each row as cell}
 			{#if cell.key === "mode"}

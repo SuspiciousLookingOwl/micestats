@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { AsyncLoader, Card, Carousel, Icon, Image, Text } from "@components";
 	import type { PlayerEntity } from "@entities";
+	import { locale } from "svelte-i18n";
 	import { fly } from "svelte/transition";
 
 	export let profile: PlayerEntity;
@@ -43,13 +44,11 @@
 			</Carousel>
 
 			<!-- title -->
-			<!-- {#key $locale} -->
-			<AsyncLoader promise={profile.getTitle()} size="sm" let:value>
+			<AsyncLoader promise={profile.getTitle($locale || undefined)} size="sm" let:value>
 				<Text class="italic">
 					« {value} »
 				</Text>
 			</AsyncLoader>
-			<!-- {/key} -->
 
 			<!-- soulmate -->
 			{#if profile.soulmate}

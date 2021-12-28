@@ -29,7 +29,7 @@
 		[
 			{
 				key: "mode",
-				value: "Rounds Played",
+				value: $_("profile.stats.mouse.roundsPlayed"),
 				icon: "https://www.transformice.com/images/x_transformice/x_inventaire/2259.jpg",
 			},
 			{
@@ -46,7 +46,7 @@
 		[
 			{
 				key: "mode",
-				value: "Gathered Cheese",
+				value: $_("profile.stats.mouse.gatheredCheese"),
 				icon: "https://www.transformice.com/images/x_transformice/x_inventaire/800.jpg",
 			},
 			{
@@ -68,7 +68,7 @@
 		[
 			{
 				key: "mode",
-				value: "Cheese Gathered First",
+				value: $_("profile.stats.mouse.cheeseGatheredFirst"),
 				icon: "https://www.transformice.com/images/x_transformice/x_inventaire/2254.jpg",
 			},
 			{
@@ -90,7 +90,7 @@
 		[
 			{
 				key: "mode",
-				value: "Bootcamp",
+				value: $_("profile.stats.mouse.bootcamp"),
 				icon: "https://www.transformice.com/images/x_transformice/x_inventaire/2261.jpg",
 			},
 			{
@@ -107,7 +107,7 @@
 	];
 </script>
 
-<Table headers={tableHeaders} data={tableData} title="Mouse">
+<Table headers={tableHeaders} data={tableData} title={$_("profile.stats.mouse.title")}>
 	<tr slot="row" let:row>
 		{#each row as cell}
 			{#if cell.key === "mode"}

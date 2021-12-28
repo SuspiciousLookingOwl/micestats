@@ -17,7 +17,50 @@
 		"up": "Up",
 		"ratio": "Ratio",
 		"description": "{name} profile",
-		"notFound": "Profile Not Found :("
+		"notFound": "Profile Not Found :(",
+		"stats": {
+			"level": "Level {level}",
+			"shaman": {
+				"title": "Shaman",
+				"miceSavedNormal": "Mice Saved (Normal)",
+				"miceSavedNormalShort": "Normal Saves",
+				"miceSavedHard": "Mice Saved (Hard)",
+				"miceSavedHardShort": "Hard Saves",
+				"miceSavedDivine": "Mice Saved (Divine)",
+				"miceSavedDivineShort": "Divine Saves",
+				"cheeseGatheredShaman": "Cheese Gathered as Shaman",
+				"cheeseGatheredShamanShort": "Shaman Cheese"
+			},
+			"mouse": {
+				"title": "Mouse",
+				"roundsPlayed": "Rounds Played",
+				"gatheredCheese": "Gathered Cheese",
+				"cheeseGatheredFirst": "Cheese Gathered First",
+				"cheeseGatheredFirstShort": "Firsts",
+				"bootcamp": "Bootcamp"
+			},
+			"racing": {
+				"title": "Racing",
+				"roundsPlayed": "Rounds Played",
+				"completedRounds": "Completed Rounds",
+				"numberOfPodiums": "Number of Podiums",
+				"numberOfFirsts": "Number of Firsts"
+			},
+			"survivor": {
+				"title": "Survivor",
+				"roundsPlayed": "Rounds Played",
+				"roundsAsShaman": "Rounds as Shaman",
+				"killedMice": "Killed Mice",
+				"roundsSurvived": "Rounds Survived"
+			},
+			"defilante": {
+				"title": "Defilante",
+				"roundsPlayed": "Rounds Played",
+				"completedRounds": "Completed Rounds",
+				"pointsGathered": "Points Gathered"
+			},
+			"experience": "Experience"
+		}
 	},
 	"error": {
 		"title": "Seems like you are lost",

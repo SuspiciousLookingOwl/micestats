@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { Card, Image, Text } from "@components";
 	import type { PlayerEntity } from "@entities";
+	import { _ } from "svelte-i18n";
 
 	export let profile: PlayerEntity;
 </script>
@@ -14,7 +15,7 @@
 					{profile.name}
 				</Text>
 				<Text variant="subtitle1" class="font-brand">
-					Level {profile.level}
+					{$_("profile.stats.level", { values: { level: profile.level } })}
 				</Text>
 			</div>
 		</div>

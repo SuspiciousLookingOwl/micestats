@@ -31,7 +31,7 @@
 		[
 			{
 				key: "mode",
-				value: "Rounds Played",
+				value: $_("profile.stats.racing.roundsPlayed"),
 				icon: "https://www.transformice.com/images/x_transformice/x_badges/x_124.png",
 			},
 			{
@@ -48,7 +48,7 @@
 		[
 			{
 				key: "mode",
-				value: "Completed Rounds",
+				value: $_("profile.stats.racing.completedRounds"),
 				icon: "https://www.transformice.com/images/x_transformice/x_badges/x_125.png",
 			},
 			{
@@ -70,7 +70,7 @@
 		[
 			{
 				key: "mode",
-				value: "Number of Podiums",
+				value: $_("profile.stats.racing.numberOfPodiums"),
 				icon: "https://www.transformice.com/images/x_transformice/x_badges/x_127.png",
 			},
 			{
@@ -92,7 +92,7 @@
 		[
 			{
 				key: "mode",
-				value: "Number of Firsts",
+				value: $_("profile.stats.racing.numberOfFirsts"),
 				icon: "https://www.transformice.com/images/x_transformice/x_badges/x_126.png",
 			},
 			{
@@ -114,7 +114,7 @@
 	];
 </script>
 
-<Table headers={tableHeaders} data={tableData} title="Racing">
+<Table headers={tableHeaders} data={tableData} title={$_("profile.stats.racing.numberOfPodiums")}>
 	<tr slot="row" let:row>
 		{#each row as cell}
 			{#if cell.key === "mode"}

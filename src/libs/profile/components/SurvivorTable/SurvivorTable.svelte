@@ -29,7 +29,7 @@
 		[
 			{
 				key: "mode",
-				value: "Rounds Played",
+				value: $_("profile.stats.survivor.roundsPlayed"),
 				icon: "https://www.transformice.com/images/x_transformice/x_badges/x_120.png",
 			},
 			{
@@ -46,7 +46,7 @@
 		[
 			{
 				key: "mode",
-				value: "Rounds as Shaman",
+				value: $_("profile.stats.survivor.roundsAsShaman"),
 				icon: "https://www.transformice.com/images/x_transformice/x_badges/x_121.png",
 			},
 			{
@@ -68,7 +68,7 @@
 		[
 			{
 				key: "mode",
-				value: "Killed Mice",
+				value: $_("profile.stats.survivor.killedMice"),
 				icon: "https://www.transformice.com/images/x_transformice/x_badges/x_122.png",
 			},
 			{
@@ -90,7 +90,7 @@
 		[
 			{
 				key: "mode",
-				value: "Rounds Survived",
+				value: $_("profile.stats.survivor.roundsSurvived"),
 				icon: "https://www.transformice.com/images/x_transformice/x_badges/x_123.png",
 			},
 			{
@@ -112,7 +112,7 @@
 	];
 </script>
 
-<Table headers={tableHeaders} data={tableData} title="Survivor">
+<Table headers={tableHeaders} data={tableData} title={$_("profile.stats.survivor.title")}>
 	<tr slot="row" let:row>
 		{#each row as cell}
 			{#if cell.key === "mode"}
