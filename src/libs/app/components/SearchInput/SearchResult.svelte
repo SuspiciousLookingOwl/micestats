@@ -46,7 +46,7 @@
 				</SearchResultList>
 			{:else if !players.length && keyword}
 				<SearchResultList clickable={false}>
-					<Text variant="subtitle1" class="text-neutral-400">
+					<Text variant="subtitle2" class="text-neutral-400">
 						No search results found for <i>{keyword}</i>
 					</Text>
 				</SearchResultList>
@@ -56,7 +56,7 @@
 						isSelected={selectedIndex === i}
 						on:click={() => navigate(player)}
 					>
-						<Text variant="subtitle1" class="font-semibold">
+						<Text variant="subtitle2" class="font-semibold">
 							{player.name}
 						</Text>
 					</SearchResultList>
@@ -73,8 +73,8 @@
 					on:click={() => navigate(player)}
 				>
 					<div class="flex flex-row items-center space-x-4">
-						<Icon name="history" size="xl" class="fill-neutral-500 mt-1" />
-						<Text variant="subtitle1" class="font-semibold">
+						<Icon name="history" size="lg" class="fill-neutral-500" />
+						<Text variant="subtitle2" class="font-semibold">
 							{player.name}
 						</Text>
 					</div>
