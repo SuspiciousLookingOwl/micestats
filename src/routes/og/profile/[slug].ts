@@ -117,8 +117,8 @@ export const get: RequestHandler = async ({ params }) => {
 		loadImage("./static/img/cheese.png"),
 	]);
 	ctx.drawImage(backgroundImage, -100, 310, 1400, 700);
-	const iconX = 1025;
-	const iconY = 25;
+	const iconX = 1000;
+	const iconY = 210;
 	const iconWidth = 80;
 	const iconHeight = 48;
 	ctx.drawImage(cheese, iconX, iconY, iconWidth, iconHeight);
