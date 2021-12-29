@@ -12,11 +12,13 @@
 	let touchEndX = 0;
 
 	const next = () => {
-		index = Math.min(index + 1, items.length - 1);
+		if (index >= items.length - 1) index = 0;
+		else index++;
 	};
 
 	const previous = () => {
-		index = Math.max(0, index - 1);
+		if (index <= 0) index = items.length - 1;
+		else index--;
 	};
 
 	onMount(() => {
