@@ -5,6 +5,7 @@
 body {
 	@apply p-0 m-0;
 	@apply text-gray-50;
+	font-family: "Poppins", sans-serif !important;
 }
 
 .font-brand {
