@@ -54,7 +54,7 @@
 				<!-- soulmate -->
 				{#if profile.soulmate}
 					<a href="/p/{profile.soulmate.slugName}" class="flex items-center space-x-2">
-						<Icon name="heart" class="fill-white mt-1" />
+						<Icon name="heart" class="fill-white" />
 						<Text>
 							{profile.soulmate.name}
 						</Text>
@@ -64,7 +64,7 @@
 				<!-- tribe -->
 				{#if profile.tribe}
 					<div class="flex items-center space-x-2">
-						<Icon name="home" class="fill-white mt-1" />
+						<Icon name="home" class="fill-white" />
 						<Text>
 							{profile.tribe.name}
 						</Text>
