@@ -14,7 +14,7 @@
 </script>
 
 {#if profile}
-	<div class="space-y-4 md:font-semibold">
+	<div class="space-y-4">
 		<div class="lg:flex flex-row ">
 			<SideProfileOverview {profile} />
 

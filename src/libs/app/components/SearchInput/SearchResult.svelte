@@ -56,7 +56,7 @@
 						isSelected={selectedIndex === i}
 						on:click={() => navigate(player)}
 					>
-						<Text variant="subtitle2" class="font-semibold">
+						<Text variant="subtitle2" class="font-medium">
 							{player.name}
 						</Text>
 					</SearchResultList>
@@ -74,7 +74,7 @@
 				>
 					<div class="flex flex-row items-center space-x-4">
 						<Icon name="history" size="lg" class="fill-neutral-500" />
-						<Text variant="subtitle2" class="font-semibold">
+						<Text variant="subtitle2" class="font-medium">
 							{player.name}
 						</Text>
 					</div>
