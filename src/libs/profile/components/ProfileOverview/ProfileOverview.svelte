@@ -9,7 +9,7 @@
 <Card>
 	<div class="p-4">
 		<div class="flex items-center font-brand space-x-4">
-			<Image src={profile.headUrl} class="w-24 h-auto -rotate-2 scale-110" />
+			<Image src={profile.headUrl} class="w-24 h-32 -rotate-2 scale-110" />
 			<div class="flex flex-col space-y-4">
 				<Text variant="title2" class="font-brand text-shadow-md">
 					{profile.name}
