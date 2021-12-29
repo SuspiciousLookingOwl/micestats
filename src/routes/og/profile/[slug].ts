@@ -7,10 +7,11 @@ import { fillTextWithTwemoji as fillTextWithEmoji } from "node-canvas-with-twemo
 const { createCanvas, loadImage, registerFont } = canvas;
 
 registerFont("./static/font/soopafresh.ttf", { family: "Soopafresh" });
-registerFont("./static/font/Roboto-Bold.ttf", { family: "Roboto", weight: "bold" });
-registerFont("./static/font/Roboto-Medium.ttf", { family: "Roboto", weight: "medium" });
-registerFont("./static/font/Roboto-Regular.ttf", { family: "Roboto", weight: "normal" });
-registerFont("./static/font/Roboto-Thin.ttf", { family: "Roboto", weight: "thin" });
+registerFont("./static/font/Roboto-Bold.ttf", { family: "Roboto-Bold", weight: "700" });
+registerFont("./static/font/Roboto-Medium.ttf", { family: "Roboto-Medium", weight: "500" });
+registerFont("./static/font/Roboto-Regular.ttf", { family: "Roboto", weight: "400" });
+registerFont("./static/font/Roboto-Light.ttf", { family: "Roboto-Light", weight: "300" });
+registerFont("./static/font/Roboto-Thin.ttf", { family: "Roboto-Thin", weight: "100" });
 
 // use this method for now to convert from SVG to PNG instead of showing the SVG directly on the canvas
 // there's a bug that causes node-canvas not showing the full path of the SVG
@@ -88,7 +89,7 @@ export const get: RequestHandler = async ({ params }) => {
 	const titleFontSize = 32;
 	const titleX = nameX;
 	const titleY = topMargin + titleFontSize + 32;
-	ctx.font = `bold ${titleFontSize}px Roboto`;
+	ctx.font = `${titleFontSize}px Roboto-Bold`;
 	ctx.fillText(`« ${title} »`, titleX, titleY);
 
 	// draw soulmate
@@ -97,7 +98,7 @@ export const get: RequestHandler = async ({ params }) => {
 	if (profile.soulmate) {
 		const soulmateFontSize = 32;
 		soulmateY += +soulmateFontSize + 16;
-		ctx.font = `light ${soulmateFontSize}px Roboto`;
+		ctx.font = `${soulmateFontSize}px Roboto`;
 		await fillTextWithEmoji(ctx, `♥ ${profile.soulmate.name}`, soulmateX, soulmateY);
 	}
 
@@ -107,7 +108,7 @@ export const get: RequestHandler = async ({ params }) => {
 		const tribeX = nameX;
 		const tribeY = soulmateY + tribeFontSize + 16;
 		ctx.fillStyle = "#5D646D";
-		ctx.font = `light ${tribeFontSize}px Roboto`;
+		ctx.font = `${tribeFontSize}px Roboto`;
 		await fillTextWithEmoji(ctx, `🏠 ${profile.tribe.name}`, tribeX, tribeY);
 	}
 
