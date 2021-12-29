@@ -102,7 +102,7 @@
 
 {#key username}
 	{#if $isFetchingProfile && browser}
-		<div class="flex justify-center w-full my-8">
+		<div class="flex fixed top-0 left-0 justify-center items-center w-screen h-screen my-8">
 			<Spinner size="2xl" />
 		</div>
 	{:else if $profile}
