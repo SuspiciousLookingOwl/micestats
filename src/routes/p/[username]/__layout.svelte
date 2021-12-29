@@ -101,7 +101,7 @@
 </svelte:head>
 
 {#key username}
-	{#if true}
+	{#if $isFetchingProfile && browser}
 		<div class="flex fixed -top-12 left-0 justify-center items-center w-screen h-screen">
 			<Spinner size="2xl" />
 		</div>
