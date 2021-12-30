@@ -18,7 +18,7 @@
 	];
 </script>
 
-<div class="flex flex-row items-center space-x-12 pb-2 border-b border-opacity-25">
+<div class="flex flex-row items-center space-x-8 pb-2 border-b border-opacity-25 px-8">
 	{#each routes as { name, path }}
 		<a href={path} class="cursor-pointer hover:text-shadow hover:transition-all">
 			<Text variant="subtitle1" class={path === $page.path ? "font-medium text-white" : ""}>
@@ -32,7 +32,7 @@
 		</a>
 	{/each}
 
-	<div class="flex-grow text-right pr-8">
+	<div class="flex-grow text-right">
 		<a href="/">
 			<Text variant="title2" class="text-shadow-md font-brand text-center">CheeseForMice</Text
 			>
