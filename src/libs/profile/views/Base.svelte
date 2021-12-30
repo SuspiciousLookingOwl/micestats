@@ -8,11 +8,6 @@
 	export let profile: PlayerEntity | null;
 </script>
 
-<div class="py-4 hidden md:block">
-	<a class="font-brand text-2xl" href="/">
-		<Text variant="subtitle1">Home</Text>
-	</a>
-</div>
 {#if profile}
 	<div transition:fade={{ duration: 150 }}>
 		<ProfileOverview {profile} />

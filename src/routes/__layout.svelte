@@ -39,7 +39,7 @@
 </svelte:head>
 
 <Background />
-<div class="w-full max-w-7xl mx-auto p-2 md:p-4 md:space-y-2 xl:space-y-4 2xl:space-y-8">
+<div class="w-full max-w-7xl mx-auto px-2 md:px-4 py-4 md:space-y-2 xl:space-y-4 2xl:space-y-8">
 	<div class="hidden lg:block">
 		<NavigationBar />
 	</div>
