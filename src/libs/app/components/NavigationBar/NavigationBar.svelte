@@ -33,6 +33,9 @@
 	{/each}
 
 	<div class="flex-grow text-right pr-8">
-		<Text variant="title2" class="text-shadow-md font-brand text-center">CheeseForMice</Text>
+		<a href="/">
+			<Text variant="title2" class="text-shadow-md font-brand text-center">CheeseForMice</Text
+			>
+		</a>
 	</div>
 </div>
