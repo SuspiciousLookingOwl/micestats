@@ -1,18 +1,23 @@
 <script lang="ts">
 	import { page } from "$app/stores";
 	import { Text } from "@components";
+	import { _ } from "svelte-i18n";
 
 	const routes = [
 		{
-			name: "Home",
+			name: $_("nav.home"),
 			path: "/",
 		},
 		{
-			name: "Leaderboards",
+			name: $_("nav.leaderboards"),
 			path: "/leaderboards",
 		},
 		{
-			name: "About",
+			name: $_("nav.search"),
+			path: "/search",
+		},
+		{
+			name: $_("nav.about"),
 			path: "/about",
 		},
 	];

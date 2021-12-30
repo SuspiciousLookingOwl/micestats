@@ -1,4 +1,10 @@
 {
+	"nav": {
+		"home": "Home",
+		"about": "About",
+		"leaderboards": "Leaderboards",
+		"search": "Search"
+	},
 	"home": {
 		"topPlayers": "Top Players",
 		"topTribes": "Top Tribes",
