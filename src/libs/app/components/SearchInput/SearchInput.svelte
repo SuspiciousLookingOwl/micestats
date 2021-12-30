@@ -1,8 +1,7 @@
 <script lang="ts">
 	import { Icon, Input, Text } from "@components";
-	import { background, useSearch } from "@libs/app";
+	import { background, SearchResult, useSearch } from "@libs/app";
 	import { _ } from "svelte-i18n";
-	import SearchResult from "./SearchResult.svelte";
 
 	export let isFocused = false;
 	let input: HTMLInputElement;

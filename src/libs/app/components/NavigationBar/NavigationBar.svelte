@@ -51,6 +51,7 @@
 		@apply flex flex-row;
 		@apply space-x-4;
 		@apply border-b border-opacity-25;
+		@apply relative;
 		z-index: 1000;
 	}
 </style>
