@@ -23,7 +23,7 @@
 	.bottom-nav {
 		@apply grid grid-cols-4;
 		@apply fixed w-screen bottom-0 h-14;
-		@apply bg-gray-900 lg:hidden;
+		@apply bg-gray-900;
 		z-index: 1000;
 	}
 

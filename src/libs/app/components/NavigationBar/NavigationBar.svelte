@@ -18,9 +18,9 @@
 	];
 </script>
 
-<div class="flex flex-row items-center space-x-8 pb-2 border-b border-opacity-25 px-8">
+<div class="navbar">
 	{#each routes as { name, path }}
-		<a href={path} class="cursor-pointer hover:text-shadow hover:transition-all">
+		<a href={path} class="cursor-pointer hover:text-shadow hover:transition-all p-2">
 			<Text
 				variant="subtitle1"
 				class={path === $page.path ? "font-medium text-white text-shadow" : ""}
@@ -28,9 +28,7 @@
 				{name}
 			</Text>
 			{#if path === $page.path}
-				<div
-					class="top-[0.675rem] 2xl:top-[0.875rem] relative border-b-2 border-white box-border"
-				/>
+				<div class="top-[0.625rem] relative border-b-2 border-white box-border" />
 			{/if}
 		</a>
 	{/each}
@@ -42,3 +40,12 @@
 		</a>
 	</div>
 </div>
+
+<style lang="postcss">
+	.navbar {
+		@apply flex flex-row items-center;
+		@apply space-x-4 px-8;
+		@apply border-b border-opacity-25;
+		z-index: 1000;
+	}
+</style>

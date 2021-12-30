@@ -47,4 +47,6 @@
 		<slot />
 	</TransitionedRoutes>
 </div>
-<BottomNavigator />
+<div class="lg:hidden">
+	<BottomNavigator />
+</div>
