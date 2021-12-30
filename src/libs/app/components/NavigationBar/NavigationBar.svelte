@@ -20,7 +20,7 @@
 
 <div class="navbar">
 	{#each routes as { name, path }}
-		<a href={path} class="cursor-pointer hover:text-shadow hover:transition-all p-2">
+		<a href={path} class="cursor-pointer hover:text-shadow hover:transition-all px-4 py-2">
 			<Text
 				variant="subtitle1"
 				class={path === $page.path ? "font-medium text-white text-shadow" : ""}
@@ -33,7 +33,7 @@
 		</a>
 	{/each}
 
-	<div class="flex-grow text-right">
+	<div class="flex-grow text-right px-4">
 		<a href="/">
 			<Text variant="title2" class="text-shadow-md font-brand text-center">CheeseForMice</Text
 			>
@@ -43,8 +43,8 @@
 
 <style lang="postcss">
 	.navbar {
-		@apply flex flex-row items-center;
-		@apply space-x-4 px-8;
+		@apply flex flex-row;
+		@apply space-x-4;
 		@apply border-b border-opacity-25;
 		z-index: 1000;
 	}
