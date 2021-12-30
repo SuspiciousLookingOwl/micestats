@@ -8,7 +8,7 @@
 	<a class="item" href="/">
 		<Icon name="home" size="lg" class="fill-current mx-auto" />
 	</a>
-	<a class="item" href="/leaderboard">
+	<a class="item" href="/leaderboards">
 		<Icon name="leaderboard" size="2xl" class="fill-current mx-auto" />
 	</a>
 	<a class="item" href="/search">

@@ -1,5 +1,4 @@
 <script lang="ts">
-	import { Text } from "@components";
 	import { SearchInput } from "@libs/app";
 	import { onMount } from "svelte";
 	import { _ } from "svelte-i18n";
@@ -25,9 +24,9 @@
 			large: true,
 		},
 		{
-			text: $_("home.leaderboard"),
+			text: $_("home.leaderboards"),
 			icon: "cup",
-			href: "/leaderboard",
+			href: "/leaderboards",
 		},
 		{
 			text: "Atelier801",
@@ -39,8 +38,6 @@
 </script>
 
 <div class="flex flex-col space-y-4 2xl:space-y-8">
-	<Text variant="title1" class="text-shadow-md font-brand text-center">CheeseForMice</Text>
-
 	<SearchInput bind:isFocused={isSearchFocused} />
 
 	<div
