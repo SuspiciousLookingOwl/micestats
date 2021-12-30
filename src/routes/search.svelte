@@ -1,8 +1,11 @@
 <script lang="ts">
-	import { SearchInput } from "@libs/app";
+	import { background, SearchInput } from "@libs/app";
 	import { onMount } from "svelte";
 
 	let isFocused = false;
+
+	background.setXOffset(0.3);
+
 	onMount(() => {
 		setTimeout(() => (isFocused = true), 500);
 	});
