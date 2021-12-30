@@ -1,11 +1,9 @@
 <script lang="ts">
 	import { background } from "@libs/app";
 	import { Home } from "@libs/home";
-	import { onMount } from "svelte";
 
-	onMount(() => {
-		background.setScale();
-	});
+	background.setScale();
+	background.setXOffset();
 </script>
 
 <svelte:head>

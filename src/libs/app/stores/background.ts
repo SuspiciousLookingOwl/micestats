@@ -8,7 +8,7 @@ interface UseBackground {
 	setBackground: (index: number) => void;
 	setScale: (scale?: number) => void;
 	setBrightness: (x?: number) => void;
-	setXOffset: (x: number) => void;
+	setXOffset: (x?: number) => void;
 	setBlur: (x?: number) => void;
 }
 
@@ -48,14 +48,15 @@ const brightnessLevels = [
 
 const useBackground = (): UseBackground => {
 	const initialIndex = Math.floor(Math.random() * images.length);
-	const baseXOffsetPercentage = 10;
+	const baseXOffsetPercentage = 20;
+	const defaultXOffset = 0;
 	const defaultBlur = 2;
 	const defaultBrightness = 5;
 	const defaultScale = 1.25;
 
 	const transformStyles = {
 		scale: `scale(${defaultScale})`,
-		translate: "translate(0px, 0px)",
+		translate: `translate(${defaultXOffset}px, 0px)`,
 	};
 	let blurLevel = defaultBlur;
 	let brightnessLevel = defaultBrightness;
@@ -70,10 +71,11 @@ const useBackground = (): UseBackground => {
 		image.set(images[index]);
 	};
 
-	const setXOffset = (x: number) => {
-		if (x < 0) x = 0;
-		if (x > 1) x = 1;
-		transformStyles.translate = `translate(${x * baseXOffsetPercentage}%, 0px)`;
+	const setXOffset = (x?: number) => {
+		if (!x) x = defaultXOffset;
+		else if (x < 0) x = 0;
+		else if (x > 1) x = 1;
+		transformStyles.translate = `translate(-${x * baseXOffsetPercentage}%, 0px)`;
 		update();
 	};
 
