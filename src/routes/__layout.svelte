@@ -2,11 +2,13 @@
 	import { browser } from "$app/env";
 	import { TransitionedRoutes } from "@components";
 	import { Background, BottomNavigator } from "@libs/app";
+	import NavigationBar from "@libs/app/components/NavigationBar/NavigationBar.svelte";
 	import type { Load } from "@sveltejs/kit";
 	import { addMessages, getLocaleFromQueryString, init } from "svelte-i18n";
 	import "../app.css";
 	import locales from "../locales";
 
+	// TODO do async loading https://github.com/kaisermann/svelte-i18n/blob/main/docs/Getting%20Started.md#32-asynchronous
 	Object.entries(locales).forEach((l) => addMessages(...l));
 
 	if (browser) {
@@ -37,7 +39,10 @@
 </svelte:head>
 
 <Background />
-<div class="w-full max-w-7xl mx-auto p-2 md:p-4">
+<div class="w-full max-w-7xl mx-auto p-2 md:p-4 md:space-y-2 xl:space-y-4 2xl:space-y-8">
+	<div class="hidden lg:block">
+		<NavigationBar />
+	</div>
 	<TransitionedRoutes {path}>
 		<slot />
 	</TransitionedRoutes>
