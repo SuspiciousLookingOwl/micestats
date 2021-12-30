@@ -9,7 +9,7 @@
 </script>
 
 <div
-	class="p-4 -mx-4"
+	class="p-4 -mx-4 hover:bg-white hover:bg-opacity-20"
 	class:cursor-pointer={clickable}
 	class:bg-white={isSelected}
 	class:bg-opacity-20={isSelected}
