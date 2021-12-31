@@ -16,7 +16,7 @@
 
 {#if value > 0}
 	<div class="flex items-center space-x-1 {classes}">
-		<Icon name="triangleTop" size="sm" class="fill-current mt-1" />
+		<Icon name="triangleTop" size="sm" class="fill-current" />
 		<Text class=" font-semibold">{value}</Text>
 	</div>
 {/if}
