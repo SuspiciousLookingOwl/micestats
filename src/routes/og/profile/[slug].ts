@@ -132,11 +132,11 @@ export const get: RequestHandler = async ({ params }) => {
 	ctx.strokeStyle = "#1E1E1E";
 	ctx.lineWidth = 4;
 
-	const { width: cfmWidth } = ctx.measureText("CheeseForMice");
+	const { width: cfmWidth } = ctx.measureText("Cheeseformice");
 	const cfmX = iconX + (iconWidth - cfmWidth) / 2;
 	const cfmY = iconY + 50;
-	ctx.strokeText("CheeseForMice", cfmX, cfmY);
-	ctx.fillText("CheeseForMice", cfmX, cfmY);
+	ctx.strokeText("Cheeseformice", cfmX, cfmY);
+	ctx.fillText("Cheeseformice", cfmX, cfmY);
 
 	// TODO implement stats
 	// shaman stats

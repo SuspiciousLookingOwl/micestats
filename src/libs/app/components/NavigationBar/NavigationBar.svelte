@@ -40,7 +40,7 @@
 
 	<div class="flex-grow text-right px-4">
 		<a href="/">
-			<Text variant="title2" class="text-shadow-md font-brand text-center">CheeseForMice</Text
+			<Text variant="title2" class="text-shadow-md font-brand text-center">Cheeseformice</Text
 			>
 		</a>
 	</div>

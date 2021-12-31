@@ -58,8 +58,8 @@
 
 <svelte:head>
 	{#if $profile}
-		<title>{$profile.name} | CheeseForMice</title>
-		<meta name="description" content="{$profile.name}'s profile on CheeseForMice" />
+		<title>{$profile.name} | Cheeseformice</title>
+		<meta name="description" content="{$profile.name}'s profile on Cheeseformice" />
 
 		<!-- Facebook Meta Tags -->
 		<meta
@@ -67,7 +67,7 @@
 			content="{import.meta.env.VITE_APP_BASE_URL}/p/{$profile.slugName}"
 		/>
 		<meta property="og:type" content="website" />
-		<meta property="og:title" content="{$profile.name} | CheeseForMice" />
+		<meta property="og:title" content="{$profile.name} | Cheeseformice" />
 		<meta
 			property="og:description"
 			content={$_("profile.description", { values: { name: $profile.name } })}
@@ -85,7 +85,7 @@
 			property="twitter:url"
 			content="{import.meta.env.VITE_APP_BASE_URL}/p/{$profile.slugName}"
 		/>
-		<meta name="twitter:title" content="{$profile.name} | CheeseForMice" />
+		<meta name="twitter:title" content="{$profile.name} | Cheeseformice" />
 		<meta
 			name="twitter:description"
 			content={$_("profile.description", { values: { name: $profile.name } })}
@@ -95,7 +95,7 @@
 			content="{import.meta.env.VITE_APP_BASE_URL}/og/profile/{$profile.slugName}"
 		/>
 	{:else if !browser || !$isFetchingProfile}
-		<title>{$_("profile.notFound")} | CheeseForMice</title>
+		<title>{$_("profile.notFound")} | Cheeseformice</title>
 		<meta name="description" content={$_("profile.notFound")} />
 	{/if}
 </svelte:head>

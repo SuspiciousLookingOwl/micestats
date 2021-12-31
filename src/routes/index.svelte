@@ -7,7 +7,7 @@
 </script>
 
 <svelte:head>
-	<title>CheeseForMice</title>
+	<title>Cheeseformice</title>
 </svelte:head>
 
 <Home />
