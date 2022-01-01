@@ -1,14 +1,20 @@
 <script lang="ts">
 	import { SearchInput } from "@libs/app";
+	import { LeaderboardType, useLeaderboard } from "@libs/leaderboard";
 	import { onMount } from "svelte";
 	import { _ } from "svelte-i18n";
 	import { DiscordWidget, Leaderboard, Link } from "../components";
-	import { usePlayerLeaderboard, useTribeLeaderboard } from "../stores";
 
-	const { playerLeaderboardValue, isFetchingPlayerLeaderboard, ...playerLeaderboard } =
-		usePlayerLeaderboard();
-	const { tribeLeaderboardValue, isFetchingTribeLeaderboard, ...tribeLeaderboard } =
-		useTribeLeaderboard();
+	const {
+		leaderboardValue: playerLeaderboardValue,
+		isFetchingLeaderboard: isFetchingPlayerLeaderboard,
+		...playerLeaderboard
+	} = useLeaderboard(LeaderboardType.PLAYER);
+	const {
+		leaderboardValue: tribeLeaderboardValue,
+		isFetchingLeaderboard: isFetchingTribeLeaderboard,
+		...tribeLeaderboard
+	} = useLeaderboard(LeaderboardType.TRIBE);
 	let isSearchFocused = false;
 
 	onMount(async () => {
@@ -45,8 +51,16 @@
 		class:blur={isSearchFocused}
 		class:opacity-20={isSearchFocused}
 	>
-		<Leaderboard title={$_("home.topPlayers")} items={$playerLeaderboardValue} />
-		<Leaderboard title={$_("home.topTribes")} items={$tribeLeaderboardValue} />
+		<Leaderboard
+			title={$_("home.topPlayers")}
+			items={$playerLeaderboardValue}
+			isLoading={$isFetchingPlayerLeaderboard}
+		/>
+		<Leaderboard
+			title={$_("home.topTribes")}
+			items={$tribeLeaderboardValue}
+			isLoading={$isFetchingTribeLeaderboard}
+		/>
 		<div class="flex flex-col space-y-2 pb-2 lg:pb-0 order-first lg:order-last">
 			{#each links as link}
 				<Link {...link} />

@@ -2,7 +2,7 @@
 	import type { PlayerLeaderboard, TribeLeaderboard } from "@api";
 	import { Card, Text } from "@components";
 	import LeaderboardList from "./LeaderboardList.svelte";
-	import LeaderboadListSkeleton from "./LeaderboardListSkeleton.svelte";
+	import LeaderboardListSkeleton from "./LeaderboardListSkeleton.svelte";
 
 	type T = $$Generic<PlayerLeaderboard | TribeLeaderboard>;
 	interface $$Props {
@@ -20,6 +20,7 @@
 
 	export let title: string = "";
 	export let items: T[] = [];
+	export let isLoading = true;
 	export let loaderCount = 10;
 </script>
 
@@ -31,10 +32,10 @@
 	<div class="w-full border-t border-white border-opacity-25 my-2" />
 
 	<div class="flex flex-col w-full space-y-2">
-		{#if !items?.length}
+		{#if isLoading}
 			{#each Array(loaderCount) as _}
 				<slot name="loader">
-					<LeaderboadListSkeleton />
+					<LeaderboardListSkeleton />
 				</slot>
 			{/each}
 		{:else}
