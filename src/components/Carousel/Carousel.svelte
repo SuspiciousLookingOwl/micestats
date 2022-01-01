@@ -21,20 +21,20 @@
 		else index--;
 	};
 
-	onMount(() => {
-		slider.addEventListener("touchstart", (e) => {
-			touchStartX = e.changedTouches[0].screenX;
-		});
-		slider.addEventListener("touchend", (e) => {
-			touchEndX = e.changedTouches[0].screenX;
-			handleGesture();
-		});
-	});
+	const onTouchStart = (e: TouchEvent) => {
+		touchStartX = e.changedTouches[0].screenX;
+	};
 
-	function handleGesture() {
+	const onTouchEnd = (e: TouchEvent) => {
+		touchEndX = e.changedTouches[0].screenX;
 		if (touchEndX < touchStartX) next();
-		if (touchEndX > touchStartX) previous();
-	}
+		else if (touchEndX > touchStartX) previous();
+	};
+
+	onMount(() => {
+		slider.addEventListener("touchstart", onTouchStart, { passive: true });
+		slider.addEventListener("touchend", onTouchEnd, { passive: true });
+	});
 </script>
 
 <div bind:this={slider} class="flex flex-col items-center space-y-2">
