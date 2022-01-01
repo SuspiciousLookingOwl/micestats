@@ -29,11 +29,9 @@ export const useProfile = (
 ): UseProfile => {
 	const username = writable<string>(initialUsername);
 
-	const {
-		value: profile,
-		isFetching: isFetchingProfile,
-		fetch,
-	} = useFetch<UseProfileValue>(initialProfile, () => fetchProfile(get(username)), {
+	const fetchFn = () => fetchProfile(get(username));
+
+	const { value, isFetching, fetch } = useFetch<UseProfileValue>(initialProfile, fetchFn, {
 		keys: [username],
 		condition: (p) => {
 			const storedSlug = p?.slugName;
@@ -44,8 +42,8 @@ export const useProfile = (
 	});
 
 	return {
-		profile,
-		isFetchingProfile,
+		profile: value,
+		isFetchingProfile: isFetching,
 		username,
 		fetch,
 	};

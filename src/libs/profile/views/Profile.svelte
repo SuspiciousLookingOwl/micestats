@@ -11,31 +11,23 @@
 	} from "../components";
 
 	export let profile: PlayerEntity | null = null;
+
+	const tables = [DefilanteTable, MouseTable, RacingTable, ShamanTable, SurvivorTable];
 </script>
 
 {#if profile}
 	<div class="space-y-4">
-		<div class="lg:flex flex-row ">
+		<div class="lg:flex flex-row">
 			<SideProfileOverview {profile} />
 
 			<div class="mx-1 my-2" />
 
 			<div class="space-y-2 flex-grow">
-				<Card class="p-2 md:p-6">
-					<ShamanTable {profile} />
-				</Card>
-				<Card class="p-2 md:p-6">
-					<MouseTable {profile} />
-				</Card>
-				<Card class="p-2 md:p-6">
-					<RacingTable {profile} />
-				</Card>
-				<Card class="p-2 md:p-6">
-					<SurvivorTable {profile} />
-				</Card>
-				<Card class="p-2 md:p-6">
-					<DefilanteTable {profile} />
-				</Card>
+				{#each tables as table}
+					<Card class="p-2 md:p-6">
+						<svelte:component this={table} {profile} />
+					</Card>
+				{/each}
 			</div>
 		</div>
 	</div>

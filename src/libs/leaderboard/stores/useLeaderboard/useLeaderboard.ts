@@ -42,18 +42,14 @@ export const useLeaderboard = <T extends LeaderboardType>(type: T): UseLeaderboa
 		return res.page as LeaderboardTypeValue<T>;
 	};
 
-	const {
-		value: leaderboardValue,
-		isFetching: isFetchingLeaderboard,
-		...playerLeaderboard
-	} = useFetch<LeaderboardTypeValue<T>>([], fetchFn, {
+	const { value, isFetching, fetch } = useFetch<LeaderboardTypeValue<T>>([], fetchFn, {
 		keys: [pagination.page, pagination.limit],
 	});
 
 	return {
 		pagination,
-		leaderboardValue,
-		isFetchingLeaderboard,
-		...playerLeaderboard,
+		leaderboardValue: value,
+		isFetchingLeaderboard: isFetching,
+		fetch,
 	};
 };

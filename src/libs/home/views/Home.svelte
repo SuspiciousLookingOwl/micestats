@@ -17,7 +17,7 @@
 	} = useLeaderboard(LeaderboardType.TRIBE);
 	let isSearchFocused = false;
 
-	onMount(async () => {
+	onMount(() => {
 		playerLeaderboard.fetch();
 		tribeLeaderboard.fetch();
 	});
