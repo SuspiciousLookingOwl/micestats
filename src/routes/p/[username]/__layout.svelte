@@ -59,7 +59,10 @@
 <svelte:head>
 	{#if $profile}
 		<title>{$profile.name} | Cheeseformice</title>
-		<meta name="description" content="{$profile.name}'s profile on Cheeseformice" />
+		<meta
+			name="description"
+			content={$_("profile.description", { values: { name: $profile.name } })}
+		/>
 
 		<!-- Facebook Meta Tags -->
 		<meta
