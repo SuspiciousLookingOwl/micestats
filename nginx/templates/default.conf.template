@@ -1,4 +1,4 @@
-proxy_cache_path /var/cache/nginx levels=1:2 keys_zone=STATIC:10m inactive=7d use_temp_path=off;
+proxy_cache_path /var/cache/nginx levels=1:2 keys_zone=STATIC:10m inactive=1d use_temp_path=off;
 limit_req_zone $binary_remote_addr zone=limit:10m rate=10r/s;
 
 upstream app {
@@ -45,6 +45,7 @@ server {
     limit_req zone=limit burst=30;
 
     location /og/profile {
+        expires 4h;
         proxy_cache STATIC;
         proxy_ignore_headers Cache-Control;
         proxy_cache_key $scheme$proxy_host$uri;
@@ -53,8 +54,8 @@ server {
     }
 
     location ~ ^/(img|icon|font) {
+        expires 1d;
         proxy_cache STATIC;
-        proxy_ignore_headers Cache-Control;
         proxy_cache_valid 1d;
         proxy_pass http://app;
     }

@@ -149,10 +149,7 @@ export const get: RequestHandler = async ({ params }) => {
 	const buffer = canvas.toBuffer("image/jpeg", { quality: 0.9 });
 
 	return {
-		headers: {
-			"Content-Type": "image/jpeg",
-			"Cache-Control": "public, max-age=144400",
-		},
+		headers: { "Content-Type": "image/jpeg" },
 		body: buffer,
 	};
 };
