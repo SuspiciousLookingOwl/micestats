@@ -8,6 +8,12 @@ body {
 	font-family: "Poppins", sans-serif !important;
 }
 
+@font-face {
+	font-display: swap;
+	font-family: "Soopafresh";
+	src: url(/font/soopafresh.ttf);
+}
+
 .font-brand {
 	font-family: "Soopafresh", sans-serif;
 }
