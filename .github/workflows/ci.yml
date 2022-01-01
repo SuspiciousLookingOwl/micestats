@@ -35,4 +35,4 @@ jobs:
         script: |
           cd ${{ secrets.APP_PATH }}
           git pull origin main
-          docker-compose up --build -d
+          docker-compose up --build --force-recreate -d
