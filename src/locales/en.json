@@ -69,6 +69,10 @@
 			"experience": "Experience"
 		}
 	},
+	"leaderboard": {
+		"playerLeaderboards": "Player Leaderboards",
+		"tribeLeaderboards": "Tribe Leaderboards"
+	},
 	"error": {
 		"title": "Seems like you are lost",
 		"subtitle": "Go Home"
