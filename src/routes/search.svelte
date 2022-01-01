@@ -5,6 +5,7 @@
 	let isFocused = false;
 
 	background.setXOffset(0.3);
+	background.setScale();
 
 	onMount(() => {
 		setTimeout(() => (isFocused = true), 500);
