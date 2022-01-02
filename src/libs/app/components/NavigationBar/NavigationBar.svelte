@@ -40,9 +40,11 @@
 		</a>
 	{/each}
 
-	<div class="flex-grow text-right px-4">
-		<slot name="right" />
-	</div>
+	{#if $$slots.right}
+		<div class="flex-grow text-right px-4">
+			<slot name="right" />
+		</div>
+	{/if}
 </div>
 
 <style lang="postcss">
