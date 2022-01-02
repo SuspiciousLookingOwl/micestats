@@ -2,6 +2,7 @@
 	export interface Route {
 		name: string;
 		path: string;
+		alias?: string[];
 		exact?: boolean;
 	}
 </script>
@@ -12,23 +13,28 @@
 
 	export let routes: Route[] = [];
 
-	const isActivePath = (currentPath: string, path: string, exact = false) => {
-		return path === currentPath || (!exact && currentPath.startsWith(path));
+	const isActivePath = (currentPath: string, route: Route) => {
+		return (
+			route.path === currentPath ||
+			(!route.exact && currentPath.startsWith(route.path)) ||
+			route.alias?.includes(currentPath)
+		);
 	};
 </script>
 
 <div class="navbar">
-	{#each routes as { name, path, exact }}
-		<a href={path} class="cursor-pointer hover:text-shadow hover:transition-all px-4 py-2">
+	{#each routes as route}
+		<a
+			href={route.path}
+			class="cursor-pointer hover:text-shadow hover:transition-all px-4 py-2"
+		>
 			<Text
 				variant="subtitle1"
-				class={isActivePath($page.path, path, exact)
-					? "font-medium text-white text-shadow"
-					: ""}
+				class={isActivePath($page.path, route) ? "font-medium text-white text-shadow" : ""}
 			>
-				{name}
+				{route.name}
 			</Text>
-			{#if isActivePath($page.path, path, exact)}
+			{#if isActivePath($page.path, route)}
 				<div class="top-[0.625rem] relative border-b-2 border-white box-border" />
 			{/if}
 		</a>
