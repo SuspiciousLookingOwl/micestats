@@ -12,6 +12,8 @@
 	import { Text } from "@components";
 
 	export let routes: Route[] = [];
+	let routesElement: HTMLAnchorElement[] = [];
+	let underlineStyle = "";
 
 	const isActivePath = (currentPath: string, route: Route) => {
 		return (
@@ -20,11 +22,31 @@
 			route.alias?.includes(currentPath)
 		);
 	};
+
+	// compute underline border style
+	$: {
+		const activeRouteIndex = routes.findIndex((r) => isActivePath($page.path, r));
+		const activeRouteElement = routesElement[activeRouteIndex];
+
+		if (activeRouteElement) {
+			const style = getComputedStyle(activeRouteElement);
+			const elementPaddingX = parseFloat(style.paddingLeft) + parseFloat(style.paddingRight);
+
+			const width = activeRouteElement.offsetWidth - elementPaddingX;
+			const height = activeRouteElement.offsetHeight;
+			const left = activeRouteElement.offsetLeft;
+
+			underlineStyle = `width: ${width}px; left: ${left}px; height: ${height + 1}px;`;
+		} else {
+			underlineStyle = "";
+		}
+	}
 </script>
 
 <div class="navbar">
-	{#each routes as route}
+	{#each routes as route, i}
 		<a
+			bind:this={routesElement[i]}
 			href={route.path}
 			class="cursor-pointer hover:text-shadow hover:transition-all px-4 py-2"
 		>
@@ -34,9 +56,6 @@
 			>
 				{route.name}
 			</Text>
-			{#if isActivePath($page.path, route)}
-				<div class="top-[0.625rem] relative border-b-2 border-white box-border" />
-			{/if}
 		</a>
 	{/each}
 
@@ -45,6 +64,11 @@
 			<slot name="right" />
 		</div>
 	{/if}
+
+	<div
+		class="absolute border-b-2 border-white box-border transition-all"
+		style={underlineStyle}
+	/>
 </div>
 
 <style lang="postcss">
