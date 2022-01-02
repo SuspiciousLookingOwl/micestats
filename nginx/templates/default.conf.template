@@ -65,6 +65,12 @@ server {
         proxy_pass http://app;
     }
 
+    location /p {
+        proxy_cache STATIC;
+        proxy_cache_valid 1h;
+        proxy_pass http://app;
+    }
+
     location / {
         proxy_pass http://app;
     }
