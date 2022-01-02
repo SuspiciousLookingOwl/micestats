@@ -12,7 +12,7 @@
 
 	export let profile: PlayerEntity | null = null;
 
-	const tables = [DefilanteTable, MouseTable, RacingTable, ShamanTable, SurvivorTable];
+	const tables = [ShamanTable, MouseTable, RacingTable, SurvivorTable, DefilanteTable];
 </script>
 
 {#if profile}
