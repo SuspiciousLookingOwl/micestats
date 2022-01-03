@@ -1,8 +1,9 @@
 <script context="module" lang="ts">
-	export type Header = {
+	export type Header<T = any> = {
 		key: string;
 		label: string;
-		format?: (value: any) => string;
+		format?: (value: T) => any;
+		value: (data: T, index: number) => any;
 		class?: string;
 	};
 </script>
@@ -35,7 +36,7 @@
 					<tr>
 						{#each headers as header}
 							<td>
-								<DefaultCell data={row} {header} />
+								<DefaultCell data={row} {header} {index} />
 							</td>
 						{/each}
 					</tr>
