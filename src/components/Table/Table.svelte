@@ -16,9 +16,12 @@
 	export let title: string = "";
 	export let headers: Header[] = [];
 	export let data: T[] = [];
+
+	export let tableClass = "";
+	export let tableBodyClass = "";
 </script>
 
-<div>
+<div class={tableClass}>
 	<slot name="title">
 		<div class="text-2xl font-brand tracking-wider">{title}</div>
 	</slot>
@@ -30,7 +33,7 @@
 				{/each}
 			</tr>
 		</thead>
-		<tbody>
+		<tbody class={tableBodyClass}>
 			{#each data as row, index}
 				<slot name="row" {row} {index}>
 					<tr>
