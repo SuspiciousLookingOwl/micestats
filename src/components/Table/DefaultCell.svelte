@@ -1,18 +1,18 @@
 <script lang="ts">
-	import type { Cell } from "./Table.svelte";
+	import type { Header } from "./Table.svelte";
 
-	export let cell: Cell | null = null;
+	export let data: any = null;
+	export let header: Header | null = null;
 
-	export let value = "";
-	$: if (cell) {
-		const temp = cell.value === "function" ? cell.value() : cell?.value;
-		value = typeof cell.format === "function" ? cell.format(temp) : temp;
+	export let value = header ? data?.[header.key] : "";
+	$: if (data) {
+		value = header?.format?.(value) || value;
 	}
 </script>
 
-<td class={cell?.class}>
+<td class={header?.class}>
 	<slot>
-		{#if cell}
+		{#if data}
 			{value}
 		{/if}
 	</slot>

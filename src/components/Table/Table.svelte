@@ -2,33 +2,19 @@
 	export type Header = {
 		key: string;
 		label: string;
-		class?: string;
-	};
-
-	export type Cell<T = any> = {
-		key: string;
-		value: any | (() => any);
 		format?: (value: any) => string;
 		class?: string;
-	} & T;
-
-	export type Row<T = any> = Cell<T>[];
+	};
 </script>
 
 <script lang="ts">
-	import DefaultCell from "./DefaultCell.svelte";
+	import { DefaultCell } from ".";
 
 	type T = $$Generic;
 
 	export let title: string = "";
 	export let headers: Header[] = [];
-	export let data: Row<T>[] = [];
-
-	$: sortedData = data.map((row) =>
-		row.sort((a, b) => findHeaderIndex(a.key) - findHeaderIndex(b.key))
-	);
-
-	const findHeaderIndex = (key: string) => headers.findIndex((h) => h.key === key);
+	export let data: T[] = [];
 </script>
 
 <div>
@@ -44,11 +30,13 @@
 			</tr>
 		</thead>
 		<tbody>
-			{#each sortedData as row, index}
+			{#each data as row, index}
 				<slot name="row" {row} {index}>
 					<tr>
-						{#each row as cell}
-							<DefaultCell {cell} />
+						{#each headers as header}
+							<td>
+								<DefaultCell data={row} {header} />
+							</td>
 						{/each}
 					</tr>
 				</slot>

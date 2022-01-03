@@ -1,13 +1,13 @@
 <script lang="ts">
-	import { DefaultCell, Table, type Row } from "@components";
+	import { Table } from "@components";
 	import type { PlayerEntity } from "@entities";
 	import { thousandSeparator, toPercentage } from "@utils";
 	import { _ } from "svelte-i18n";
-	import { ModeCellContent, UpCellContent } from "..";
+	import { StatsTableRow } from "..";
 
 	export let profile: PlayerEntity;
 
-	$: tableHeaders = [
+	$: headers = [
 		{
 			key: "mode",
 			label: $_("profile.mode"),
@@ -15,6 +15,7 @@
 		{
 			key: "score",
 			label: $_("profile.score"),
+			format: thousandSeparator,
 		},
 		{
 			key: "up",
@@ -23,111 +24,42 @@
 		{
 			key: "ratio",
 			label: $_("profile.ratio"),
+			format: toPercentage,
 		},
 	];
-
-	let tableData: Row[];
-	$: tableData = [
-		[
-			{
-				key: "mode",
-				value: $_("profile.stats.racing.roundsPlayed"),
-				icon: "https://www.transformice.com/images/x_transformice/x_badges/x_124.png",
-			},
-			{
-				key: "score",
-				value: profile.stats.racing.rounds,
-				format: thousandSeparator,
-			},
-			{
-				key: "up",
-				value: profile.period.racing.rounds,
-				format: thousandSeparator,
-			},
-		],
-		[
-			{
-				key: "mode",
-				value: $_("profile.stats.racing.completedRounds"),
-				icon: "https://www.transformice.com/images/x_transformice/x_badges/x_125.png",
-			},
-			{
-				key: "score",
-				value: profile.stats.racing.finished,
-				format: thousandSeparator,
-			},
-			{
-				key: "up",
-				value: profile.period.racing.finished,
-				format: thousandSeparator,
-			},
-			{
-				key: "ratio",
-				value: profile.stats.ratio.racing.finished,
-				format: toPercentage,
-			},
-		],
-		[
-			{
-				key: "mode",
-				value: $_("profile.stats.racing.numberOfPodiums"),
-				icon: "https://www.transformice.com/images/x_transformice/x_badges/x_127.png",
-			},
-			{
-				key: "score",
-				value: profile.stats.racing.podium,
-				format: thousandSeparator,
-			},
-			{
-				key: "up",
-				value: profile.period.racing.podium,
-				format: thousandSeparator,
-			},
-			{
-				key: "ratio",
-				value: profile.stats.ratio.racing.podium,
-				format: toPercentage,
-			},
-		],
-		[
-			{
-				key: "mode",
-				value: $_("profile.stats.racing.numberOfFirsts"),
-				icon: "https://www.transformice.com/images/x_transformice/x_badges/x_126.png",
-			},
-			{
-				key: "score",
-				value: profile.stats.racing.first,
-				format: thousandSeparator,
-			},
-			{
-				key: "up",
-				value: profile.period.racing.first,
-				format: thousandSeparator,
-			},
-			{
-				key: "ratio",
-				value: profile.stats.ratio.racing.first,
-				format: toPercentage,
-			},
-		],
+	$: data = [
+		{
+			mode: $_("profile.stats.racing.roundsPlayed"),
+			score: profile.stats.racing.rounds,
+			up: profile.period.racing.rounds,
+			icon: "https://www.transformice.com/images/x_transformice/x_badges/x_124.png",
+		},
+		{
+			mode: $_("profile.stats.racing.completedRounds"),
+			score: profile.stats.racing.finished,
+			up: profile.period.racing.finished,
+			ratio: profile.stats.ratio.racing.finished,
+			icon: "https://www.transformice.com/images/x_transformice/x_badges/x_125.png",
+		},
+		{
+			mode: $_("profile.stats.racing.numberOfPodiums"),
+			score: profile.stats.racing.podium,
+			up: profile.period.racing.podium,
+			ratio: profile.stats.ratio.racing.podium,
+			icon: "https://www.transformice.com/images/x_transformice/x_badges/x_127.png",
+		},
+		{
+			mode: $_("profile.stats.racing.numberOfFirsts"),
+			score: profile.stats.racing.first,
+			up: profile.period.racing.first,
+			ratio: profile.stats.ratio.racing.first,
+			icon: "https://www.transformice.com/images/x_transformice/x_badges/x_126.png",
+		},
 	];
 </script>
 
-<Table headers={tableHeaders} data={tableData} title={$_("profile.stats.racing.numberOfPodiums")}>
-	<tr slot="row" let:row>
-		{#each row as cell}
-			{#if cell.key === "mode"}
-				<DefaultCell>
-					<ModeCellContent value={cell.value} icon={cell.icon} />
-				</DefaultCell>
-			{:else if cell.key === "up"}
-				<DefaultCell>
-					<UpCellContent value={cell.value} />
-				</DefaultCell>
-			{:else}
-				<DefaultCell {cell} />
-			{/if}
-		{/each}
-	</tr>
+<Table {headers} {data} title={$_("profile.stats.racing.title")}>
+	<svelte:fragment slot="row" let:row>
+		<StatsTableRow {headers} {row} />
+	</svelte:fragment>
 </Table>

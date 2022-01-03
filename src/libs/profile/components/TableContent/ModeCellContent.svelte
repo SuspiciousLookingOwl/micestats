@@ -2,8 +2,7 @@
 	import { Image, Text } from "@components";
 
 	export let icon: string = "";
-	// TODO typing
-	export let value: any;
+	export let value: string;
 </script>
 
 <div class="flex items-center md:space-x-4">

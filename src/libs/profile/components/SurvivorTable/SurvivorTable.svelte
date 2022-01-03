@@ -1,13 +1,13 @@
 <script lang="ts">
-	import { DefaultCell, Table } from "@components";
+	import { Table } from "@components";
 	import type { PlayerEntity } from "@entities";
 	import { thousandSeparator, toPercentage } from "@utils";
 	import { _ } from "svelte-i18n";
-	import { ModeCellContent, UpCellContent } from "..";
+	import { StatsTableRow } from "..";
 
 	export let profile: PlayerEntity;
 
-	$: tableHeaders = [
+	$: headers = [
 		{
 			key: "mode",
 			label: $_("profile.mode"),
@@ -15,6 +15,7 @@
 		{
 			key: "score",
 			label: $_("profile.score"),
+			format: thousandSeparator,
 		},
 		{
 			key: "up",
@@ -23,109 +24,42 @@
 		{
 			key: "ratio",
 			label: $_("profile.ratio"),
+			format: toPercentage,
 		},
 	];
-	$: tableData = [
-		[
-			{
-				key: "mode",
-				value: $_("profile.stats.survivor.roundsPlayed"),
-				icon: "https://www.transformice.com/images/x_transformice/x_badges/x_120.png",
-			},
-			{
-				key: "score",
-				value: profile.stats.survivor.rounds,
-				format: thousandSeparator,
-			},
-			{
-				key: "up",
-				value: profile.period.survivor.rounds,
-				format: thousandSeparator,
-			},
-		],
-		[
-			{
-				key: "mode",
-				value: $_("profile.stats.survivor.roundsAsShaman"),
-				icon: "https://www.transformice.com/images/x_transformice/x_badges/x_121.png",
-			},
-			{
-				key: "score",
-				value: profile.stats.survivor.shaman,
-				format: thousandSeparator,
-			},
-			{
-				key: "up",
-				value: profile.period.survivor.shaman,
-				format: thousandSeparator,
-			},
-			{
-				key: "ratio",
-				value: profile.stats.ratio.survivor.shaman,
-				format: toPercentage,
-			},
-		],
-		[
-			{
-				key: "mode",
-				value: $_("profile.stats.survivor.killedMice"),
-				icon: "https://www.transformice.com/images/x_transformice/x_badges/x_122.png",
-			},
-			{
-				key: "score",
-				value: profile.stats.survivor.killed,
-				format: thousandSeparator,
-			},
-			{
-				key: "up",
-				value: profile.period.survivor.killed,
-				format: thousandSeparator,
-			},
-			{
-				key: "ratio",
-				value: profile.stats.ratio.survivor.killed,
-				format: toPercentage,
-			},
-		],
-		[
-			{
-				key: "mode",
-				value: $_("profile.stats.survivor.roundsSurvived"),
-				icon: "https://www.transformice.com/images/x_transformice/x_badges/x_123.png",
-			},
-			{
-				key: "score",
-				value: profile.stats.survivor.survivor,
-				format: thousandSeparator,
-			},
-			{
-				key: "up",
-				value: profile.period.survivor.survivor,
-				format: thousandSeparator,
-			},
-			{
-				key: "ratio",
-				value: profile.stats.ratio.survivor.survivor,
-				format: toPercentage,
-			},
-		],
+	$: data = [
+		{
+			mode: $_("profile.stats.survivor.roundsPlayed"),
+			score: profile.stats.survivor.rounds,
+			up: profile.period.survivor.rounds,
+			icon: "https://www.transformice.com/images/x_transformice/x_badges/x_120.png",
+		},
+		{
+			mode: $_("profile.stats.survivor.roundsAsShaman"),
+			score: profile.stats.survivor.shaman,
+			up: profile.period.survivor.shaman,
+			ratio: profile.stats.ratio.survivor.shaman,
+			icon: "https://www.transformice.com/images/x_transformice/x_badges/x_121.png",
+		},
+		{
+			mode: $_("profile.stats.survivor.killedMice"),
+			score: profile.stats.survivor.killed,
+			up: profile.period.survivor.killed,
+			ratio: profile.stats.ratio.survivor.killed,
+			icon: "https://www.transformice.com/images/x_transformice/x_badges/x_122.png",
+		},
+		{
+			mode: $_("profile.stats.survivor.roundsSurvived"),
+			score: profile.stats.survivor.survivor,
+			up: profile.period.survivor.survivor,
+			ratio: profile.stats.ratio.survivor.survivor,
+			icon: "https://www.transformice.com/images/x_transformice/x_badges/x_123.png",
+		},
 	];
 </script>
 
-<Table headers={tableHeaders} data={tableData} title={$_("profile.stats.survivor.title")}>
-	<tr slot="row" let:row>
-		{#each row as cell}
-			{#if cell.key === "mode"}
-				<DefaultCell>
-					<ModeCellContent value={cell.value} icon={cell.icon} />
-				</DefaultCell>
-			{:else if cell.key === "up"}
-				<DefaultCell>
-					<UpCellContent value={cell.value} />
-				</DefaultCell>
-			{:else}
-				<DefaultCell {cell} />
-			{/if}
-		{/each}
-	</tr>
+<Table {headers} {data} title={$_("profile.stats.survivor.title")}>
+	<svelte:fragment slot="row" let:row>
+		<StatsTableRow {headers} {row} />
+	</svelte:fragment>
 </Table>

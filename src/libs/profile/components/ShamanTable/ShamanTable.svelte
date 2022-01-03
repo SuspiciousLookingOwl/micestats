@@ -1,13 +1,13 @@
 <script lang="ts">
-	import { DefaultCell, Table } from "@components";
+	import { Table } from "@components";
 	import type { PlayerEntity } from "@entities";
 	import { thousandSeparator, toPercentage } from "@utils";
 	import { _ } from "svelte-i18n";
-	import { ModeCellContent, UpCellContent } from "..";
+	import { StatsTableRow } from "..";
 
 	export let profile: PlayerEntity;
 
-	$: tableHeaders = [
+	$: headers = [
 		{
 			key: "mode",
 			label: $_("profile.mode"),
@@ -15,6 +15,7 @@
 		{
 			key: "score",
 			label: $_("profile.score"),
+			format: thousandSeparator,
 		},
 		{
 			key: "up",
@@ -23,114 +24,43 @@
 		{
 			key: "ratio",
 			label: $_("profile.ratio"),
+			format: toPercentage,
 		},
 	];
-	$: tableData = [
-		[
-			{
-				key: "mode",
-				value: $_("profile.stats.shaman.miceSavedNormal"),
-				icon: "https://www.transformice.com/images/x_transformice/x_divers/x_mc0.jpg",
-			},
-			{
-				key: "score",
-				value: profile.stats.shaman.savesNormal,
-				format: thousandSeparator,
-			},
-			{
-				key: "up",
-				value: profile.period.shaman.savesNormal,
-				format: thousandSeparator,
-			},
-			{
-				key: "ratio",
-				value: profile.stats.ratio.shaman.savesNormal,
-				format: toPercentage,
-			},
-		],
-		[
-			{
-				key: "mode",
-				value: $_("profile.stats.shaman.miceSavedHard"),
-				icon: "https://www.transformice.com/images/x_transformice/x_divers/x_mc1.jpg",
-			},
-			{
-				key: "score",
-				value: profile.stats.shaman.savesHard,
-				format: thousandSeparator,
-			},
-			{
-				key: "up",
-				value: profile.period.shaman.savesHard,
-				format: thousandSeparator,
-			},
-			{
-				key: "ratio",
-				value: profile.stats.ratio.shaman.savesHard,
-				format: toPercentage,
-			},
-		],
-		[
-			{
-				key: "mode",
-				value: $_("profile.stats.shaman.miceSavedDivine"),
-				icon: "https://www.transformice.com/images/x_transformice/x_divers/x_mc2.jpg",
-			},
-			{
-				key: "score",
-				value: profile.stats.shaman.savesDivine,
-				format: thousandSeparator,
-			},
-			{
-				key: "up",
-				value: profile.period.shaman.savesDivine,
-				format: thousandSeparator,
-			},
-			{
-				key: "ratio",
-				value: profile.stats.ratio.shaman.savesDivine,
-				format: toPercentage,
-			},
-		],
-		[
-			{
-				key: "mode",
-				value: $_("profile.stats.shaman.cheeseGatheredShaman"),
-				icon: "https://www.transformice.com/images/x_transformice/x_inventaire/800.jpg",
-			},
-			{
-				key: "score",
-				value: profile.stats.shaman.cheese,
-				format: thousandSeparator,
-			},
-			{
-				key: "up",
-				value: profile.period.shaman.cheese,
-				format: thousandSeparator,
-			},
-			{
-				key: "ratio",
-				value: profile.stats.ratio.shaman.cheese,
-				format: toPercentage,
-			},
-		],
+	$: data = [
+		{
+			mode: $_("profile.stats.shaman.miceSavedNormal"),
+			score: profile.stats.shaman.savesNormal,
+			up: profile.period.shaman.savesNormal,
+			ratio: profile.stats.ratio.shaman.savesNormal,
+			icon: "https://www.transformice.com/images/x_transformice/x_divers/x_mc0.jpg",
+		},
+		{
+			mode: $_("profile.stats.shaman.miceSavedHard"),
+			score: profile.stats.shaman.savesHard,
+			up: profile.period.shaman.savesHard,
+			ratio: profile.stats.ratio.shaman.savesHard,
+			icon: "https://www.transformice.com/images/x_transformice/x_divers/x_mc1.jpg",
+		},
+		{
+			mode: $_("profile.stats.shaman.miceSavedDivine"),
+			score: profile.stats.shaman.savesDivine,
+			up: profile.period.shaman.savesDivine,
+			ratio: profile.stats.ratio.shaman.savesDivine,
+			icon: "https://www.transformice.com/images/x_transformice/x_divers/x_mc2.jpg",
+		},
+		{
+			mode: $_("profile.stats.shaman.cheeseGatheredShaman"),
+			score: profile.stats.shaman.cheese,
+			up: profile.period.shaman.cheese,
+			ratio: profile.stats.ratio.shaman.cheese,
+			icon: "https://www.transformice.com/images/x_transformice/x_inventaire/800.jpg",
+		},
 	];
 </script>
 
-<Table headers={tableHeaders} data={tableData} title={$_("profile.stats.shaman.title")}>
-	<tr slot="row" let:row>
-		{#each row as cell}
-			{#if cell.key === "mode"}
-				<DefaultCell>
-					<ModeCellContent value={cell.value} icon={cell.icon} />
-				</DefaultCell>
-			{:else if cell.key === "up"}
-				<DefaultCell>
-					<UpCellContent value={cell.value} />
-				</DefaultCell>
-			{:else}
-				<DefaultCell {cell} />
-			{/if}
-		{/each}
-	</tr>
+<Table {headers} {data} title={$_("profile.stats.shaman.title")}>
+	<svelte:fragment slot="row" let:row>
+		<StatsTableRow {headers} {row} />
+	</svelte:fragment>
 </Table>
