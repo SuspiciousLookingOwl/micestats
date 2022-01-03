@@ -3,7 +3,7 @@
 		key: string;
 		label: string;
 		format?: (value: T) => any;
-		value: (data: T, index: number) => any;
+		value?: (data: T, index: number) => any;
 		class?: string;
 	};
 </script>
