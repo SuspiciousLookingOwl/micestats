@@ -66,7 +66,7 @@
 	{/if}
 
 	<div
-		class="absolute border-b-2 border-white box-border transition-all"
+		class="absolute border-b-2 border-white box-border transition-all -z-10"
 		style={underlineStyle}
 	/>
 </div>
