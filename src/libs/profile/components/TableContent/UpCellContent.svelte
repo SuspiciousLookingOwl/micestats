@@ -1,8 +1,7 @@
 <script lang="ts">
 	import { Icon, Text } from "@components";
 
-	// TODO typing
-	export let value: any;
+	export let value: number;
 
 	$: classes =
 		value > 1000
