@@ -16,6 +16,6 @@
 	<title>{$_("home.leaderboards")} | Cheeseformice</title>
 </svelte:head>
 
-<TransitionedRoutes level={2} deep {path}>
+<TransitionedRoutes level={2} {path}>
 	<slot />
 </TransitionedRoutes>
