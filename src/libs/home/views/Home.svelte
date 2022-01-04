@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { SearchInput } from "@libs/app";
-	import { LeaderboardType, useLeaderboard } from "@libs/leaderboard";
+	import { LeaderboardCategory, useLeaderboard } from "@libs/leaderboard";
 	import { onMount } from "svelte";
 	import { _ } from "svelte-i18n";
 	import { DiscordWidget, Leaderboard, Link } from "../components";
@@ -9,12 +9,12 @@
 		leaderboardValue: playerLeaderboardValue,
 		isFetchingLeaderboard: isFetchingPlayerLeaderboard,
 		...playerLeaderboard
-	} = useLeaderboard(LeaderboardType.PLAYER);
+	} = useLeaderboard({ category: LeaderboardCategory.PLAYER });
 	const {
 		leaderboardValue: tribeLeaderboardValue,
 		isFetchingLeaderboard: isFetchingTribeLeaderboard,
 		...tribeLeaderboard
-	} = useLeaderboard(LeaderboardType.TRIBE);
+	} = useLeaderboard({ category: LeaderboardCategory.TRIBE });
 	let isSearchFocused = false;
 
 	onMount(() => {

@@ -10,9 +10,20 @@ export interface UsePagination {
 	setTotal: (total: number) => void;
 }
 
-export const usePagination = (initialPage = 1): UsePagination => {
-	const page = useCounter(initialPage);
-	const limit = writable(10);
+interface UsePaginationOptions {
+	page?: number;
+	limit?: number;
+}
+
+export const usePagination = (options: UsePaginationOptions): UsePagination => {
+	const opt: Required<UsePaginationOptions> = {
+		page: 1,
+		limit: 10,
+		...options,
+	};
+
+	const page = useCounter(opt.page);
+	const limit = writable(opt.limit);
 	const total = writable(0);
 	const maxPage = writable(0);
 
