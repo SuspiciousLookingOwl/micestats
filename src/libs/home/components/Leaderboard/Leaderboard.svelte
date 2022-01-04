@@ -1,10 +1,10 @@
 <script lang="ts">
-	import type { PlayerLeaderboard, TribeLeaderboard } from "@api";
 	import { Card, Text } from "@components";
+	import type { PlayerLeaderboardEntity, TribeLeaderboardEntity } from "@entities";
 	import LeaderboardList from "./LeaderboardList.svelte";
 	import LeaderboardListSkeleton from "./LeaderboardListSkeleton.svelte";
 
-	type T = $$Generic<PlayerLeaderboard | TribeLeaderboard>;
+	type T = $$Generic<PlayerLeaderboardEntity | TribeLeaderboardEntity>;
 	interface $$Props {
 		title?: string;
 		items?: T[];

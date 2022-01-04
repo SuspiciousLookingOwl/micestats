@@ -146,8 +146,8 @@ export interface PlayerChangelogs<T extends number = any> {
 export interface PlayerLeaderboard extends Mouse, Shaman, Survivor, Racing, Defilante {
 	id: number;
 	name: string;
-	cfmRoles: string[] | null;
-	tfmRoles: string[] | null;
+	cfmRoles: string[];
+	tfmRoles: string[];
 	score: number;
 }
 

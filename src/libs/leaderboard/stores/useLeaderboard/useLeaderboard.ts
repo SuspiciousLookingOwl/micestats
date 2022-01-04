@@ -1,4 +1,5 @@
-import type { LeaderboardPeriod, LeaderboardType, PlayerLeaderboard, TribeLeaderboard } from "@api";
+import type { LeaderboardPeriod, LeaderboardType } from "@api";
+import type { PlayerLeaderboardEntity, TribeLeaderboardEntity } from "@entities";
 import { useFetch, usePagination, type UsePagination } from "@stores";
 import { get, writable, type Writable } from "svelte/store";
 import {
@@ -13,7 +14,9 @@ export enum LeaderboardCategory {
 }
 
 type LeaderboardCategoryValue<T extends UseLeaderboardOptions> =
-	T["category"] extends LeaderboardCategory.PLAYER ? PlayerLeaderboard[] : TribeLeaderboard[];
+	T["category"] extends LeaderboardCategory.PLAYER
+		? PlayerLeaderboardEntity[]
+		: TribeLeaderboardEntity[];
 
 interface UseLeaderboardOptions {
 	category?: LeaderboardCategory;

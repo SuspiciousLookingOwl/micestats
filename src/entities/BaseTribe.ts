@@ -11,6 +11,10 @@ export class BaseTribeEntity implements BaseTribeProps {
 		Object.assign(this, props);
 	}
 
+	get slugName(): string {
+		return this.name; // TODO: slugify
+	}
+
 	toProps(): BaseTribeProps {
 		return {
 			id: this.id,

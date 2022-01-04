@@ -4,9 +4,8 @@ import {
 	type LeaderboardPeriod,
 	type LeaderboardType,
 	type PaginatedResponse,
-	type PlayerLeaderboard,
-	type TribeLeaderboard,
 } from "@api";
+import { PlayerLeaderboardEntity, TribeLeaderboardEntity } from "@entities";
 
 export interface FetchLeaderboardOptions {
 	page?: number;
@@ -17,7 +16,7 @@ export interface FetchLeaderboardOptions {
 
 export async function fetchPlayerLeaderboard(
 	options: FetchLeaderboardOptions
-): Promise<PaginatedResponse<PlayerLeaderboard>> {
+): Promise<PaginatedResponse<PlayerLeaderboardEntity>> {
 	const opt: Required<FetchLeaderboardOptions> = {
 		page: 1,
 		limit: 10,
@@ -31,12 +30,15 @@ export async function fetchPlayerLeaderboard(
 		page: opt.page,
 	});
 	if (response.status !== 200) return { page: [], total: 0 };
-	return response.data;
+	return {
+		page: response.data.page.map((p) => new PlayerLeaderboardEntity(p)),
+		total: response.data.total,
+	};
 }
 
 export async function fetchTribeLeaderboard(
 	options: FetchLeaderboardOptions
-): Promise<PaginatedResponse<TribeLeaderboard>> {
+): Promise<PaginatedResponse<TribeLeaderboardEntity>> {
 	const opt: Required<FetchLeaderboardOptions> = {
 		page: 1,
 		limit: 10,
@@ -50,5 +52,8 @@ export async function fetchTribeLeaderboard(
 		page: opt.page,
 	});
 	if (response.status !== 200) return { page: [], total: 0 };
-	return response.data;
+	return {
+		page: response.data.page.map((t) => new TribeLeaderboardEntity(t)),
+		total: response.data.total,
+	};
 }
