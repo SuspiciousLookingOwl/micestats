@@ -9,9 +9,20 @@
 </script>
 
 <script lang="ts">
+	import { createEventDispatcher } from "svelte";
 	import { DefaultCell } from ".";
 
 	type T = $$Generic;
+
+	interface Events {
+		rowclick: { row: T; index: number };
+	}
+
+	interface $$Events {
+		rowclick: CustomEvent<Events["rowclick"]>;
+	}
+
+	const dispatch = createEventDispatcher<Events>();
 
 	export let title: string = "";
 	export let headers: Header[] = [];
@@ -19,6 +30,7 @@
 
 	export let tableClass = "";
 	export let tableBodyClass = "";
+	export let tableRowClass = "";
 </script>
 
 <div class={tableClass}>
@@ -27,24 +39,31 @@
 	</slot>
 	<table class="w-full text-left mt-4 min-w-max">
 		<thead>
-			<tr class="bg-white bg-opacity-10">
-				{#each headers as header}
-					<th class={header.class}>{header.label}</th>
-				{/each}
-			</tr>
+			{#key headers}
+				<tr class="bg-white bg-opacity-10">
+					{#each headers as header}
+						<th class={header.class}>{header.label}</th>
+					{/each}
+				</tr>
+			{/key}
 		</thead>
 		<tbody class={tableBodyClass}>
-			{#each data as row, index}
-				<slot name="row" {row} {index}>
-					<tr>
-						{#each headers as header}
-							<td>
-								<DefaultCell data={row} {header} {index} />
-							</td>
-						{/each}
-					</tr>
-				</slot>
-			{/each}
+			{#key data}
+				{#each data as row, index}
+					<slot name="row" {row} {index}>
+						<tr
+							class={tableRowClass}
+							on:click={() => dispatch("rowclick", { row, index })}
+						>
+							{#each headers as header}
+								<td>
+									<DefaultCell data={row} {header} {index} />
+								</td>
+							{/each}
+						</tr>
+					</slot>
+				{/each}
+			{/key}
 		</tbody>
 	</table>
 </div>
