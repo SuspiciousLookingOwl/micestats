@@ -27,6 +27,8 @@
 	export let title: string = "";
 	export let headers: Header[] = [];
 	export let data: T[] = [];
+	export let isLoading = false;
+	export let skeletonCount = 1;
 
 	export let tableClass = "";
 	export let tableBodyClass = "";
@@ -49,20 +51,26 @@
 		</thead>
 		<tbody class={tableBodyClass}>
 			{#key data}
-				{#each data as row, index}
-					<slot name="row" {row} {index}>
-						<tr
-							class={tableRowClass}
-							on:click={() => dispatch("rowclick", { row, index })}
-						>
-							{#each headers as header}
-								<td>
-									<DefaultCell data={row} {header} {index} />
-								</td>
-							{/each}
-						</tr>
-					</slot>
-				{/each}
+				{#if isLoading}
+					{#each Array(skeletonCount) as _}
+						<slot name="skeleton" />
+					{/each}
+				{:else}
+					{#each data as row, index}
+						<slot name="row" {row} {index}>
+							<tr
+								class={tableRowClass}
+								on:click={() => dispatch("rowclick", { row, index })}
+							>
+								{#each headers as header}
+									<td>
+										<DefaultCell data={row} {header} {index} />
+									</td>
+								{/each}
+							</tr>
+						</slot>
+					{/each}
+				{/if}
 			{/key}
 		</tbody>
 	</table>
