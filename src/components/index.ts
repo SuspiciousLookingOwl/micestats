@@ -5,6 +5,7 @@ export * from "./Icon";
 export * from "./Image";
 export * from "./Input";
 export * from "./Modal";
+export * from "./Select";
 export * from "./Spinner";
 export * from "./Table";
 export * from "./Text";
