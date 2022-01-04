@@ -53,7 +53,7 @@ export const useLeaderboard = <T extends UseLeaderboardOptions>(options: T): Use
 	};
 
 	const { value, isFetching, fetch } = useFetch<LeaderboardCategoryValue<T>>([], fetchFn, {
-		keys: [pagination.page, pagination.limit],
+		keys: [pagination.page, pagination.limit, type, period],
 	});
 
 	return {
