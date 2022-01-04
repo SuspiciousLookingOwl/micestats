@@ -9,12 +9,12 @@
 		leaderboardValue: playerLeaderboardValue,
 		isFetchingLeaderboard: isFetchingPlayerLeaderboard,
 		...playerLeaderboard
-	} = useLeaderboard({ category: LeaderboardCategory.PLAYER });
+	} = useLeaderboard({ category: LeaderboardCategory.PLAYER, limit: 10 });
 	const {
 		leaderboardValue: tribeLeaderboardValue,
 		isFetchingLeaderboard: isFetchingTribeLeaderboard,
 		...tribeLeaderboard
-	} = useLeaderboard({ category: LeaderboardCategory.TRIBE });
+	} = useLeaderboard({ category: LeaderboardCategory.TRIBE, limit: 10 });
 	let isSearchFocused = false;
 
 	onMount(() => {
