@@ -29,20 +29,20 @@
 	];
 	$: data = [
 		{
-			mode: $_("profile.stats.defilante.roundsPlayed"),
+			mode: $_("stats.roundsPlayed"),
 			score: profile.stats.defilante.rounds,
 			up: profile.period.defilante.rounds,
 			icon: "https://www.transformice.com/images/x_transformice/x_badges/x_288.png",
 		},
 		{
-			mode: $_("profile.stats.defilante.completedRounds"),
+			mode: $_("stats.completedRounds"),
 			score: profile.stats.defilante.finished,
 			up: profile.period.defilante.finished,
 			ratio: profile.stats.ratio.defilante.finished,
 			icon: "https://www.transformice.com/images/x_transformice/x_badges/x_287.png",
 		},
 		{
-			mode: $_("profile.stats.defilante.pointsGathered"),
+			mode: $_("stats.pointsGathered"),
 			score: profile.stats.defilante.points,
 			up: profile.period.defilante.points,
 			ratio: profile.stats.ratio.defilante.points,
@@ -51,7 +51,7 @@
 	];
 </script>
 
-<Table {headers} {data} title={$_("profile.stats.defilante.title")}>
+<Table {headers} {data} title={$_("stats.defilante")}>
 	<svelte:fragment slot="row" let:row>
 		<StatsTableRow {headers} {row} />
 	</svelte:fragment>

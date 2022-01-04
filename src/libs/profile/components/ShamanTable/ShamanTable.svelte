@@ -29,28 +29,28 @@
 	];
 	$: data = [
 		{
-			mode: $_("profile.stats.shaman.miceSavedNormal"),
+			mode: $_("stats.miceSavedNormal"),
 			score: profile.stats.shaman.savesNormal,
 			up: profile.period.shaman.savesNormal,
 			ratio: profile.stats.ratio.shaman.savesNormal,
 			icon: "https://www.transformice.com/images/x_transformice/x_divers/x_mc0.jpg",
 		},
 		{
-			mode: $_("profile.stats.shaman.miceSavedHard"),
+			mode: $_("stats.miceSavedHard"),
 			score: profile.stats.shaman.savesHard,
 			up: profile.period.shaman.savesHard,
 			ratio: profile.stats.ratio.shaman.savesHard,
 			icon: "https://www.transformice.com/images/x_transformice/x_divers/x_mc1.jpg",
 		},
 		{
-			mode: $_("profile.stats.shaman.miceSavedDivine"),
+			mode: $_("stats.miceSavedDivine"),
 			score: profile.stats.shaman.savesDivine,
 			up: profile.period.shaman.savesDivine,
 			ratio: profile.stats.ratio.shaman.savesDivine,
 			icon: "https://www.transformice.com/images/x_transformice/x_divers/x_mc2.jpg",
 		},
 		{
-			mode: $_("profile.stats.shaman.cheeseGatheredShaman"),
+			mode: $_("stats.cheeseGatheredShaman"),
 			score: profile.stats.shaman.cheese,
 			up: profile.period.shaman.cheese,
 			ratio: profile.stats.ratio.shaman.cheese,
@@ -59,7 +59,7 @@
 	];
 </script>
 
-<Table {headers} {data} title={$_("profile.stats.shaman.title")}>
+<Table {headers} {data} title={$_("stats.shaman")}>
 	<svelte:fragment slot="row" let:row>
 		<StatsTableRow {headers} {row} />
 	</svelte:fragment>

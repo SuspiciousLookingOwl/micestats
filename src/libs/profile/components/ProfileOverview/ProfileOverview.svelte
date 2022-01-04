@@ -15,7 +15,7 @@
 					{profile.name}
 				</Text>
 				<Text variant="subtitle1" class="font-brand">
-					{$_("profile.stats.level", { values: { level: profile.level } })}
+					{$_("profile.level", { values: { level: profile.level } })}
 				</Text>
 			</div>
 		</div>

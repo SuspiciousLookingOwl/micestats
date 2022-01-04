@@ -29,27 +29,27 @@
 	];
 	$: data = [
 		{
-			mode: $_("profile.stats.survivor.roundsPlayed"),
+			mode: $_("stats.roundsPlayed"),
 			score: profile.stats.survivor.rounds,
 			up: profile.period.survivor.rounds,
 			icon: "https://www.transformice.com/images/x_transformice/x_badges/x_120.png",
 		},
 		{
-			mode: $_("profile.stats.survivor.roundsAsShaman"),
+			mode: $_("stats.roundsAsShaman"),
 			score: profile.stats.survivor.shaman,
 			up: profile.period.survivor.shaman,
 			ratio: profile.stats.ratio.survivor.shaman,
 			icon: "https://www.transformice.com/images/x_transformice/x_badges/x_121.png",
 		},
 		{
-			mode: $_("profile.stats.survivor.killedMice"),
+			mode: $_("stats.killedMice"),
 			score: profile.stats.survivor.killed,
 			up: profile.period.survivor.killed,
 			ratio: profile.stats.ratio.survivor.killed,
 			icon: "https://www.transformice.com/images/x_transformice/x_badges/x_122.png",
 		},
 		{
-			mode: $_("profile.stats.survivor.roundsSurvived"),
+			mode: $_("stats.roundsSurvived"),
 			score: profile.stats.survivor.survivor,
 			up: profile.period.survivor.survivor,
 			ratio: profile.stats.ratio.survivor.survivor,
@@ -58,7 +58,7 @@
 	];
 </script>
 
-<Table {headers} {data} title={$_("profile.stats.survivor.title")}>
+<Table {headers} {data} title={$_("stats.survivor")}>
 	<svelte:fragment slot="row" let:row>
 		<StatsTableRow {headers} {row} />
 	</svelte:fragment>
