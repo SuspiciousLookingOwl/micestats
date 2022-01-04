@@ -53,7 +53,25 @@
 	},
 	"leaderboard": {
 		"playerLeaderboards": "Player Leaderboards",
-		"tribeLeaderboards": "Tribe Leaderboards"
+		"tribeLeaderboards": "Tribe Leaderboards",
+		"score": "Score",
+		"stats": "Stats",
+		"rounds": "Rounds",
+		"cheese": "Cheese",
+		"first": "First",
+		"podium": "Podium",
+		"finished": "Finished",
+		"bootcamp": "Bootcamp",
+		"shaman": "Shaman",
+		"racing": "Racing",
+		"survivor": "Survivor",
+		"killed": "Killed",
+		"defilante": "Defilante",
+		"overall": "Overall",
+		"points": "Points",
+		"savesNormal": "Normal Saves",
+		"savesHard": "Hard Saves",
+		"savesDivine": "Divine Saves"
 	},
 	"error": {
 		"title": "Seems like you are lost",
