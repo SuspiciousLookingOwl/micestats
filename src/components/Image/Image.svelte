@@ -1,50 +1,65 @@
 <script lang="ts">
 	import { Modal } from "@components/Modal";
+	import classNames from "classnames";
 	import { fade } from "svelte/transition";
 
+	//#region props
 	export let src: string;
 	export let alt = "";
 	export let skeleton = true;
 	export let lazy = true;
 	export let expandable = false;
-
-	let classes = "";
+	let classes = ""; // TODO separate class props to each elements
 	export { classes as class };
+	//#endregion
 
+	//#region state
 	let isLoading = false;
-	let showModal = false;
+	let isModalShown = false;
+	//#endregion
 
+	//#region event handlers
 	const onClick = () => {
-		if (expandable) showModal = true;
+		if (expandable) isModalShown = true;
 	};
+	//#endregion
+
+	//#region classes
+	$: containerClass = classNames("relative", classes, { "cursor-pointer": expandable });
+	$: imgClass = classNames("transition-opacity", classes, {
+		"opacity-0": isLoading,
+		"opacity-100": !isLoading,
+	});
+	$: skeletonClass = classNames(
+		"bg-white bg-opacity-5 animate-pulse z-10 absolute top-0",
+		classes
+	);
+	$: modalImgClass = classNames("transition-opacity w-screen max-w-lg", {
+		"opacity-0": isLoading,
+		"opacity-100": !isLoading,
+	});
+	//#endregion
 </script>
 
 <div>
-	<div on:click={onClick} class:cursor-pointer={expandable} class="relative {classes}">
+	<div on:click={onClick} class={containerClass}>
 		<img
-			on:loadstart={() => (isLoading = true)}
-			on:load={() => (isLoading = false)}
 			{src}
 			{alt}
-			class="{isLoading ? 'opacity-0' : 'opacity-100'} transition-opacity {classes}"
+			on:loadstart={() => (isLoading = true)}
+			on:load={() => (isLoading = false)}
 			loading={lazy ? "lazy" : "auto"}
+			class={imgClass}
 		/>
 
 		{#if isLoading && skeleton}
-			<div
-				transition:fade={{ duration: 100 }}
-				class="bg-white bg-opacity-5 animate-pulse z-10 absolute top-0 {classes}"
-			/>
+			<div transition:fade={{ duration: 100 }} class={skeletonClass} />
 		{/if}
 	</div>
 </div>
 
 {#if expandable}
-	<Modal bind:show={showModal}>
-		<img
-			{src}
-			{alt}
-			class="{isLoading ? 'opacity-0' : 'opacity-100'} transition-opacity w-screen max-w-lg"
-		/>
+	<Modal bind:isShown={isModalShown}>
+		<img {src} {alt} class={modalImgClass} />
 	</Modal>
 {/if}

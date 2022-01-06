@@ -3,35 +3,38 @@
 	import { onMount } from "svelte";
 	import { fly } from "svelte/transition";
 
-	export let level: number = 1;
-	export let deep = false;
-	export let path = "";
-	let key: string;
-	let transitioning = false;
-
 	const transitionConfig = {
 		duration: 150,
 		x: 128,
 	};
 
+	//#region props
+	export let level: number = 1;
+	export let deep = false;
+	export let path = "";
+	//#endregion
+
+	//#region state
+	let key: string;
+	let transitioning = false;
+	//#endregion
+
+	//#region reactive
 	$: watchedPath = path
 		.split("/")
 		.slice(level, !deep ? level + 1 : undefined)
 		.join("/");
-
-	$: {
-		if (watchedPath !== key) key = watchedPath;
-	}
-
-	onMount(() => {
-		key = watchedPath;
-	});
-
-	// disable scrollbar when transitioning
+	$: if (watchedPath !== key) key = watchedPath;
 	$: if (browser) {
+		// disable scrollbar when transitioning
 		const body = document.body;
 		body.style.overflow = transitioning ? "hidden" : "auto";
 	}
+	//#endregion
+
+	//#region event handlers
+	onMount(() => (key = watchedPath));
+	//#endregion
 </script>
 
 {#key key}

@@ -1,15 +1,17 @@
 <script lang="ts">
 	import type { Header } from "./Table.svelte";
 
+	//#region props
 	export let data: any = null;
 	export let header: Header | null = null;
 	export let index = -1;
-
 	export let value = header ? data?.[header.key] : "";
-	$: if (header?.format) {
-		value = header.format(value) || value;
-	} else if (header?.value) {
-		value = header.value(data, index) || value;
+	//#endregion
+
+	$: {
+		// compute value
+		if (header?.format) value = header.format(value) || value;
+		else if (header?.value) value = header.value(data, index) || value;
 	}
 </script>
 

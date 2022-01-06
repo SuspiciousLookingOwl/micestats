@@ -10,7 +10,7 @@
 
 <script lang="ts">
 	import { createEventDispatcher } from "svelte";
-	import { DefaultCell } from ".";
+	import DefaultRow from "./DefaultRow.svelte";
 
 	type T = $$Generic;
 
@@ -24,6 +24,7 @@
 
 	const dispatch = createEventDispatcher<Events>();
 
+	//#region props
 	export let title: string = "";
 	export let headers: Header[] = [];
 	export let data: T[] = [];
@@ -33,6 +34,7 @@
 	export let tableClass = "";
 	export let tableBodyClass = "";
 	export let tableRowClass = "";
+	//#endregion
 </script>
 
 <div class={tableClass}>
@@ -58,16 +60,13 @@
 				{:else}
 					{#each data as row, index}
 						<slot name="row" {row} {index}>
-							<tr
-								class={tableRowClass}
+							<DefaultRow
 								on:click={() => dispatch("rowclick", { row, index })}
-							>
-								{#each headers as header}
-									<td>
-										<DefaultCell data={row} {header} {index} />
-									</td>
-								{/each}
-							</tr>
+								{headers}
+								{row}
+								{index}
+								class={tableRowClass}
+							/>
 						</slot>
 					{/each}
 				{/if}

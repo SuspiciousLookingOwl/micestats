@@ -12,11 +12,13 @@
 </script>
 
 <script lang="ts">
+	//#region props
 	export let variant: Variant = "body1";
 	export let _: Variant = variant; // shortcut
 
 	let classes = "";
 	export { classes as class };
+	//#endregion
 </script>
 
 <span class="text-{_ ?? variant} {classes}">

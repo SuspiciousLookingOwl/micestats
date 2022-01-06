@@ -4,28 +4,33 @@
 </script>
 
 <script lang="ts">
+	import classNames from "classnames";
 	import icons from "./icons";
 
+	//#region props
 	export let name: Icons;
 	export let size: IconSize = "md";
-
 	let classes = "";
 	export { classes as class };
+	//#endregion
 
-	let sizeClasses = "";
-	$: {
-		if (size === "xs") sizeClasses = "w-2 h-2";
-		else if (size === "sm") sizeClasses = "w-3 h-3";
-		else if (size === "md") sizeClasses = "w-4 h-4";
-		else if (size === "lg") sizeClasses = "w-5 h-5";
-		else if (size === "xl") sizeClasses = "w-6 h-6";
-		else if (size === "2xl") sizeClasses = "w-8 h-8";
-		else if (size === "3xl") sizeClasses = "w-10 h-10";
-		else sizeClasses = "w-4 h-4";
-	}
+	//#region classes
+	$: svgClass = classNames(
+		{
+			"w-2 h-2": size === "xs",
+			"w-3 h-3": size === "sm",
+			"w-4 h-4": size === "md",
+			"w-5 h-5": size === "lg",
+			"w-6 h-6": size === "xl",
+			"w-8 h-8": size === "2xl",
+			"w-10 h-10": size === "3xl",
+		},
+		classes
+	);
+	//#endregion
 </script>
 
-<svg class="{sizeClasses} {classes}">
+<svg class={svgClass}>
 	{@html icons[name]}
 </svg>
 

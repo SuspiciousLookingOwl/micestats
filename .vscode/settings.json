@@ -19,5 +19,5 @@
 	"[nginx]": {
 		"editor.formatOnSave": false
 	},
-	"tailwindCSS.experimental.classRegex": ["[a-zA-Z]*Class=\"([^']+)\""]
+	"tailwindCSS.experimental.classRegex": ["[a-zA-Z]*Class=\"(.*)\"", "\"(.*)\""]
 }
