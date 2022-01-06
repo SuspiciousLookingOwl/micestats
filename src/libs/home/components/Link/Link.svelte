@@ -20,6 +20,6 @@
 			<Icon name={icon} size={!large ? "lg" : "xl"} class="fill-current" />
 		{/if}
 
-		<Text variant={large ? "title4" : "body1"}>{text}</Text>
+		<Text variant={large ? "title3" : "body1"}>{text}</Text>
 	</a>
 </Card>

@@ -35,10 +35,6 @@
 	}
 
 	.text-title3 {
-		@apply text-2xl xl:text-3xl;
-	}
-
-	.text-title4 {
 		@apply text-xl xl:text-2xl;
 	}
 

@@ -25,7 +25,7 @@
 </script>
 
 <Card>
-	<Text variant="title4" class="font-brand text-shadow-md px-2">
+	<Text variant="title3" class="font-brand text-shadow-md px-2">
 		{title}
 	</Text>
 
