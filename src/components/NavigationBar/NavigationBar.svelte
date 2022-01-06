@@ -11,17 +11,14 @@
 	import { page } from "$app/stores";
 	import NavigationBarItem from "./NavigationBarItem.svelte";
 
+	//#region props
 	export let routes: Route[] = [];
+	//#endregion
+
+	//#region state
 	let routesElement: HTMLAnchorElement[] = [];
 	let underlineStyle = "";
-
-	const isActivePath = (currentPath: string, route: Route) => {
-		return (
-			route.path === currentPath ||
-			(!route.exact && currentPath.startsWith(route.path)) ||
-			!!route.alias?.includes(currentPath)
-		);
-	};
+	//#endregion
 
 	// compute underline border style
 	$: {
@@ -33,31 +30,38 @@
 			const elementPaddingX = parseFloat(style.paddingLeft) + parseFloat(style.paddingRight);
 
 			const width = activeRouteElement.offsetWidth - elementPaddingX;
-			const height = activeRouteElement.offsetHeight;
-			const left = activeRouteElement.offsetLeft;
+			const { offsetHeight, offsetLeft } = activeRouteElement;
 
-			underlineStyle = `width: ${width}px; left: ${left}px; height: ${height + 1}px;`;
+			underlineStyle = `
+				width: ${width}px; 
+				left: ${offsetLeft}px; 
+				height: ${offsetHeight + 2}px;`;
 		} else {
 			underlineStyle = "";
 		}
 	}
+
+	const isActivePath = (currentPath: string, route: Route) => {
+		return (
+			route.path === currentPath ||
+			(!route.exact && currentPath.startsWith(route.path)) ||
+			!!route.alias?.includes(currentPath)
+		);
+	};
 </script>
 
 <div class="navbar">
-	{#each routes as route, i}
-		<NavigationBarItem
-			{route}
-			bind:el={routesElement[i]}
-			isActive={isActivePath($page.path, route)}
-		/>
-	{/each}
+	<div class="border-b border-opacity-25 space-x-8 pb-3">
+		{#each routes as route, i}
+			<NavigationBarItem
+				{route}
+				bind:el={routesElement[i]}
+				isActive={isActivePath($page.path, route)}
+			/>
+		{/each}
+	</div>
 
-	{#if $$slots.right}
-		<div class="flex-grow text-right px-4">
-			<slot name="right" />
-		</div>
-	{/if}
-
+	<!-- underline -->
 	<div
 		class="absolute border-b border-white box-border transition-all -z-10"
 		style={underlineStyle}
@@ -67,8 +71,6 @@
 <style lang="postcss">
 	.navbar {
 		@apply flex flex-row;
-		@apply space-x-4;
-		@apply border-b border-opacity-25;
 		@apply relative;
 		z-index: 1000;
 	}

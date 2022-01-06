@@ -13,7 +13,7 @@
 <a
 	bind:this={el}
 	href={route.path}
-	class="cursor-pointer hover:text-shadow hover:transition-all px-4 py-2 uppercase"
+	class="cursor-pointer hover:text-shadow hover:transition-all py-2 uppercase"
 >
 	<Text
 		variant="subtitle1"
