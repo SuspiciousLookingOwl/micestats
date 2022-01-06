@@ -40,7 +40,7 @@
 	}));
 </script>
 
-<div class="text-center py-4">
+<div class="text-center">
 	<Text variant="title3" class="font-brand text-shadow-md">
 		{$_(`leaderboard.${category}Leaderboards`)}
 	</Text>
