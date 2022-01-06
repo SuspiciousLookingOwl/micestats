@@ -9,7 +9,7 @@
 
 <script lang="ts">
 	import { page } from "$app/stores";
-	import { Text } from "@components";
+	import NavigationBarItem from "./NavigationBarItem.svelte";
 
 	export let routes: Route[] = [];
 	let routesElement: HTMLAnchorElement[] = [];
@@ -19,7 +19,7 @@
 		return (
 			route.path === currentPath ||
 			(!route.exact && currentPath.startsWith(route.path)) ||
-			route.alias?.includes(currentPath)
+			!!route.alias?.includes(currentPath)
 		);
 	};
 
@@ -45,18 +45,11 @@
 
 <div class="navbar">
 	{#each routes as route, i}
-		<a
-			bind:this={routesElement[i]}
-			href={route.path}
-			class="cursor-pointer hover:text-shadow hover:transition-all px-4 py-2"
-		>
-			<Text
-				variant="subtitle1"
-				class={isActivePath($page.path, route) ? "font-medium text-white text-shadow" : ""}
-			>
-				{route.name}
-			</Text>
-		</a>
+		<NavigationBarItem
+			{route}
+			bind:el={routesElement[i]}
+			isActive={isActivePath($page.path, route)}
+		/>
 	{/each}
 
 	{#if $$slots.right}
@@ -66,7 +59,7 @@
 	{/if}
 
 	<div
-		class="absolute border-b-2 border-white box-border transition-all -z-10"
+		class="absolute border-b border-white box-border transition-all -z-10"
 		style={underlineStyle}
 	/>
 </div>
