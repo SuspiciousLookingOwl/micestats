@@ -11,7 +11,7 @@
 	//#region classes
 	$: bulletClass = classNames(
 		"w-3 h-2 lg:h-3 rounded-full bg-white bg-opacity-25 cursor-pointer m-0.5",
-		{ "bg-opacity-50": isActive }
+		{ "bg-opacity-90": isActive }
 	);
 	//#endregion
 </script>
