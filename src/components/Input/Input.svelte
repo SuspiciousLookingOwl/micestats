@@ -8,6 +8,7 @@
 	export let value = "";
 	export let variant: "sm" | "md" | "lg" = "md";
 	export let input: HTMLInputElement | null = null;
+	export let containerClass = "";
 	//#endregion
 
 	//#region classes
@@ -19,10 +20,14 @@
 		},
 		"border-0 bg-transparent w-full focus:outline-none placeholder:text-gray-200"
 	);
+	$: containerClass = classNames(
+		"flex w-full lg:bg-opacity-10 lg:bg-white rounded",
+		containerClass
+	);
 	//#endregion
 </script>
 
-<div class="flex w-full bg-opacity-10 bg-white rounded">
+<div class={containerClass}>
 	<slot name="prefix" />
 	<input
 		bind:value

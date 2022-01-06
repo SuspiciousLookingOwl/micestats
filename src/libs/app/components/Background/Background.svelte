@@ -22,7 +22,7 @@
 	}
 
 	.background {
-		@apply hidden md:block;
+		@apply hidden lg:block;
 		@apply fixed bg-cover h-screen w-screen;
 		@apply transition-all duration-200 transform-gpu;
 		z-index: -10000;

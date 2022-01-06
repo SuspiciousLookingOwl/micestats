@@ -34,11 +34,12 @@
 	<Input
 		type="text"
 		variant="lg"
+		placeholder={$_("home.searchPlaceholder")}
 		bind:input
 		bind:value={$keyword}
 		on:focus={() => setFocus(true)}
 		on:blur={() => setFocus(false)}
-		placeholder={$_("home.searchPlaceholder")}
+		containerClass="bg-neutral-700 bg-opacity-95"
 	>
 		<div
 			slot="suffix"

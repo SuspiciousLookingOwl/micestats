@@ -24,25 +24,25 @@ const images = [
 
 const blurLevels = [
 	"",
-	"md:blur-sm",
-	"md:blur",
-	"md:blur-lg",
-	"md:blur-xl",
-	"md:blur-2xl",
-	"md:blur-3xl",
+	"lg:blur-sm",
+	"lg:blur",
+	"lg:blur-lg",
+	"lg:blur-xl",
+	"lg:blur-2xl",
+	"lg:blur-3xl",
 ]; // TODO blur only for larger device due to performance issue
 
 const brightnessLevels = [
 	"brightness-0",
-	"brightness-5 md:brightness-10",
-	"brightness-10 md:brightness-20",
-	"brightness-15 md:brightness-30",
-	"brightness-20 md:brightness-40",
-	"brightness-25 md:brightness-50",
-	"brightness-30 md:brightness-60",
-	"brightness-35 md:brightness-70",
-	"brightness-40 md:brightness-80",
-	"brightness-45 md:brightness-90",
+	"brightness-5 lg:brightness-10",
+	"brightness-10 lg:brightness-20",
+	"brightness-15 lg:brightness-30",
+	"brightness-20 lg:brightness-40",
+	"brightness-25 lg:brightness-50",
+	"brightness-30 lg:brightness-60",
+	"brightness-35 lg:brightness-70",
+	"brightness-40 lg:brightness-80",
+	"brightness-45 lg:brightness-90",
 	"",
 ]; // TODO darker background for smaller device because not blurred (better visibility)
 

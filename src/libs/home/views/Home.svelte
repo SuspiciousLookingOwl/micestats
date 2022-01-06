@@ -43,7 +43,9 @@
 	] as const;
 </script>
 
-<div class="flex flex-col space-y-4 2xl:space-y-8">
+<div class="bg-primary-600 w-full h-12 absolute top-0 left-0 lg:hidden rounded-b-xl" />
+
+<div class="flex flex-col space-y-4 2xl:space-y-8 py-4 md:py-0">
 	<SearchInput bind:isFocused={isSearchFocused} />
 
 	<div
