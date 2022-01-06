@@ -6,18 +6,21 @@
 	import { fly, type FlyParams } from "svelte/transition";
 	import SearchResultList from "./SearchResultList.svelte";
 
+	const flyAnimation: FlyParams = { y: -10, duration: 150 };
+
+	//#region props
 	export let players: BasePlayerEntity[] = [];
 	export let isFetching = false;
 	export let keyword: string;
+	//#endregion
+
+	//#region state
 	let selectedIndex = -1;
-
-	// reset on change
-	$: if (players) selectedIndex = -1;
-
+	$: if (players) selectedIndex = -1; // reset on change
 	$: allPlayers = [...players, ...$searchHistory];
+	//#endregion
 
-	const flyAnimation: FlyParams = { y: -10, duration: 150 };
-
+	//#region event handlers
 	const onBodyKeyDown = (e: KeyboardEvent) => {
 		if (e.key === "ArrowDown" && selectedIndex < allPlayers.length - 1) ++selectedIndex;
 		if (e.key === "ArrowUp" && selectedIndex > 0) --selectedIndex;
@@ -26,11 +29,14 @@
 			else if (allPlayers[0]) navigate(allPlayers[0]);
 		}
 	};
+	//#endregion
 
+	//#region methods
 	const navigate = async (player: BasePlayerEntity) => {
 		await goto(`/p/${player.slugName}`);
 		searchHistory.push(player);
 	};
+	//#endregion
 </script>
 
 <svelte:body on:keydown={onBodyKeyDown} />
