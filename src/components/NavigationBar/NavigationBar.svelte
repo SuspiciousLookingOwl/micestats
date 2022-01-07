@@ -29,13 +29,12 @@
 			const style = getComputedStyle(activeRouteElement);
 			const elementPaddingX = parseFloat(style.paddingLeft) + parseFloat(style.paddingRight);
 
-			const width = activeRouteElement.offsetWidth - elementPaddingX;
-			const { offsetHeight, offsetLeft } = activeRouteElement;
+			const { offsetWidth, offsetLeft } = activeRouteElement;
+			const width = offsetWidth - elementPaddingX;
 
 			underlineStyle = `
 				width: ${width}px; 
-				left: ${offsetLeft}px; 
-				height: ${offsetHeight + 2}px;`;
+				left: ${offsetLeft}px;`;
 		} else {
 			underlineStyle = "";
 		}
@@ -51,7 +50,7 @@
 </script>
 
 <div class="navbar">
-	<div class="border-b border-opacity-25 space-x-8 pb-3">
+	<div class="relative border-b border-opacity-25 space-x-8 pb-3">
 		{#each routes as route, i}
 			<NavigationBarItem
 				{route}
@@ -59,13 +58,13 @@
 				isActive={isActivePath($page.path, route)}
 			/>
 		{/each}
-	</div>
 
-	<!-- underline -->
-	<div
-		class="absolute border-b border-white box-border transition-all -z-10"
-		style={underlineStyle}
-	/>
+		<!-- underline -->
+		<div
+			class="absolute border-b border-white box-border transition-all -z-10 !m-0 pt-3"
+			style={underlineStyle}
+		/>
+	</div>
 </div>
 
 <style lang="postcss">
