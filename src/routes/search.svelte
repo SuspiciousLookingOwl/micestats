@@ -17,6 +17,6 @@
 	<title>{$_("nav.search")} | Cheeseformice</title>
 </svelte:head>
 
-<div class="w-full py-4">
+<div class="w-full">
 	<SearchInput {isFocused} />
 </div>
