@@ -32,7 +32,7 @@ export const drawStats = async (
 	const valueX = imageX + imageWidth + 12;
 	const valueY = imageY + imageHeight - 10;
 	ctx.fillStyle = "#242424";
-	ctx.font = `${valueFontSize}px Roboto-Medium`;
+	ctx.font = `${valueFontSize}px Roboto`;
 	const valueWidth = ctx.measureText(value.toString()).width;
 	ctx.fillText(value.toString(), valueX, valueY);
 
@@ -42,7 +42,7 @@ export const drawStats = async (
 		const upX = valueX + valueWidth + 12;
 		const upY = valueY - 4;
 		ctx.fillStyle = "#16A34A";
-		ctx.font = `${upFontSize}px Roboto-Medium`;
+		ctx.font = `${upFontSize}px Roboto`;
 		ctx.fillText(`(+${up.toString()})`, upX, upY);
 	}
 
