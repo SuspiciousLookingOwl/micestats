@@ -1,7 +1,9 @@
-import { loadImage, type CanvasRenderingContext2D } from "canvas";
+import canvas from "canvas";
+
+const { loadImage } = canvas;
 
 export const drawIcon = async (
-	ctx: CanvasRenderingContext2D,
+	ctx: canvas.CanvasRenderingContext2D,
 	dx: number,
 	dy: number
 ): Promise<void> => {
