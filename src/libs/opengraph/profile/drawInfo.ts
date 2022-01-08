@@ -30,7 +30,7 @@ export const drawInfo = async (
 	let soulmateY = titleY;
 	if (profile.soulmate) {
 		soulmateY += +fontSize + 16;
-		ctx.font = `${fontSize}px Roboto-Medium`;
+		ctx.font = `${fontSize}px Roboto-Light`;
 		await fillTextWithEmoji(ctx, `♥ ${profile.soulmate}`, soulmateX, soulmateY);
 	}
 
@@ -39,7 +39,7 @@ export const drawInfo = async (
 		const tribeX = titleX;
 		const tribeY = soulmateY + fontSize + 16;
 		ctx.fillStyle = "#5D646D";
-		ctx.font = `${fontSize}px Roboto-Medium`;
+		ctx.font = `${fontSize}px Roboto-Light`;
 		await fillTextWithEmoji(ctx, `🏠 ${profile.tribe}`, tribeX, tribeY);
 	}
 
