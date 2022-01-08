@@ -41,4 +41,11 @@ export class BasePlayerEntity implements BasePlayerProps {
 			tfmRoles: this.tfmRoles,
 		};
 	}
+
+	static serializeSlugName(name: string): string {
+		if (name.split("-").length === 1) name += "-0000";
+		name = name.toLowerCase();
+		name = name.charAt(0).toUpperCase() + name.slice(1);
+		return name;
+	}
 }

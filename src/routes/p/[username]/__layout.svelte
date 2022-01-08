@@ -32,7 +32,13 @@
 			ssrProfile = JSON.parse(page.params.context);
 		}
 
-		return { props: { ssrProfile, username, path: page.path } };
+		return {
+			props: {
+				ssrProfile,
+				username: PlayerEntity.serializeSlugName(username),
+				path: page.path,
+			},
+		};
 	};
 </script>
 
