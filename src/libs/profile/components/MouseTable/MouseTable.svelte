@@ -35,7 +35,7 @@
 			icon: "https://www.transformice.com/images/x_transformice/x_inventaire/2259.jpg",
 		},
 		{
-			mode: $_("stats.gatheredCheese"),
+			mode: $_("stats.cheeseGathered"),
 			score: profile.stats.mouse.cheese,
 			up: profile.period.mouse.cheese,
 			ratio: profile.stats.ratio.mouse.cheese,

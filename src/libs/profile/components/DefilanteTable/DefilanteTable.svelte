@@ -35,7 +35,7 @@
 			icon: "https://www.transformice.com/images/x_transformice/x_badges/x_288.png",
 		},
 		{
-			mode: $_("stats.completedRounds"),
+			mode: $_("stats.roundsCompleted"),
 			score: profile.stats.defilante.finished,
 			up: profile.period.defilante.finished,
 			ratio: profile.stats.ratio.defilante.finished,
