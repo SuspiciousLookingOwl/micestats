@@ -105,26 +105,6 @@ export class StatsEntity {
 		};
 	}
 
-	get flat(): { key: string; value: number }[] {
-		const { defilante, mouse, racing, shaman, survivor } = this;
-		const stats = { defilante, mouse, racing, shaman, survivor };
-
-		const statsEntry = Object.entries(stats).map((s) => {
-			const [category, stat] = s;
-			const statEntry = Object.entries(stat);
-
-			return statEntry.map((c) => {
-				const [type, value] = c;
-				return {
-					key: `${category}.${type}`,
-					value,
-				};
-			});
-		});
-
-		return statsEntry.flat();
-	}
-
 	toProps(): StatsProps {
 		return {
 			shaman: this.shaman,

@@ -48,22 +48,23 @@ export const drawProfile = async (profile: PlayerEntity): Promise<Buffer> => {
 	ctx.fillRect(leftMargin, 380, canvasWidth - leftMargin * 2, 1);
 
 	// draw stats
-	const stats = profile.period.flat.map((s) => {
-		const [category, type] = s.key.split(".");
+	const stats = statsInfo
+		.map((s) => s.key)
+		.map((key) => {
+			const [category, type] = key.split(".");
 
-		// TODO fix this typing
-		// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-		// @ts-ignore
-		const value = profile.stats[category][type];
-		const { label, icon } = statsInfo.find((si) => si.key === s.key) as StatsInfo;
+			// TODO fix this typing
+			// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+			// @ts-ignore
+			const value = profile.stats[category][type];
+			// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+			// @ts-ignore
+			const up = profile.period[category][type];
+			const { label, icon } = statsInfo.find((si) => si.key === key) as StatsInfo;
 
-		return {
-			label,
-			value,
-			up: s.value,
-			icon: icon,
-		};
-	});
+			return { label, value, up, icon };
+		});
+
 	const shownStats = stats.sort((a, b) => b.up - a.up || b.value - a.value).slice(0, 4);
 	const spacing = (canvasWidth - leftMargin * 2) / 4;
 	await Promise.all(shownStats.map((s, i) => drawStats(ctx, leftMargin + i * spacing, 440, s)));
