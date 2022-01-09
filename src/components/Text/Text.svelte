@@ -20,7 +20,7 @@
 	//#endregion
 </script>
 
-<span class="break-all text-{_ ?? variant} {classes}">
+<span class="text-{_ ?? variant} {classes}">
 	<slot />
 </span>
 
