@@ -5,19 +5,21 @@
 	export let data: any = null;
 	export let header: Header | null = null;
 	export let index = -1;
-	export let value = header ? data?.[header.key] : "";
+	export let value = header ? data?.[header.key] : undefined;
 	//#endregion
 
 	$: {
 		// compute value
-		if (header?.format) value = header.format(value) || value;
-		else if (header?.value) value = header.value(data, index) || value;
+		if (value !== undefined) {
+			if (header?.value) value = header.value(data, index) || value;
+			if (header?.format) value = header.format(value) || value;
+		}
 	}
 </script>
 
 <td class={header?.class}>
 	<slot>
-		{#if data}
+		{#if data && value !== undefined}
 			{value}
 		{/if}
 	</slot>
