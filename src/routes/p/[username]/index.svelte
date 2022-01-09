@@ -1,6 +1,6 @@
 <script lang="ts">
-	import Profile from "./profile.svelte";
+	import Page from "./[page].svelte";
 </script>
 
 <!-- default view -->
-<Profile />
+<Page page="profile" />

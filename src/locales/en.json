@@ -15,8 +15,10 @@
 		"searchPlaceholder": "Enter username or tribe name..."
 	},
 	"profile": {
+		"profile": "Profile",
 		"mode": "Mode",
 		"score": "Score",
+		"outfits": "Outfits",
 		"up": "Up",
 		"ratio": "Ratio",
 		"description": "{name} profile",
