@@ -25,7 +25,7 @@
 
 <div class="hidden lg:block">
 	<div class="flex flex-row">
-		<NavigationBar {routes} />
+		<NavigationBar {routes} bordered />
 		<div class="flex flex-grow justify-end">
 			<a href="/">
 				<Text variant="title2" class="text-shadow-md font-brand text-center px-4">

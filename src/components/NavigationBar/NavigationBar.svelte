@@ -10,10 +10,12 @@
 <script lang="ts">
 	import { page } from "$app/stores";
 	import type { TextVariant } from "@components/Text/Text.svelte";
+	import classNames from "classnames";
 	import NavigationBarItem from "./NavigationBarItem.svelte";
 
 	//#region props
 	export let routes: Route[] = [];
+	export let bordered = false;
 	export let textVariant: TextVariant = "subtitle1";
 	export let itemClass = "";
 	//#endregion
@@ -49,7 +51,7 @@
 </script>
 
 <div class="navbar">
-	<div class="relative border-b border-opacity-25 py-3">
+	<div class={classNames("relative py-3", { "border-b border-opacity-25": bordered })}>
 		{#each routes as route, i}
 			<NavigationBarItem
 				{route}
