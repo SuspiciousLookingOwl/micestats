@@ -51,20 +51,26 @@
 </script>
 
 <div class="navbar">
-	<div class={classNames("relative py-3", { "border-b border-opacity-25": bordered })}>
-		{#each routes as route, i}
-			<NavigationBarItem
-				{route}
-				{textVariant}
-				bind:el={routesElement[i]}
-				isActive={isActivePath($page.path, route)}
-				class={itemClass}
-			/>
-		{/each}
+	<div
+		class={classNames("relative mx-auto lg:mx-0  text-center", {
+			"border-b border-opacity-25": bordered,
+		})}
+	>
+		<div class="flex flex-col lg:flex-row align-middle">
+			{#each routes as route, i}
+				<NavigationBarItem
+					{route}
+					{textVariant}
+					bind:el={routesElement[i]}
+					isActive={isActivePath($page.path, route)}
+					class={itemClass}
+				/>
+			{/each}
+		</div>
 
 		<!-- underline -->
 		<div
-			class="absolute border-b border-white box-border transition-all -z-10 !m-0 pt-3"
+			class="hidden lg:block absolute border-b border-white box-border transition-all -z-10 !m-0"
 			style={underlineStyle}
 		/>
 	</div>
@@ -73,7 +79,6 @@
 <style lang="postcss">
 	.navbar {
 		@apply flex flex-row;
-		@apply relative;
 		z-index: 1000;
 	}
 </style>

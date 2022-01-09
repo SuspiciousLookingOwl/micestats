@@ -26,7 +26,7 @@
 
 	//#region classes
 	$: anchorClass = classNames(
-		"cursor-pointer hover:text-shadow hover:transition-all py-2 px-4 uppercase",
+		"cursor-pointer hover:text-shadow hover:transition-all py-3 px-4 uppercase",
 		classes
 	);
 	//#endregion
