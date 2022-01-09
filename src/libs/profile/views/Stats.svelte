@@ -21,6 +21,6 @@
 	};
 </script>
 
-<Card class="p-8">
+<Card class="p-2 md:p-6">
 	<svelte:component this={tableComponents[type]} {profile} />
 </Card>
