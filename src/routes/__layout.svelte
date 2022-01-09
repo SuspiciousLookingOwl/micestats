@@ -33,10 +33,6 @@
 	export let path: string;
 </script>
 
-<svelte:head>
-	<title>Cheeseformice</title>
-</svelte:head>
-
 <Background />
 
 <div class="w-full max-w-7xl mx-auto px-2 md:px-4 py-4 md:space-y-4 2xl:space-y-8">
