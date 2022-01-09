@@ -27,6 +27,7 @@
 			text: $_("home.play"),
 			icon: "steam",
 			href: "steam://rungameid/335240",
+			fallback: "https://store.steampowered.com/app/335240/Transformice/",
 			large: true,
 		},
 		{
