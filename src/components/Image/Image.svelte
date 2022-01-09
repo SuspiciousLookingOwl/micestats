@@ -9,6 +9,7 @@
 	export let skeleton = true;
 	export let lazy = true;
 	export let expandable = false;
+	export let autoReload = false;
 	let classes = ""; // TODO separate class props to each elements
 	export { classes as class };
 	//#endregion
@@ -21,6 +22,16 @@
 	//#region event handlers
 	const onClick = () => {
 		if (expandable) isModalShown = true;
+	};
+
+	const onError = (err: Event & { currentTarget: EventTarget & HTMLElement }) => {
+		if (autoReload) {
+			// TODO reload image without resetting cache
+			const img = err.target as HTMLImageElement;
+			setTimeout(() => {
+				img.src = img.src + "?r=" + Date.now();
+			}, 1000);
+		}
 	};
 	//#endregion
 
@@ -48,6 +59,7 @@
 			{alt}
 			on:loadstart={() => (isLoading = true)}
 			on:load={() => (isLoading = false)}
+			on:error={onError}
 			loading={lazy ? "lazy" : "auto"}
 			class={imgClass}
 		/>
