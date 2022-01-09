@@ -60,7 +60,6 @@
 	{data}
 	{isLoading}
 	skeletonCount={$limit}
-	tableClass="overflow-x-auto"
 	tableBodyClass="bg-black bg-opacity-75 backdrop-blur-3xl divide-y"
 	tableRowClass="cursor-pointer hover:bg-white hover:bg-opacity-5 transition-all"
 	on:rowclick={({ detail }) => navigate(detail.row)}

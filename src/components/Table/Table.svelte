@@ -9,6 +9,7 @@
 </script>
 
 <script lang="ts">
+	import classNames from "classnames";
 	import { createEventDispatcher } from "svelte";
 	import DefaultRow from "./DefaultRow.svelte";
 
@@ -37,7 +38,7 @@
 	//#endregion
 </script>
 
-<div class={tableClass}>
+<div class={classNames("overflow-x-auto", tableClass)}>
 	<slot name="title">
 		<div class="text-2xl font-brand tracking-wider">{title}</div>
 	</slot>
