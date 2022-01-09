@@ -21,7 +21,7 @@
 	//#endregion
 </script>
 
-<span class="text-{_ ?? variant} {classes}">
+<span class="break-all text-{_ ?? variant} {classes}">
 	<slot />
 </span>
 
