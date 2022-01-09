@@ -13,6 +13,7 @@
 
 	//#region props
 	export let routes: Route[] = [];
+	export let itemClass = "";
 	//#endregion
 
 	//#region state
@@ -26,14 +27,10 @@
 		const activeRouteElement = routesElement[activeRouteIndex];
 
 		if (activeRouteElement) {
-			const style = getComputedStyle(activeRouteElement);
-			const elementPaddingX = parseFloat(style.paddingLeft) + parseFloat(style.paddingRight);
-
 			const { offsetWidth, offsetLeft } = activeRouteElement;
-			const width = offsetWidth - elementPaddingX;
 
 			underlineStyle = `
-				width: ${width}px; 
+				width: ${offsetWidth}px; 
 				left: ${offsetLeft}px;`;
 		} else {
 			underlineStyle = "";
@@ -50,12 +47,13 @@
 </script>
 
 <div class="navbar">
-	<div class="relative border-b border-opacity-25 space-x-8 pb-3">
+	<div class="relative border-b border-opacity-25 space-x-8 py-3">
 		{#each routes as route, i}
 			<NavigationBarItem
 				{route}
 				bind:el={routesElement[i]}
 				isActive={isActivePath($page.path, route)}
+				class={itemClass}
 			/>
 		{/each}
 
