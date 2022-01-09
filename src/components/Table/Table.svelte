@@ -39,10 +39,12 @@
 </script>
 
 <div class={classNames("overflow-x-auto", tableClass)}>
-	<slot name="title">
-		<div class="text-2xl font-brand tracking-wider">{title}</div>
-	</slot>
-	<table class="w-full text-left mt-4 min-w-max">
+	{#if $$slots.title || title}
+		<slot name="title">
+			<div class="text-2xl font-brand tracking-wider mb-4">{title}</div>
+		</slot>
+	{/if}
+	<table class="w-full text-left min-w-max">
 		<thead>
 			{#key headers}
 				<tr class="bg-white bg-opacity-10">
