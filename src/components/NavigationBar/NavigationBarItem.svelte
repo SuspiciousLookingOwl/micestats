@@ -2,6 +2,7 @@
 	import { goto } from "$app/navigation";
 	import { page } from "$app/stores";
 	import { Text } from "@components";
+	import type { TextVariant } from "@components/Text/Text.svelte";
 	import classNames from "classnames";
 	import type { Route } from "./NavigationBar.svelte";
 
@@ -9,6 +10,7 @@
 	export let route: Route;
 	export let isActive: boolean;
 	export let el: HTMLAnchorElement;
+	export let textVariant: TextVariant = "subtitle1";
 	let classes = "";
 	export { classes as class };
 	//#endregion
@@ -32,7 +34,7 @@
 
 <a bind:this={el} href={route.path} on:click={onClick} class={anchorClass}>
 	<Text
-		variant="subtitle1"
+		variant={textVariant}
 		class={classNames({ "font-medium text-white text-shadow": isActive })}
 	>
 		{route.name}

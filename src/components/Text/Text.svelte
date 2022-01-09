@@ -1,9 +1,8 @@
 <script lang="ts" context="module">
-	export type Variant =
+	export type TextVariant =
 		| "title1"
 		| "title2"
 		| "title3"
-		| "title4"
 		| "subtitle1"
 		| "subtitle2"
 		| "body1"
@@ -13,8 +12,8 @@
 
 <script lang="ts">
 	//#region props
-	export let variant: Variant = "body1";
-	export let _: Variant = variant; // shortcut
+	export let variant: TextVariant = "body1";
+	export let _: TextVariant = variant; // shortcut
 
 	let classes = "";
 	export { classes as class };

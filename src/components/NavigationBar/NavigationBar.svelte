@@ -9,10 +9,12 @@
 
 <script lang="ts">
 	import { page } from "$app/stores";
+	import type { TextVariant } from "@components/Text/Text.svelte";
 	import NavigationBarItem from "./NavigationBarItem.svelte";
 
 	//#region props
 	export let routes: Route[] = [];
+	export let textVariant: TextVariant = "subtitle1";
 	export let itemClass = "";
 	//#endregion
 
@@ -51,6 +53,7 @@
 		{#each routes as route, i}
 			<NavigationBarItem
 				{route}
+				{textVariant}
 				bind:el={routesElement[i]}
 				isActive={isActivePath($page.path, route)}
 				class={itemClass}
