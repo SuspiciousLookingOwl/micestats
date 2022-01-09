@@ -47,7 +47,7 @@
 </script>
 
 <div class="navbar">
-	<div class="relative border-b border-opacity-25 space-x-8 py-3">
+	<div class="relative border-b border-opacity-25 py-3">
 		{#each routes as route, i}
 			<NavigationBarItem
 				{route}
