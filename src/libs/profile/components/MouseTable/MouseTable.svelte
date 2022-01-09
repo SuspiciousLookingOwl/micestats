@@ -32,27 +32,27 @@
 			mode: $_("stats.roundsPlayed"),
 			score: profile.stats.mouse.rounds,
 			up: profile.period.mouse.rounds,
-			icon: "https://www.transformice.com/images/x_transformice/x_inventaire/2259.jpg",
+			icon: "/img/icon/clock.png",
 		},
 		{
 			mode: $_("stats.cheeseGathered"),
 			score: profile.stats.mouse.cheese,
 			up: profile.period.mouse.cheese,
 			ratio: profile.stats.ratio.mouse.cheese,
-			icon: "https://www.transformice.com/images/x_transformice/x_inventaire/800.jpg",
+			icon: "/img/icon/cheese_coin.png",
 		},
 		{
 			mode: $_("stats.cheeseGatheredFirst"),
 			score: profile.stats.mouse.first,
 			up: profile.period.mouse.first,
 			ratio: profile.stats.ratio.mouse.first,
-			icon: "https://www.transformice.com/images/x_transformice/x_inventaire/2254.jpg",
+			icon: "/img/icon/racing_coin.png",
 		},
 		{
 			mode: $_("stats.bootcamp"),
 			score: profile.stats.mouse.bootcamp,
 			up: profile.period.mouse.bootcamp,
-			icon: "https://www.transformice.com/images/x_transformice/x_inventaire/2261.jpg",
+			icon: "/img/icon/bootcamp_coin.png",
 		},
 	];
 </script>

@@ -32,28 +32,28 @@
 			mode: $_("stats.roundsPlayed"),
 			score: profile.stats.racing.rounds,
 			up: profile.period.racing.rounds,
-			icon: "https://www.transformice.com/images/x_transformice/x_badges/x_124.png",
+			icon: "/img/icon/racing_rounds.png",
 		},
 		{
 			mode: $_("stats.roundsCompleted"),
 			score: profile.stats.racing.finished,
 			up: profile.period.racing.finished,
 			ratio: profile.stats.ratio.racing.finished,
-			icon: "https://www.transformice.com/images/x_transformice/x_badges/x_125.png",
+			icon: "/img/icon/racing_finished.png",
 		},
 		{
 			mode: $_("stats.numberOfPodiums"),
 			score: profile.stats.racing.podium,
 			up: profile.period.racing.podium,
 			ratio: profile.stats.ratio.racing.podium,
-			icon: "https://www.transformice.com/images/x_transformice/x_badges/x_127.png",
+			icon: "/img/icon/racing_podium.png",
 		},
 		{
 			mode: $_("stats.numberOfFirsts"),
 			score: profile.stats.racing.first,
 			up: profile.period.racing.first,
 			ratio: profile.stats.ratio.racing.first,
-			icon: "https://www.transformice.com/images/x_transformice/x_badges/x_126.png",
+			icon: "/img/icon/racing_first.png",
 		},
 	];
 </script>

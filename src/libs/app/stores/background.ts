@@ -13,13 +13,13 @@ interface UseBackground {
 }
 
 const images = [
-	"/img/ninja.jpg",
-	"/img/map-serre.jpg",
-	"/img/x_noel2014.jpg",
-	"/img/x_bar.jpg",
-	"/img/x_mapAFK.jpg",
-	"/img/x_indi.jpg",
-	"/img/x_jungle.jpg",
+	"/img/bg/ninja.jpg",
+	"/img/bg/map-serre.jpg",
+	"/img/bg/x_noel2014.jpg",
+	"/img/bg/x_bar.jpg",
+	"/img/bg/x_mapAFK.jpg",
+	"/img/bg/x_indi.jpg",
+	"/img/bg/x_jungle.jpg",
 ];
 
 const blurLevels = [

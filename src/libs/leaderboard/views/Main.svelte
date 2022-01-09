@@ -10,12 +10,12 @@
 	<div class="grid grid-cols-1 lg:grid-cols-2 lg:space-x-4 space-y-8 lg:space-y-0 mt-8 mx-auto">
 		<LeaderboardCard
 			title={$_("leaderboard.playerLeaderboards")}
-			image="/img/player_leaderboard.jpg"
+			image="/img/bg/player_leaderboard.jpg"
 			href="/leaderboards/player"
 		/>
 		<LeaderboardCard
 			title={$_("leaderboard.tribeLeaderboards")}
-			image="/img/tribe_leaderboard.jpg"
+			image="/img/bg/tribe_leaderboard.jpg"
 			href="/leaderboards/tribe"
 		/>
 	</div>

@@ -33,28 +33,28 @@
 			score: profile.stats.shaman.savesNormal,
 			up: profile.period.shaman.savesNormal,
 			ratio: profile.stats.ratio.shaman.savesNormal,
-			icon: "https://www.transformice.com/images/x_transformice/x_divers/x_mc0.jpg",
+			icon: "/img/icon/shaman_normal.png",
 		},
 		{
 			mode: $_("stats.miceSavedHard"),
 			score: profile.stats.shaman.savesHard,
 			up: profile.period.shaman.savesHard,
 			ratio: profile.stats.ratio.shaman.savesHard,
-			icon: "https://www.transformice.com/images/x_transformice/x_divers/x_mc1.jpg",
+			icon: "/img/icon/shaman_hard.png",
 		},
 		{
 			mode: $_("stats.miceSavedDivine"),
 			score: profile.stats.shaman.savesDivine,
 			up: profile.period.shaman.savesDivine,
 			ratio: profile.stats.ratio.shaman.savesDivine,
-			icon: "https://www.transformice.com/images/x_transformice/x_divers/x_mc2.jpg",
+			icon: "/img/icon/shaman_divine.png",
 		},
 		{
 			mode: $_("stats.cheeseGatheredShaman"),
 			score: profile.stats.shaman.cheese,
 			up: profile.period.shaman.cheese,
 			ratio: profile.stats.ratio.shaman.cheese,
-			icon: "https://www.transformice.com/images/x_transformice/x_inventaire/800.jpg",
+			icon: "/img/icon/cheese_coin.png",
 		},
 	];
 </script>

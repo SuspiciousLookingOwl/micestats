@@ -18,7 +18,7 @@ export const drawStats = async (
 	ctx.save();
 
 	// draw icon
-	const image = await loadImage(stats.icon);
+	const image = await loadImage(`./static/img/icon/${stats.icon}.png`);
 	const imageX = dx;
 	const imageY = dy;
 	const imageWidth = 40;
@@ -70,104 +70,104 @@ export const statsInfo: StatsInfo[] = [
 	{
 		key: "mouse.rounds",
 		label: "Rounds Played",
-		icon: "https://www.transformice.com/images/x_transformice/x_inventaire/2259.jpg",
+		icon: "clock",
 	},
 	{
 		key: "mouse.cheese",
 		label: "Cheese Gathered",
-		icon: "https://www.transformice.com/images/x_transformice/x_inventaire/800.jpg",
+		icon: "cheese_coin",
 	},
 	{
 		key: "mouse.first",
 		label: "Firsts",
-		icon: "https://www.transformice.com/images/x_transformice/x_inventaire/2254.jpg",
+		icon: "racing_coin",
 	},
 	{
 		key: "mouse.bootcamp",
 		label: "Bootcamp",
-		icon: "https://www.transformice.com/images/x_transformice/x_inventaire/2261.jpg",
+		icon: "bootcamp_coin",
 	},
 
 	// shaman
 	{
 		key: "shaman.savesNormal",
 		label: "Saves (Normal)",
-		icon: "https://www.transformice.com/images/x_transformice/x_divers/x_mc0.jpg",
+		icon: "shaman_normal",
 	},
 	{
 		key: "shaman.savesHard",
 		label: "Saves (Hard)",
-		icon: "https://www.transformice.com/images/x_transformice/x_divers/x_mc1.jpg",
+		icon: "shaman_hard",
 	},
 	{
 		key: "shaman.savesDivine",
 		label: "Saves (Divine)",
-		icon: "https://www.transformice.com/images/x_transformice/x_divers/x_mc2.jpg",
+		icon: "shaman_divine",
 	},
 	{
 		key: "shaman.cheese",
 		label: "Shaman Cheese",
-		icon: "https://www.transformice.com/images/x_transformice/x_inventaire/800.jpg",
+		icon: "cheese_coin",
 	},
 
 	// racing
 	{
 		key: "racing.rounds",
 		label: "Rounds Played",
-		icon: "https://www.transformice.com/images/x_transformice/x_badges/x_124.png",
+		icon: "racing_rounds",
 	},
 	{
 		key: "racing.finished",
 		label: "Completed Rounds",
-		icon: "https://www.transformice.com/images/x_transformice/x_badges/x_125.png",
+		icon: "racing_finished",
 	},
 	{
 		key: "racing.podium",
 		label: "Podiums",
-		icon: "https://www.transformice.com/images/x_transformice/x_badges/x_127.png",
+		icon: "racing_podium",
 	},
 	{
 		key: "racing.first",
 		label: "Firsts",
-		icon: "https://www.transformice.com/images/x_transformice/x_badges/x_126.png",
+		icon: "racing_first",
 	},
 
 	// survivor
 	{
 		key: "survivor.rounds",
 		label: "Rounds Played",
-		icon: "https://www.transformice.com/images/x_transformice/x_badges/x_120.png",
+		icon: "survivor_rounds",
 	},
 	{
 		key: "survivor.shaman",
 		label: "Rounds as Shaman",
-		icon: "https://www.transformice.com/images/x_transformice/x_badges/x_121.png",
+		icon: "survivor_shaman",
 	},
 	{
 		key: "survivor.killed",
 		label: "Killed Mice",
-		icon: "https://www.transformice.com/images/x_transformice/x_badges/x_122.png",
+		icon: "survivor_killed",
 	},
 	{
 		key: "survivor.survivor",
 		label: "Rounds Survived",
-		icon: "https://www.transformice.com/images/x_transformice/x_badges/x_123.png",
+		icon: "survivor_survivor",
 	},
 
 	// defilante
 	{
 		key: "defilante.rounds",
 		label: "Rounds Played",
-		icon: "https://www.transformice.com/images/x_transformice/x_badges/x_288.png",
+		icon: "defilante_rounds",
 	},
 	{
 		key: "defilante.finished",
 		label: "Completed Rounds",
-		icon: "https://www.transformice.com/images/x_transformice/x_badges/x_287.png",
+		icon: "defilante_completed",
 	},
 	{
 		key: "defilante.points",
 		label: "Points Gathered",
-		icon: "https://www.transformice.com/images/x_transformice/x_badges/x_286.png",
+		icon: "defilante_points",
 	},
 ];
