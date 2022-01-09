@@ -40,18 +40,20 @@
 	}));
 </script>
 
-<div class="text-center">
-	<Text variant="title2" class="font-brand text-shadow-md">
-		{$_(`leaderboard.${category}Leaderboards`)}
-	</Text>
+<div class="space-y-4">
+	<div class="text-center">
+		<Text variant="title2" class="font-brand text-shadow-md">
+			{$_(`leaderboard.${category}Leaderboards`)}
+		</Text>
+	</div>
+
+	<Select {options} bind:value={selectedType} />
+
+	<LeaderboardTable
+		limit={pagination.limit}
+		page={pagination.page}
+		isLoading={$isFetchingLeaderboard}
+		data={$leaderboardValue}
+		type={$type}
+	/>
 </div>
-
-<Select {options} bind:value={selectedType} />
-
-<LeaderboardTable
-	limit={pagination.limit}
-	page={pagination.page}
-	isLoading={$isFetchingLeaderboard}
-	data={$leaderboardValue}
-	type={$type}
-/>
