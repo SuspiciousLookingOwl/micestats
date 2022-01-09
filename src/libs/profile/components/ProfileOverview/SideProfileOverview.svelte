@@ -1,7 +1,7 @@
 <script lang="ts">
-	import { AsyncLoader, Card, Carousel, Icon, Image, Text } from "@components";
+	import { AsyncLoader, Card, Icon, Image, Text } from "@components";
 	import type { PlayerEntity } from "@entities";
-	import { locale } from "svelte-i18n";
+	import { locale, _ } from "svelte-i18n";
 	import { fly } from "svelte/transition";
 
 	export let profile: PlayerEntity;
@@ -27,24 +27,21 @@
 >
 	<Card class="main-container">
 		<div class="flex flex-col items-center p-4">
-			<!-- name -->
+			<!-- if scrolled down -->
 			{#if !isInView}
-				<div in:fly={{ y: -32 }} class="hidden lg:block">
+				<div in:fly={{ y: -32 }} class="hidden lg:block text-center mb-4">
 					<Text variant="subtitle1" class="font-brand">
 						{profile.name}
+					</Text>
+					<Image src={profile.outfitUrl} class="h-32 w-24 mx-auto" />
+					<Text variant="subtitle1" class="font-brand">
+						{$_("profile.level", { values: { level: profile.level } })}
 					</Text>
 				</div>
 			{/if}
 
-			<!-- look and outfits -->
-			<Carousel items={[profile.outfitUrl, ...profile.shop.outfitUrls]}>
-				<svelte:fragment let:item>
-					<Image src={item} class="h-32 w-24 snap-center" expandable />
-				</svelte:fragment>
-			</Carousel>
-
 			<!-- title -->
-			<div class="mt-4 flex flex-col items-center space-y-2">
+			<div class="flex flex-col items-center space-y-2">
 				<AsyncLoader promise={profile.getTitle($locale || undefined)} size="sm" let:value>
 					<Text class="italic">
 						« {value} »
@@ -77,6 +74,6 @@
 
 <style lang="postcss">
 	.main-container {
-		@apply lg:w-[14rem];
+		@apply lg:w-64;
 	}
 </style>

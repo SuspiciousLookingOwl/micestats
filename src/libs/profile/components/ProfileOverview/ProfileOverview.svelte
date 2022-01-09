@@ -9,7 +9,7 @@
 <Card>
 	<div class="p-4">
 		<div class="flex items-center font-brand space-x-4">
-			<Image src={profile.headUrl} class="w-24 h-32 -rotate-2 scale-110" lazy={false} />
+			<Image src={profile.outfitUrl} class="w-24 h-32" lazy={false} />
 			<div class="flex flex-col space-y-4">
 				<Text variant="title2" class="font-brand text-shadow">
 					{profile.name}
@@ -19,7 +19,5 @@
 				</Text>
 			</div>
 		</div>
-		<!-- <a href="/p/{$profileValue.name.replace('#', '-')}/profile">Navigate</a>
-		<a href="/p/{$profileValue.name.replace('#', '-')}/stats">Navigate</a> -->
 	</div>
 </Card>
