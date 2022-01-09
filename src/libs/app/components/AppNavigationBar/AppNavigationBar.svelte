@@ -26,9 +26,12 @@
 <div class="hidden lg:block">
 	<div class="flex flex-row">
 		<NavigationBar {routes} />
-		<a href="/" class="flex flex-grow justify-end px-4">
-			<Text variant="title2" class="text-shadow-md font-brand text-center">Cheeseformice</Text
-			>
-		</a>
+		<div class="flex flex-grow justify-end">
+			<a href="/">
+				<Text variant="title2" class="text-shadow-md font-brand text-center px-4">
+					Cheeseformice
+				</Text>
+			</a>
+		</div>
 	</div>
 </div>
