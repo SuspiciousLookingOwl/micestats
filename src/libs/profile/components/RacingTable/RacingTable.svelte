@@ -35,7 +35,7 @@
 			icon: "https://www.transformice.com/images/x_transformice/x_badges/x_124.png",
 		},
 		{
-			mode: $_("stats.completedRounds"),
+			mode: $_("stats.roundsCompleted"),
 			score: profile.stats.racing.finished,
 			up: profile.period.racing.finished,
 			ratio: profile.stats.ratio.racing.finished,
