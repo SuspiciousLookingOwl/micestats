@@ -7,6 +7,8 @@
 	type T = $$Generic;
 
 	export let promise: Promise<T>;
+	let classes = "";
+	export { classes as class };
 	export let size: SpinnerSize = "md";
 	export let variant: SpinnerVariant = "circle";
 	//#endregion
@@ -14,10 +16,14 @@
 
 {#if browser}
 	{#await promise}
-		<Spinner {size} {variant} />
+		<div class={classes}>
+			<Spinner {size} {variant} />
+		</div>
 	{:then value}
 		<slot {value} />
 	{/await}
 {:else}
-	<Spinner {size} {variant} />
+	<div class={classes}>
+		<Spinner {size} {variant} />
+	</div>
 {/if}
