@@ -14,9 +14,10 @@
 
 {#if browser}
 	{#await promise}
-		<Spinner {size} />
-	{:then value}
 		<Spinner {size} {variant} />
+	{:then value}
 		<slot {value} />
 	{/await}
+{:else}
+	<Spinner {size} {variant} />
 {/if}
