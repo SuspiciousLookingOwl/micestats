@@ -28,11 +28,15 @@
 			component: Profile,
 			backgroundOffset: 0,
 		},
-		{
-			name: "outfits",
-			component: Outfits,
-			backgroundOffset: 0.1,
-		},
+		...($profile.shop.outfits.length
+			? [
+					{
+						name: "outfits",
+						component: Outfits,
+						backgroundOffset: 0.1,
+					},
+			  ]
+			: []),
 		{
 			name: "shaman",
 			component: Stats,

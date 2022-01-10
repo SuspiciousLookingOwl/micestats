@@ -11,10 +11,14 @@
 			path: `/p/${profile.slugName}/profile`,
 			alias: [`/p/${profile.slugName}`],
 		},
-		{
-			name: $_("profile.outfits"),
-			path: `/p/${profile.slugName}/outfits`,
-		},
+		...(profile.shop.outfits.length
+			? [
+					{
+						name: $_("profile.outfits"),
+						path: `/p/${profile.slugName}/outfits`,
+					},
+			  ]
+			: []),
 		{
 			name: $_("stats.shaman"),
 			path: `/p/${profile.slugName}/shaman`,
