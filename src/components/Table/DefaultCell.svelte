@@ -10,10 +10,8 @@
 
 	$: {
 		// compute value
-		if (value !== undefined) {
-			if (header?.value) value = header.value(data, index) || value;
-			if (header?.format) value = header.format(value) || value;
-		}
+		if (value === undefined && header?.value) value = header.value(data, index) || value;
+		if (value !== undefined && header?.format) value = header.format(value) || value;
 	}
 </script>
 
