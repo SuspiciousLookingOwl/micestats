@@ -42,7 +42,13 @@
 
 			<div class="flex flex-col items-center space-y-1">
 				<!-- title -->
-				<AsyncLoader promise={profile.getTitle($locale || undefined)} size="sm" let:value>
+				<AsyncLoader
+					promise={profile.getTitle($locale || undefined)}
+					size="sm"
+					variant="dots"
+					let:value
+					class="h-6 flex items-center"
+				>
 					<Text class="italic">
 						« {value} »
 					</Text>
