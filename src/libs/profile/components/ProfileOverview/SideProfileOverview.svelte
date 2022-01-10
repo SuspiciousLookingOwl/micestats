@@ -26,10 +26,10 @@
 		{!isInView && 'lg:fixed lg:top-0 lg:mt-2 !ml-0'}"
 >
 	<Card class="main-container">
-		<div class="flex flex-col items-center p-4">
+		<div class="flex flex-col items-center space-y-4 py-4">
 			<!-- if scrolled down -->
 			{#if !isInView}
-				<div in:fly={{ y: -32 }} class="hidden lg:block text-center mb-4">
+				<div in:fly={{ y: -32 }} class="hidden lg:block text-center">
 					<Text variant="subtitle1" class="font-brand">
 						{profile.name}
 					</Text>
@@ -40,8 +40,8 @@
 				</div>
 			{/if}
 
-			<!-- title -->
-			<div class="flex flex-col items-center space-y-2">
+			<div class="flex flex-col items-center space-y-1">
+				<!-- title -->
 				<AsyncLoader promise={profile.getTitle($locale || undefined)} size="sm" let:value>
 					<Text class="italic">
 						« {value} »
@@ -68,12 +68,16 @@
 					</div>
 				{/if}
 			</div>
+
+			<Text variant="caption" class="text-neutral-400">
+				ID: {profile.id}
+			</Text>
 		</div>
 	</Card>
 </div>
 
 <style lang="postcss">
 	.main-container {
-		@apply lg:w-64;
+		@apply lg:w-72;
 	}
 </style>
