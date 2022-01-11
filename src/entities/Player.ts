@@ -18,6 +18,11 @@ interface ShopProps {
 	shamanColor: number;
 }
 
+interface Title {
+	id: number;
+	title: string;
+}
+
 class ShopEntity {
 	look!: string;
 	outfits!: string[];
@@ -102,13 +107,34 @@ export class PlayerEntity extends BasePlayerEntity {
 		return getLevel(this.stats.shaman.experience);
 	}
 
-	async getTitle(language = "en"): Promise<string> {
+	async getTitle(language = "en"): Promise<Title> {
 		// TODO DI this
 		const result = await TranslationsService.fetchFields({
 			fields: [`T_${this.title}`],
 			language,
 		});
-		return result.data[`t_${this.title}`];
+		return {
+			id: this.title,
+			title: this.resolveTitleGender(result.data[`t_${this.title}`]),
+		};
+	}
+
+	async getTitles(language = "en"): Promise<Title[]> {
+		// TODO DI this
+		const result = await TranslationsService.fetchFields({
+			fields: this.titles.map((t) => `T_${t}`),
+			language,
+		});
+
+		let titles = Object.entries(result.data).map(([id, title]) => ({
+			id: +id.split("_")[1],
+			title: this.resolveTitleGender(title),
+		}));
+
+		// sort by id
+		titles = titles.sort((a, b) => +a.id - +b.id);
+
+		return titles;
 	}
 
 	toProps(): PlayerProps {
@@ -122,5 +148,10 @@ export class PlayerEntity extends BasePlayerEntity {
 			period: period.toProps(),
 			shop: shop.toProps(),
 		};
+	}
+
+	private resolveTitleGender(title: string): string {
+		const genderGroup = this.gender === "female" ? "$2" : "$1";
+		return title.replace(/\((.*|)\|(|.*)\)/g, genderGroup);
 	}
 }

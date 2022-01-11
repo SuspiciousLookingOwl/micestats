@@ -1,7 +1,7 @@
 <script lang="ts" context="module">
 	import type { PlayerEntity } from "@entities";
 	import { background } from "@libs/app";
-	import { Outfits, Profile, Stats } from "@libs/profile";
+	import { Outfits, Profile, Stats, Titles } from "@libs/profile";
 	import type { Load } from "@sveltejs/kit";
 	import { getContext } from "svelte";
 	import type { Writable } from "svelte/store";
@@ -26,46 +26,44 @@
 		{
 			name: "profile",
 			component: Profile,
-			backgroundOffset: 0,
 		},
 		...($profile.shop.outfits.length
 			? [
 					{
 						name: "outfits",
 						component: Outfits,
-						backgroundOffset: 0.1,
 					},
 			  ]
 			: []),
 		{
+			name: "titles",
+			component: Titles,
+		},
+		{
 			name: "shaman",
 			component: Stats,
-			backgroundOffset: 0.2,
 		},
 		{
 			name: "mouse",
 			component: Stats,
-			backgroundOffset: 0.3,
 		},
 		{
 			name: "racing",
 			component: Stats,
-			backgroundOffset: 0.4,
 		},
 		{
 			name: "survivor",
 			component: Stats,
-			backgroundOffset: 0.5,
 		},
 		{
 			name: "defilante",
 			component: Stats,
-			backgroundOffset: 0.6,
 		},
 	];
 
-	$: activePage = pages.find((p) => p.name === page);
-	$: background.setXOffset(activePage?.backgroundOffset || 0);
+	$: activePageIndex = pages.findIndex((p) => p.name === page);
+	$: activePage = activePageIndex >= 0 ? pages[activePageIndex] : undefined;
+	$: background.setXOffset(Math.max(activePageIndex * 0.1, 0));
 </script>
 
 <div />

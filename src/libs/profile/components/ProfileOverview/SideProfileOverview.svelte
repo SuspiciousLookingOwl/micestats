@@ -50,7 +50,9 @@
 					class="h-6 flex items-center"
 				>
 					<Text class="italic">
-						« {value} »
+						<a href="/p/{profile.slugName}/titles">
+							« {value.title} »
+						</a>
 					</Text>
 				</AsyncLoader>
 

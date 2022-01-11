@@ -9,11 +9,10 @@ export default class Translations {
 		opt: Partial<FieldRequest>
 	): Promise<AxiosResponse<TranslationFields>> {
 		const params = {
-			field: opt.fields,
 			start: opt.start,
 			all: opt.all,
 		};
-		return await axios.get(`${BASE}/${opt.language || "en"}`, { params });
+		return await axios.post(`${BASE}/${opt.language || "en"}`, opt.fields, { params });
 	}
 
 	static withGender(text: string, gender: "male" | "female"): string {

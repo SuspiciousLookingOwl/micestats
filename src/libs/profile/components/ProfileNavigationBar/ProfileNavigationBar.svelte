@@ -20,6 +20,10 @@
 			  ]
 			: []),
 		{
+			name: $_("profile.titles"),
+			path: `/p/${profile.slugName}/titles`,
+		},
+		{
 			name: $_("stats.shaman"),
 			path: `/p/${profile.slugName}/shaman`,
 		},
