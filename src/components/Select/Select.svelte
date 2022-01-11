@@ -47,7 +47,7 @@
 <div
 	bind:this={select}
 	on:click|stopPropagation={() => (isOpened = !isOpened)}
-	class="flex relative items-center pr-2 bg-opacity-10 bg-white rounded max-w-max cursor-pointer"
+	class="flex relative items-center pr-2 bg-opacity-10 bg-white rounded cursor-pointer"
 >
 	<div class={selectClass}>
 		{value?.label}
@@ -58,7 +58,7 @@
 	{#if isOpened}
 		<div
 			transition:fly={{ duration: 150, y: -16 }}
-			class="absolute rounded top-14 bg-neutral-800 w-full divide-y divide-white divide-opacity-10 min-w-max z-10"
+			class="absolute rounded top-14 bg-neutral-800 w-full divide-y divide-white divide-opacity-10 z-10"
 		>
 			{#each options as option}
 				<div on:click={() => (value = option)} class="py-2 px-4 cursor-pointer">
