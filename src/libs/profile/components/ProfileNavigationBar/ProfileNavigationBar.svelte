@@ -1,5 +1,7 @@
 <script lang="ts">
-	import { Card, NavigationBar } from "@components";
+	import { goto } from "$app/navigation";
+	import { page } from "$app/stores";
+	import { Card, NavigationBar, Select } from "@components";
 	import type { PlayerEntity } from "@entities";
 	import { _ } from "svelte-i18n";
 
@@ -44,8 +46,24 @@
 			path: `/p/${profile.slugName}/defilante`,
 		},
 	];
+
+	$: routesOptions = routes.map((r) => {
+		return {
+			label: r.name,
+			value: r.path,
+		};
+	});
 </script>
 
-<Card class="mt-2 p-0 rounded">
-	<NavigationBar {routes} textVariant="body1" itemClass="px-4" />
-</Card>
+<div class="hidden lg:block">
+	<Card class="p-0 rounded">
+		<NavigationBar {routes} textVariant="body1" itemClass="px-4" />
+	</Card>
+</div>
+<div class="block lg:hidden w-full">
+	<Select
+		value={routesOptions.find((r) => r.value === $page.path)}
+		options={routesOptions}
+		on:change={(e) => e.detail && goto(e.detail.value)}
+	/>
+</div>

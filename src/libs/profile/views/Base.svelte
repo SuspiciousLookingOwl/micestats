@@ -11,7 +11,9 @@
 {#if profile}
 	<div transition:fade={{ duration: 150 }}>
 		<ProfileOverview {profile} />
-		<ProfileNavigationBar {profile} />
+		<div class="mt-2">
+			<ProfileNavigationBar {profile} />
+		</div>
 	</div>
 {:else}
 	<Text variant="title1" class="my-8 font-brand">
