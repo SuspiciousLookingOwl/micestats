@@ -8,9 +8,13 @@
 	export let options: Option[];
 	export let variant: SelectVariant;
 	export let value: Option | null;
+	//#endregion
 
+	//#region state
 	let isOpened = false;
+	//#endregion
 
+	//#region classes
 	$: selectClass = classNames(
 		"bg-white bg-opacity-10 rounded flex relative items-center pr-4 cursor-pointer"
 	);
@@ -24,6 +28,7 @@
 		"divide-y divide-white divide-opacity-10"
 	);
 	$: iconClass = classNames("fill-current transition-all", { "-rotate-180": !isOpened });
+	//#endregion
 </script>
 
 <div on:click={() => (isOpened = !isOpened)} class={selectClass}>
