@@ -6,6 +6,8 @@ body {
 	@apply p-0 m-0;
 	@apply text-gray-50;
 	font-family: "Poppins", sans-serif !important;
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+	-webkit-tap-highlight-color: transparent;
 }
 
 @font-face {
