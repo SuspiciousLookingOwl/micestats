@@ -13,7 +13,10 @@ const topMargin = 150;
 
 export const drawProfile = async (profile: PlayerEntity): Promise<Buffer> => {
 	// fetch outfit and title
-	const [outfit, title] = await Promise.all([loadOutfit(profile.shop.look), profile.getTitle()]);
+	const [outfit, { title }] = await Promise.all([
+		loadOutfit(profile.shop.look),
+		profile.getTitle(),
+	]);
 
 	// create canvas
 	const canvas = createCanvas(canvasWidth, canvasHeight);
