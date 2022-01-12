@@ -80,6 +80,9 @@ export class PlayerEntity extends BasePlayerEntity {
 	canQualify!: boolean;
 	period!: PeriodStatsEntity;
 
+	#title?: Title;
+	#titles?: Title[];
+
 	constructor(props: PlayerProps) {
 		super(props);
 
@@ -108,18 +111,26 @@ export class PlayerEntity extends BasePlayerEntity {
 	}
 
 	async getTitle(language = "en"): Promise<Title> {
+		if (this.#title) return this.#title;
+
 		// TODO DI this
 		const result = await TranslationsService.fetchFields({
 			fields: [`T_${this.title}`],
 			language,
 		});
-		return {
+
+		const title = {
 			id: this.title,
 			title: this.resolveTitleGender(result.data[`t_${this.title}`]),
 		};
+		this.#title = title;
+
+		return title;
 	}
 
 	async getTitles(language = "en"): Promise<Title[]> {
+		if (this.#titles) return this.#titles;
+
 		// TODO DI this
 		const result = await TranslationsService.fetchFields({
 			fields: this.titles.map((t) => `T_${t}`),
@@ -133,6 +144,7 @@ export class PlayerEntity extends BasePlayerEntity {
 
 		// sort by id
 		titles = titles.sort((a, b) => +a.id - +b.id);
+		this.#titles = titles;
 
 		return titles;
 	}
