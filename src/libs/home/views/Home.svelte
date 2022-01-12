@@ -50,7 +50,7 @@
 	<SearchInput bind:isFocused={isSearchFocused} />
 
 	<div
-		class="grid grid-cols-1 lg:grid-cols-3 lg:space-x-2 space-y-2 lg:space-y-0 transition-all duration-200"
+		class="grid grid-cols-1 lg:grid-cols-3 lg:space-x-2 space-y-2 lg:space-y-0"
 		class:blur={isSearchFocused}
 		class:opacity-20={isSearchFocused}
 	>

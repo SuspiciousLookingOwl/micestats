@@ -11,7 +11,11 @@
 	$: href = `${isPlayer ? "p" : "t"}/${item.target.slugName}`;
 </script>
 
-<a {href} class="rounded bg-white bg-opacity-5 px-2 py-1" in:fade={{ duration: 150 }}>
+<a
+	{href}
+	class="rounded bg-white bg-opacity-5 hover:bg-opacity-10 transition px-2 py-1"
+	in:fade={{ duration: 150 }}
+>
 	<div class="flex flex-row items-center space-x-2">
 		<Text variant="title3" class="font-brand text-shadow w-7 xl:w-9 text-center">
 			{position}.

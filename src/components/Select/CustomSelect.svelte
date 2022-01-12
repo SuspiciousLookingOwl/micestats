@@ -24,7 +24,7 @@
 		"p-3 2xl:p-4 text-md 2xl:text-xl": variant === "lg",
 	});
 	$: optionClass = classNames(
-		"absolute w-full rounded bg-neutral-800 top-14 z-10 border-none",
+		"absolute w-full rounded top-14 z-10 border-none",
 		"divide-y divide-white divide-opacity-10"
 	);
 	$: iconClass = classNames("fill-current transition-all", { "-rotate-180": !isOpened });
@@ -41,7 +41,10 @@
 	{#if isOpened}
 		<div transition:fly={{ duration: 150, y: -16 }} class={optionClass}>
 			{#each options as option}
-				<div on:click={() => (value = option)} class="py-2 px-4 cursor-pointer">
+				<div
+					on:click={() => (value = option)}
+					class="py-2 px-4 cursor-pointer bg-neutral-900 hover:bg-neutral-800 transition"
+				>
 					{option.label}
 				</div>
 			{/each}
