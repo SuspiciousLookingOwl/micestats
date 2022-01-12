@@ -33,7 +33,13 @@
 </script>
 
 <Card hoverable class="p-0">
-	<a {href} on:click={onClick} target={!redirect ? "_blank" : ""} class={anchorClass}>
+	<a
+		{href}
+		on:click={onClick}
+		target={!redirect ? "_blank" : ""}
+		rel={!redirect ? "noopener" : ""}
+		class={anchorClass}
+	>
 		{#if icon}
 			<Icon name={icon} size={!large ? "lg" : "xl"} class="fill-current" />
 		{/if}
