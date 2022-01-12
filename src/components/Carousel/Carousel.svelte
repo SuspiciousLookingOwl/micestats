@@ -1,6 +1,6 @@
 <script lang="ts">
+	import { swipe } from "@actions";
 	import Bullet from "./Bullet.svelte";
-	import { swipe } from "./swipe";
 	import { useCarousel } from "./useCarousel";
 
 	type T = $$Generic;

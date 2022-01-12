@@ -20,6 +20,8 @@
 		"checkJs": true,
 		"strict": true,
 		"paths": {
+			"@actions": ["src/actions"],
+			"@actions/*": ["src/actions/*"],
 			"@api": ["src/api"],
 			"@api/*": ["src/api/*"],
 			"@entities": ["src/entities"],

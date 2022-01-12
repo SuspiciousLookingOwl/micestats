@@ -2,7 +2,7 @@ interface Swipe {
 	destroy(): void;
 }
 
-export const swipe = (node: HTMLDivElement): Swipe => {
+export const swipe = (node: HTMLElement): Swipe => {
 	let touchStartX = 0;
 	let touchEndX = 0;
 

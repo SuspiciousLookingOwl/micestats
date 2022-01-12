@@ -9,6 +9,7 @@
 
 <script lang="ts">
 	import { page } from "$app/stores";
+	import { sizeObserver } from "@actions";
 	import type { TextVariant } from "@components/Text/Text.svelte";
 	import classNames from "classnames";
 	import NavigationBarItem from "./NavigationBarItem.svelte";
@@ -26,10 +27,10 @@
 	//#endregion
 
 	// compute underline border style
-	$: {
-		const activeRouteIndex = routes.findIndex((r) => isActivePath($page.path, r));
-		const activeRouteElement = routesElement[activeRouteIndex];
-
+	$: activeRouteIndex = routes.findIndex((r) => isActivePath($page.path, r));
+	$: activeRouteElement = routesElement[activeRouteIndex];
+	$: activeRouteElement && resize();
+	const resize = () => {
 		if (activeRouteElement) {
 			const { offsetWidth, offsetLeft } = activeRouteElement;
 
@@ -39,7 +40,7 @@
 		} else {
 			underlineStyle = "";
 		}
-	}
+	};
 
 	const isActivePath = (currentPath: string, route: Route) => {
 		return (
@@ -56,7 +57,7 @@
 			"border-b border-opacity-25": bordered,
 		})}
 	>
-		<div class="flex flex-col lg:flex-row align-middle">
+		<div use:sizeObserver on:sizechange={resize} class="flex flex-col lg:flex-row align-middle">
 			{#each routes as route, i}
 				<NavigationBarItem
 					{route}

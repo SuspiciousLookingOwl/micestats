@@ -21,6 +21,7 @@ const config = {
 		vite: {
 			resolve: {
 				alias: {
+					"@actions": path.resolve("./src/actions"),
 					"@api": path.resolve("./src/api"),
 					"@components": path.resolve("./src/components"),
 					"@entities": path.resolve("./src/entities"),
