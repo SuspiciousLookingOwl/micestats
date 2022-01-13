@@ -5,8 +5,11 @@
 	import type { PlayerEntity } from "@entities";
 	import { _ } from "svelte-i18n";
 
+	//#region props
 	export let profile: PlayerEntity;
+	//#endregion
 
+	//#region reactive
 	$: routes = [
 		{
 			name: $_("profile.profile"),
@@ -53,6 +56,12 @@
 			value: r.path,
 		};
 	});
+	//#endregion
+
+	//#region select option handler
+	let option = routesOptions?.find((r) => r.value === $page.path) || null;
+	$: option && goto(option.value);
+	//#endregion
 </script>
 
 <div class="hidden lg:block">
@@ -61,9 +70,5 @@
 	</Card>
 </div>
 <div class="block lg:hidden w-full">
-	<Select
-		value={routesOptions.find((r) => r.value === $page.path)}
-		options={routesOptions}
-		on:change={(e) => e.detail && goto(e.detail.value)}
-	/>
+	<Select bind:value={option} options={routesOptions} />
 </div>
