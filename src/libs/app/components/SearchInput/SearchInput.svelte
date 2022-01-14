@@ -27,8 +27,6 @@
 			setFocus(false);
 		}
 	};
-
-	const onBodyClick = (e: MouseEvent) => {};
 	//#endregion
 
 	const setFocus = (value: boolean) => {
@@ -39,7 +37,7 @@
 	};
 </script>
 
-<svelte:body on:keydown={onBodyKeyDown} on:click={onBodyClick} />
+<svelte:body on:keydown={onBodyKeyDown} />
 
 <div
 	class="flex w-full bg-opacity-10 bg-white rounded relative z-20"
@@ -67,7 +65,12 @@
 
 	{#if isFocused}
 		<div class="w-full absolute top-16 2xl:mt-2 z-30">
-			<SearchResult players={$searchResult} isFetching={$isSearching} keyword={$keyword} />
+			<SearchResult
+				players={$searchResult}
+				isFetching={$isSearching}
+				keyword={$keyword}
+				on:navigate={() => setFocus(false)}
+			/>
 		</div>
 	{/if}
 </div>

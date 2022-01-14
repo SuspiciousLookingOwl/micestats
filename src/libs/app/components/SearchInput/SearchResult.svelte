@@ -3,11 +3,13 @@
 	import { Icon, Spinner, Text } from "@components";
 	import type { BasePlayerEntity } from "@entities";
 	import { searchHistory } from "@libs/app";
+	import { createEventDispatcher } from "svelte";
 	import { _ } from "svelte-i18n";
 	import { fly, type FlyParams } from "svelte/transition";
 	import SearchResultList from "./SearchResultList.svelte";
 
 	const flyAnimation: FlyParams = { y: -10, duration: 150 };
+	const dispatch = createEventDispatcher();
 
 	//#region props
 	export let players: BasePlayerEntity[] = [];
@@ -38,6 +40,7 @@
 
 	//#region methods
 	const navigate = async (player: BasePlayerEntity) => {
+		dispatch("navigate");
 		await goto(`/p/${player.slugName}`);
 		searchHistory.push(player);
 	};
