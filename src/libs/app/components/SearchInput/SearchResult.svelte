@@ -29,6 +29,10 @@
 			else if (allPlayers[0]) navigate(allPlayers[0]);
 		}
 	};
+
+	const onClearSearchHistory = () => {
+		searchHistory.set([]);
+	};
 	//#endregion
 
 	//#region methods
@@ -69,8 +73,18 @@
 				{/each}
 			{/if}
 
-			{#if players.length && $searchHistory.length}
-				<div class="border-t border-white border-opacity-10 my-2" />
+			{#if $searchHistory.length}
+				<div class="flex py-1 mt-2 items-center justify-between space-x-2">
+					<Text variant="body2">Search history</Text>
+					<div class="flex-grow border-b border-neutral-700" />
+					<div
+						on:click={onClearSearchHistory}
+						class="flex items-center space-x-2 py-1 px-2 rounded cursor-pointer hover:bg-white hover:bg-opacity-10"
+					>
+						<Text variant="body2">Clear</Text>
+						<Icon name="close" size="sm" class="fill-neutral-300" />
+					</div>
+				</div>
 			{/if}
 
 			{#each $searchHistory as player, i}

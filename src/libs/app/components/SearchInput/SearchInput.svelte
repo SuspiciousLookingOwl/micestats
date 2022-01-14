@@ -1,20 +1,23 @@
 <script lang="ts">
+	import { clickOutside } from "@actions";
 	import { Icon, Input, Text } from "@components";
 	import { background, SearchResult, useSearch } from "@libs/app";
 	import { _ } from "svelte-i18n";
 
+	//#region props
 	export let isFocused = false;
-	let input: HTMLInputElement;
+	//#endregion
 
+	//#region state
 	const { keyword, isSearching, searchResult, ...search } = useSearch();
+	//#endregion
 
-	const setFocus = (value: boolean) => {
-		isFocused = value;
-		isFocused ? input.focus() : input.blur();
-		background.setBlur(isFocused ? 4 : undefined);
-		background.setBrightness(isFocused ? 2 : undefined);
-	};
+	//#region reactive
+	let input: HTMLInputElement;
+	$: input && setFocus(isFocused);
+	//#endregion
 
+	//#region event handlers
 	const onBodyKeyDown = (e: KeyboardEvent) => {
 		if (e.ctrlKey && e.key === "k") {
 			e.preventDefault();
@@ -25,12 +28,24 @@
 		}
 	};
 
-	$: input && setFocus(isFocused);
+	const onBodyClick = (e: MouseEvent) => {};
+	//#endregion
+
+	const setFocus = (value: boolean) => {
+		isFocused = value;
+		isFocused ? input.focus() : input.blur();
+		background.setBlur(isFocused ? 4 : undefined);
+		background.setBrightness(isFocused ? 2 : undefined);
+	};
 </script>
 
-<svelte:body on:keydown={onBodyKeyDown} />
+<svelte:body on:keydown={onBodyKeyDown} on:click={onBodyClick} />
 
-<div class="flex w-full bg-opacity-10 bg-white rounded relative z-20">
+<div
+	class="flex w-full bg-opacity-10 bg-white rounded relative z-20"
+	use:clickOutside
+	on:outclick={() => setFocus(false)}
+>
 	<Input
 		type="text"
 		variant="lg"
@@ -38,7 +53,6 @@
 		bind:input
 		bind:value={$keyword}
 		on:focus={() => setFocus(true)}
-		on:blur={() => setFocus(false)}
 		containerClass="bg-neutral-700 bg-opacity-95"
 	>
 		<div
