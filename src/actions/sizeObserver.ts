@@ -1,4 +1,8 @@
-export const sizeObserver = (node: HTMLElement): SvelteActionReturnType => {
+interface SizeObserver {
+	destroy(): void;
+}
+
+export const sizeObserver = (node: HTMLElement): SizeObserver => {
 	const onSizeChange = () => {
 		node.dispatchEvent(new CustomEvent("sizechange"));
 	};

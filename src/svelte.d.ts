@@ -3,5 +3,6 @@ declare namespace svelte.JSX {
 		onswipeleft?: () => void;
 		onswiperight?: () => void;
 		onsizechange?: () => void;
+		onoutclick?: () => void;
 	}
 }
