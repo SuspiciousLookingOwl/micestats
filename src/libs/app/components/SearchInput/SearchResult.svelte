@@ -50,8 +50,8 @@
 		<div class="search-inner-container">
 			{#if isFetching}
 				<SearchResultList clickable={false}>
-					<div class="flex align-middle justify-center">
-						<Spinner />
+					<div class="flex align-middle justify-center py-2">
+						<Spinner variant="dots" />
 					</div>
 				</SearchResultList>
 			{:else if !players.length && keyword}
