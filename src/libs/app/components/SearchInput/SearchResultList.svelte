@@ -14,10 +14,9 @@
 <div
 	on:click={() => dispatch("click")}
 	in:fly={{ y: -10, duration: 150 }}
-	class={classNames("px-4 py-3 -mx-4 hover:bg-white hover:bg-opacity-10", {
-		"bg-white": isSelected,
-		"bg-opacity-20": isSelected,
-		"cursor-pointer": clickable,
+	class={classNames("px-4 py-3 -mx-4", {
+		"bg-opacity-20 bg-white": isSelected,
+		"cursor-pointer hover:bg-white hover:bg-opacity-10": clickable,
 	})}
 >
 	<slot />
