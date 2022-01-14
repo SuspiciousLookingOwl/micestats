@@ -1,4 +1,9 @@
 {
+	"search": {
+		"searchHistory": "Search History",
+		"noResult": "No search results found for <i>{keyword}</i>",
+		"clear": "Clear"
+	},
 	"nav": {
 		"home": "Home",
 		"about": "About",

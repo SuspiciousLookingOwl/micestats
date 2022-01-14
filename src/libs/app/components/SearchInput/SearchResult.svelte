@@ -3,6 +3,7 @@
 	import { Icon, Spinner, Text } from "@components";
 	import type { BasePlayerEntity } from "@entities";
 	import { searchHistory } from "@libs/app";
+	import { _ } from "svelte-i18n";
 	import { fly, type FlyParams } from "svelte/transition";
 	import SearchResultList from "./SearchResultList.svelte";
 
@@ -57,7 +58,7 @@
 			{:else if !players.length && keyword}
 				<SearchResultList clickable={false}>
 					<Text variant="subtitle2" class="text-neutral-400">
-						No search results found for <i>{keyword}</i>
+						{@html $_("search.noResult", { values: { keyword } })}
 					</Text>
 				</SearchResultList>
 			{:else}
@@ -75,13 +76,13 @@
 
 			{#if $searchHistory.length}
 				<div class="flex py-1 mt-2 items-center justify-between space-x-2">
-					<Text variant="body2">Search history</Text>
+					<Text variant="body2">{$_("search.searchHistory")}</Text>
 					<div class="flex-grow border-b border-neutral-700" />
 					<div
 						on:click={onClearSearchHistory}
 						class="flex items-center space-x-2 py-1 px-2 rounded cursor-pointer hover:bg-white hover:bg-opacity-10"
 					>
-						<Text variant="body2">Clear</Text>
+						<Text variant="body2">{$_("search.clear")}</Text>
 						<Icon name="close" size="sm" class="fill-neutral-300" />
 					</div>
 				</div>
