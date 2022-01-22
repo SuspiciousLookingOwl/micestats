@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { AsyncLoader, Card, Icon, Image, Text } from "@components";
 	import type { PlayerEntity } from "@entities";
+	import { onMount } from "svelte";
 	import { locale, _ } from "svelte-i18n";
 	import { fly } from "svelte/transition";
 
@@ -9,22 +10,21 @@
 	let isInView: boolean = true;
 	let side: HTMLDivElement;
 
-	const onScroll = () => {
-		const rect = side.getBoundingClientRect();
-		isInView = rect.y > 8; // adjust treshold accoring to mt
-	};
+	onMount(() => {
+		const observer = new IntersectionObserver(
+			([e]) => {
+				isInView = e.isIntersecting;
+			},
+			{
+				rootMargin: "-9px 0px 0px 0px",
+				threshold: [1],
+			}
+		);
+		observer.observe(side);
+	});
 </script>
 
-<svelte:window on:scroll={onScroll} />
-
-<div bind:this={side} />
-{#if !isInView}
-	<div class="main-container" />
-{/if}
-<div
-	class="main-container 
-		{!isInView && 'lg:fixed lg:top-0 lg:mt-2 !ml-0'}"
->
+<div bind:this={side} class="main-container">
 	<Card class="main-container">
 		<div class="flex flex-col items-center space-y-4 py-4">
 			<!-- if scrolled down -->
@@ -86,6 +86,7 @@
 
 <style lang="postcss">
 	.main-container {
-		@apply lg:w-72;
+		@apply lg:w-72 sticky top-2;
+		align-self: flex-start;
 	}
 </style>
