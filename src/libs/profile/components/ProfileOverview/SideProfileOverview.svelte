@@ -26,7 +26,7 @@
 
 <div bind:this={side} class="main-container">
 	<Card class="main-container">
-		<div class="flex flex-col items-center space-y-4 py-4">
+		<div class="flex flex-col items-center space-y-6 py-4">
 			<!-- if scrolled down -->
 			{#if !isInView}
 				<div in:fly={{ y: -32 }} class="hidden lg:block text-center">
@@ -40,7 +40,7 @@
 				</div>
 			{/if}
 
-			<div class="flex flex-col items-center space-y-1">
+			<div class="flex flex-col items-center space-y-2">
 				<!-- title -->
 				<AsyncLoader
 					promise={profile.getTitle($locale || undefined)}
@@ -55,6 +55,14 @@
 						</a>
 					</Text>
 				</AsyncLoader>
+
+				<!-- registration date -->
+				<div class="flex items-center space-x-2">
+					<Icon name="clock" class="fill-white" />
+					<Text>
+						{profile.registrationDate}
+					</Text>
+				</div>
 
 				<!-- soulmate -->
 				{#if profile.soulmate}

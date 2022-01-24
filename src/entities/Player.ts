@@ -49,6 +49,7 @@ class ShopEntity {
 }
 
 export interface PlayerProps extends BasePlayerProps {
+	registration: string;
 	gender: "male" | "female" | null;
 	title: number;
 	tribe: BaseTribeProps | null;
@@ -68,6 +69,7 @@ export interface PlayerProps extends BasePlayerProps {
 }
 
 export class PlayerEntity extends BasePlayerEntity {
+	registration!: string;
 	gender!: "male" | "female" | null;
 	title!: number;
 	tribe!: BaseTribeEntity | null;
@@ -108,6 +110,10 @@ export class PlayerEntity extends BasePlayerEntity {
 
 	get level(): number {
 		return getLevel(this.stats.shaman.experience);
+	}
+
+	get registrationDate(): string {
+		return this.registration.split("T")[0].split("-").reverse().join("/");
 	}
 
 	async getTitle(language = "en"): Promise<Title> {
