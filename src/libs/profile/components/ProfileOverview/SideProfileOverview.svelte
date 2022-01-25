@@ -94,7 +94,7 @@
 
 <style lang="postcss">
 	.main-container {
-		@apply lg:w-72 sticky top-2;
+		@apply lg:w-72 lg:sticky top-2;
 		align-self: flex-start;
 	}
 </style>
