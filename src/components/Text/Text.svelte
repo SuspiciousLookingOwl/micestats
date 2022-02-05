@@ -12,6 +12,7 @@
 
 <script lang="ts">
 	//#region props
+	export let div = false;
 	export let variant: TextVariant = "body1";
 	export let _: TextVariant = variant; // shortcut
 
@@ -20,9 +21,15 @@
 	//#endregion
 </script>
 
-<span class="text-{_ ?? variant} {classes}">
-	<slot />
-</span>
+{#if !div}
+	<span class="text-{_ ?? variant} {classes}">
+		<slot />
+	</span>
+{:else}
+	<div class="text-{_ ?? variant} {classes}">
+		<slot />
+	</div>
+{/if}
 
 <style lang="postcss">
 	.text-title1 {
