@@ -1,4 +1,4 @@
-import { TranslationsService } from "@api";
+import { PlayerChangelogTypes, PlayersService, TranslationsService } from "@api";
 import { getLevel } from "@utils";
 import {
 	BasePlayerEntity,
@@ -10,6 +10,7 @@ import {
 	type PeriodStatsProps,
 	type StatsProps,
 } from ".";
+import { ChangelogEntity } from "./Changelog";
 
 interface ShopProps {
 	look: string;
@@ -84,6 +85,7 @@ export class PlayerEntity extends BasePlayerEntity {
 
 	#title?: Title;
 	#titles?: Title[];
+	#changelogs?: ChangelogEntity;
 
 	constructor(props: PlayerProps) {
 		super(props);
@@ -153,6 +155,69 @@ export class PlayerEntity extends BasePlayerEntity {
 		this.#titles = titles;
 
 		return titles;
+	}
+
+	async getChangelogs(): Promise<ChangelogEntity> {
+		if (this.#changelogs) return this.#changelogs;
+
+		const rawChangelog = await PlayersService.getChangelogs(this.id, [
+			PlayerChangelogTypes.Shaman,
+			PlayerChangelogTypes.Mouse,
+			PlayerChangelogTypes.Racing,
+			PlayerChangelogTypes.Survivor,
+			PlayerChangelogTypes.Defilante,
+		]);
+
+		const { mouse, racing, shaman, survivor, defilante, dates, ...rest } = rawChangelog;
+
+		const parse = (
+			[dateIndex, value]: [number, number | string],
+			i: number,
+			array: [number, number | string][]
+		) => {
+			const previous = +(array[i + 1]?.[1] || 0);
+			return {
+				date: new Date(dates[dateIndex]),
+				value: Math.max(previous ? +value - +previous : +value, 0),
+			};
+		};
+
+		const changelogProps = {
+			mouse: {
+				bootcamp: mouse?.bootcamp.map(parse) || [],
+				cheese: mouse?.cheese.map(parse) || [],
+				rounds: mouse?.rounds.map(parse) || [],
+				first: mouse?.first.map(parse) || [],
+			},
+			racing: {
+				finished: racing?.finished.map(parse) || [],
+				first: racing?.first.map(parse) || [],
+				podium: racing?.podium.map(parse) || [],
+				rounds: racing?.rounds.map(parse) || [],
+			},
+			shaman: {
+				cheese: shaman?.cheese.map(parse) || [],
+				experience: shaman?.experience.map(parse) || [],
+				savesDivine: shaman?.savesDivine.map(parse) || [],
+				savesHard: shaman?.savesHard.map(parse) || [],
+				savesNormal: shaman?.savesNormal.map(parse) || [],
+			},
+			survivor: {
+				killed: survivor?.killed.map(parse) || [],
+				shaman: survivor?.shaman.map(parse) || [],
+				survivor: survivor?.survivor.map(parse) || [],
+				rounds: survivor?.rounds.map(parse) || [],
+			},
+			defilante: {
+				finished: defilante?.finished.map(parse) || [],
+				points: defilante?.points.map(parse) || [],
+				rounds: defilante?.rounds.map(parse) || [],
+			},
+		};
+
+		const changelogs = new ChangelogEntity({ ...changelogProps, ...rest });
+		this.#changelogs = changelogs;
+		return changelogs;
 	}
 
 	toProps(): PlayerProps {
