@@ -15,7 +15,7 @@ services:
     volumes:
       - nginx_cache:/var/cache/nginx
       - ./nginx/templates:/etc/nginx/templates
-      - ./ssl:/etc/nginx/ssl:ro
+      - /etc/ssl:/etc/nginx/ssl:ro
 
 volumes:
   nginx_cache:
