@@ -3,7 +3,9 @@ import axios from "axios";
 import caseConverter from "axios-case-converter";
 import qs from "qs";
 
-export const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+export const API_BASE_URL = browser
+	? import.meta.env.VITE_API_BASE_URL
+	: import.meta.env.API_BASE_URL;
 
 // Use default import if running on server
 // eslint-disable-next-line @typescript-eslint/no-explicit-any

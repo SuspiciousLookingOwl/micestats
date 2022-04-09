@@ -29,7 +29,7 @@
 		<div class="flex flex-grow justify-end">
 			<a href="/">
 				<Text variant="title2" class="text-shadow-md font-brand text-center px-4">
-					Cheeseformice
+					Micestats
 				</Text>
 			</a>
 		</div>

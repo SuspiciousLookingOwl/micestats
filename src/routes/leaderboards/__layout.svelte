@@ -13,7 +13,7 @@
 </script>
 
 <svelte:head>
-	<title>{$_("home.leaderboards")} | Cheeseformice</title>
+	<title>{$_("home.leaderboards")} | Micestats</title>
 </svelte:head>
 
 <TransitionedRoutes level={2} {path}>

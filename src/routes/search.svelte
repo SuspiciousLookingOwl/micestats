@@ -14,7 +14,7 @@
 </script>
 
 <svelte:head>
-	<title>{$_("nav.search")} | Cheeseformice</title>
+	<title>{$_("nav.search")} | Micestats</title>
 </svelte:head>
 
 <div class="w-full">

@@ -3,7 +3,7 @@
 </script>
 
 <svelte:head>
-	<title>Oops | Cheeseformice</title>
+	<title>Oops | Micestats</title>
 </svelte:head>
 
 <div class="flex flex-col justify-center my-32">

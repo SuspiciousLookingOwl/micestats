@@ -17,7 +17,7 @@ export const drawIcon = async (
 	const iconHeight = 48;
 	ctx.drawImage(cheese, iconX, iconY, iconWidth, iconHeight);
 
-	// draw cfm
+	// draw Micestats
 	ctx.font = `24px Soopafresh`;
 	ctx.fillStyle = "#BC249A";
 	ctx.shadowColor = "black";
@@ -25,11 +25,11 @@ export const drawIcon = async (
 	ctx.strokeStyle = "#1E1E1E";
 	ctx.lineWidth = 4;
 
-	const { width: cfmWidth } = ctx.measureText("Cheeseformice");
-	const cfmX = iconX + (iconWidth - cfmWidth) / 2;
-	const cfmY = iconY + 50;
-	ctx.strokeText("Cheeseformice", cfmX, cfmY);
-	ctx.fillText("Cheeseformice", cfmX, cfmY);
+	const { width: micestatsWidth } = ctx.measureText("Micestats");
+	const micestatsX = iconX + (iconWidth - micestatsWidth) / 2;
+	const micestatsY = iconY + 50;
+	ctx.strokeText("Micestats", micestatsX, micestatsY);
+	ctx.fillText("Micestats", micestatsX, micestatsY);
 
 	ctx.restore();
 };
