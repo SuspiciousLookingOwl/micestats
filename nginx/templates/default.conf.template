@@ -15,10 +15,6 @@ server {
     location / {
         return 301 https://$host$request_uri;
     }
-
-    location /.well-known/acme-challenge/ {
-        root /var/www/certbot;
-    }
 }
 
 server {
@@ -28,8 +24,8 @@ server {
     server_name ${SERVER_NAME};
     server_tokens off;
 
-    ssl_certificate /etc/nginx/ssl/live/${SERVER_NAME}/fullchain.pem;
-    ssl_certificate_key /etc/nginx/ssl/live/${SERVER_NAME}/privkey.pem;
+    ssl_certificate /etc/nginx/ssl/fullchain.pem;
+    ssl_certificate_key /etc/nginx/ssl/privkey.pem;
 
     gzip on;
     gzip_proxied any;

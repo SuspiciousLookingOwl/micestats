@@ -15,13 +15,7 @@ services:
     volumes:
       - nginx_cache:/var/cache/nginx
       - ./nginx/templates:/etc/nginx/templates
-      - ./certbot/www:/var/www/certbot:ro
-      - ./certbot/conf:/etc/nginx/ssl:ro
-  certbot:
-    image: certbot/certbot:latest
-    volumes:
-      - ./certbot/www:/var/www/certbot:rw
-      - ./certbot/conf:/etc/letsencrypt:rw
+      - ./ssl:/etc/nginx/ssl:ro
 
 volumes:
   nginx_cache:
