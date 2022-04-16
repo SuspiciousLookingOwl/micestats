@@ -8,7 +8,7 @@
 	export let value = "";
 	export let variant: "sm" | "md" | "lg" = "md";
 	export let input: HTMLInputElement | null = null;
-	export let containerClass = "";
+	export let extraContainerClass = "";
 	//#endregion
 
 	//#region classes
@@ -18,11 +18,11 @@
 			"p-2 2xl:p-3 2xl:text-md": variant === "md",
 			"p-3 2xl:p-4 text-md 2xl:text-xl": variant === "lg",
 		},
-		"border-0 bg-transparent w-full focus:outline-none placeholder:text-gray-200"
+		"border-0 bg-transparent w-full focus:outline-none placeholder:text-gray-300"
 	);
 	$: containerClass = classNames(
-		"flex w-full lg:bg-opacity-10 lg:bg-white rounded",
-		containerClass
+		"flex w-full lg:bg-opacity-50 lg:bg-neutral-900 rounded",
+		extraContainerClass
 	);
 	//#endregion
 </script>

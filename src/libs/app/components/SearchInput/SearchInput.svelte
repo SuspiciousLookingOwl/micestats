@@ -51,7 +51,7 @@
 		bind:input
 		bind:value={$keyword}
 		on:focus={() => setFocus(true)}
-		containerClass="bg-neutral-700 bg-opacity-95"
+		extraContainerClass="bg-neutral-700 bg-opacity-95"
 	>
 		<div
 			slot="suffix"
