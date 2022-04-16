@@ -46,7 +46,7 @@
 >
 	<Input
 		type="text"
-		variant="lg"
+		variant="md"
 		placeholder={$_("home.searchPlaceholder")}
 		bind:input
 		bind:value={$keyword}

@@ -15,8 +15,8 @@
 	$: inputClass = classNames(
 		{
 			"p-2 text-sm 2xl:text-base": variant === "sm",
-			"p-3 2xl:p-4 text-md 2xl:text-xl": variant === "md",
-			"p-2 2xl:p-3 2xl:text-md": variant === "lg",
+			"p-2 2xl:p-3 2xl:text-md": variant === "md",
+			"p-3 2xl:p-4 text-md 2xl:text-xl": variant === "lg",
 		},
 		"border-0 bg-transparent w-full focus:outline-none placeholder:text-gray-200"
 	);
