@@ -17,7 +17,10 @@
 		"leaderboard": "Leaderboard",
 		"leaderboards": "Leaderboards",
 		"score": "Score",
-		"searchPlaceholder": "Enter username or tribe name..."
+		"searchPlaceholder": "Enter username..."
+	},
+	"compare": {
+		"searchProfilePlaceholder": "Enter username..."
 	},
 	"profile": {
 		"profile": "Profile",
