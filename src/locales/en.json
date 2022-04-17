@@ -20,7 +20,8 @@
 		"searchPlaceholder": "Enter username..."
 	},
 	"compare": {
-		"searchProfilePlaceholder": "Enter username..."
+		"searchProfilePlaceholder": "Enter username...",
+		"playerNotFound": "Player Not Found :("
 	},
 	"profile": {
 		"profile": "Profile",

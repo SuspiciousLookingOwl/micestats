@@ -1,20 +1,41 @@
 <script lang="ts">
-	import { Text } from "@components";
+	import { Spinner, Text } from "@components";
+	import type { PlayerEntity } from "@entities";
 	import { SearchInput, useProfile } from "@libs/compare";
+	import { createEventDispatcher } from "svelte";
+	import { _ } from "svelte-i18n";
 	import PlayerOverview from "../components/PlayerOverview/PlayerOverview.svelte";
 	import PlayerStats from "../components/PlayerStats/PlayerStats.svelte";
 
+	interface Events {
+		updateprofile: { profiles: (PlayerEntity | null)[] };
+	}
+	const dispatch = createEventDispatcher<Events>();
+	interface $$Events {
+		updateprofile: CustomEvent<Events["updateprofile"]>;
+	}
+
+	//#region props
+	export let defaultUsernames: string[];
+	//#endregion
+
+	//#region stores
 	const {
 		profile: profileA,
 		username: usernameA,
 		isFetchingProfile: isFetchingProfileA,
-	} = useProfile();
+	} = useProfile(defaultUsernames[0]);
 
 	const {
 		profile: profileB,
 		username: usernameB,
 		isFetchingProfile: isFetchingProfileB,
-	} = useProfile();
+	} = useProfile(defaultUsernames[1]);
+	//#endregion
+
+	$: if ($profileA || $profileB) {
+		dispatch("updateprofile", { profiles: [$profileA, $profileB] });
+	}
 </script>
 
 <div class="text-center">
@@ -27,60 +48,46 @@
 	<SearchInput bind:value={$usernameB} />
 </div>
 
-<div class="hidden lg:block mt-6">
-	<div class="grid grid-cols-2 gap-x-2 lg:gap-x-12">
-		<PlayerOverview
-			profile={$profileA}
-			isLoading={$isFetchingProfileA}
-			notFound={!!$usernameA}
-		/>
-		<PlayerOverview
-			profile={$profileB}
-			isLoading={$isFetchingProfileB}
-			notFound={!!$usernameB}
-		/>
-
-		{#if $profileA}
-			<div class="mt-4">
-				<PlayerStats profile={$profileA} />
+<div
+	class="flex flex-row mt-4 lg:mt-6 space-x-2 lg:space-x-12 snap-x snap-mandatory overflow-x-auto"
+>
+	<div class="profile-container space-y-4">
+		{#if $isFetchingProfileA}
+			<div class="spinner-container">
+				<Spinner size="lg" />
 			</div>
+		{:else if $profileA}
+			<PlayerOverview profile={$profileA} />
+			<PlayerStats profile={$profileA} />
+		{:else if $usernameA}
+			<Text variant="subtitle1">
+				{$_("compare.playerNotFound")}
+			</Text>
 		{/if}
+	</div>
 
-		{#if $profileB}
-			<div class="mt-4">
-				<PlayerStats profile={$profileB} />
+	<div class="profile-container space-y-4">
+		{#if $isFetchingProfileB}
+			<div class="spinner-container">
+				<Spinner size="lg" />
 			</div>
+		{:else if $profileB}
+			<PlayerOverview profile={$profileB} />
+			<PlayerStats profile={$profileB} />
+		{:else if $usernameB}
+			<Text variant="subtitle1">
+				{$_("compare.playerNotFound")}
+			</Text>
 		{/if}
 	</div>
 </div>
 
-<div class="block lg:hidden mt-4">
-	<div class="flex space-x-2 overflow-x-auto snap-x snap-mandatory">
-		{#if $profileA}
-			<div class="snap-center min-w-full">
-				<PlayerOverview
-					profile={$profileA}
-					isLoading={$isFetchingProfileA}
-					notFound={!!$usernameA}
-				/>
+<style lang="postcss">
+	.profile-container {
+		@apply flex-1 w-full  snap-center min-w-full lg:min-w-max;
+	}
 
-				<div class="mt-4">
-					<PlayerStats profile={$profileA} />
-				</div>
-			</div>
-		{/if}
-
-		{#if $profileB}
-			<div class="snap-center min-w-full">
-				<PlayerOverview
-					profile={$profileB}
-					isLoading={$isFetchingProfileB}
-					notFound={!!$usernameB}
-				/>
-				<div class="mt-4">
-					<PlayerStats profile={$profileB} />
-				</div>
-			</div>
-		{/if}
-	</div>
-</div>
+	.spinner-container {
+		@apply flex justify-center my-8;
+	}
+</style>
