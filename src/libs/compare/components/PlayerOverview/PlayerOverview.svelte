@@ -9,7 +9,9 @@
 <Card class="flex flex-col items-center space-y-6 py-4 h-[412px] justify-end">
 	<div class="text-center">
 		<Text variant="subtitle1" class="font-brand">
-			{profile.name}
+			<a href={`/p/${profile.slugName}`}>
+				{profile.name}
+			</a>
 		</Text>
 		<Image src={profile.outfitUrl} class="h-32 w-24 mx-auto" />
 		<Text variant="subtitle1" class="font-brand">
