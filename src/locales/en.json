@@ -20,11 +20,13 @@
 		"searchPlaceholder": "Enter username..."
 	},
 	"compare": {
+		"comparePlayer": "Compare Player",
 		"searchProfilePlaceholder": "Enter username...",
 		"playerNotFound": "Player Not Found :("
 	},
 	"profile": {
 		"profile": "Profile",
+		"compare": "Compare",
 		"mode": "Mode",
 		"score": "Score",
 		"outfits": "Outfits",

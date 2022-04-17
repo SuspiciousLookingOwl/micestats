@@ -85,6 +85,16 @@
 				{/if}
 			</div>
 
+			<div class="flex items-center space-x-2">
+				<Icon name="compare" class="fill-white" />
+				<a
+					href={`/compare/player/${profile.slugName}`}
+					class="underline underline-offset-1"
+				>
+					{$_("profile.compare")}
+				</a>
+			</div>
+
 			<Text variant="caption" class="text-neutral-400">
 				ID: {profile.id}
 			</Text>

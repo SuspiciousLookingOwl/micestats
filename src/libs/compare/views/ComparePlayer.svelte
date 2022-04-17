@@ -39,7 +39,7 @@
 </script>
 
 <div class="text-center">
-	<Text variant="title2" class="font-brand text-shadow">Compare Player</Text>
+	<Text variant="title2" class="font-brand text-shadow">{$_("compare.comparePlayer")}</Text>
 </div>
 
 <div class="flex flex-col lg:flex-row items-center space-y-1 lg:space-y-0 lg:space-x-3 mt-6">

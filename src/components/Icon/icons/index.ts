@@ -1,6 +1,7 @@
 import angleTop from "./angle-top.svg";
 import clock from "./clock.svg";
 import close from "./close.svg";
+import compare from "./compare.svg";
 import cup from "./cup.svg";
 import heart from "./heart.svg";
 import history from "./history.svg";
@@ -19,6 +20,7 @@ export default {
 	close,
 	clock,
 	cup,
+	compare,
 	home,
 	leaderboard,
 	history,

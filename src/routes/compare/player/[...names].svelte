@@ -2,7 +2,7 @@
 	import { goto } from "$app/navigation";
 	import type { PlayerEntity } from "@entities";
 	import { background } from "@libs/app";
-	import { Player } from "@libs/compare";
+	import { ComparePlayer } from "@libs/compare";
 	import type { Load } from "@sveltejs/kit";
 
 	export const load: Load = ({ page }) => {
@@ -29,7 +29,7 @@
 
 		profiles = updatedProfiles;
 
-		goto("/compare/player/" + params);
+		goto("/compare/player/" + params, { replaceState: true });
 	};
 </script>
 
@@ -42,7 +42,7 @@
 	</title>
 </svelte:head>
 
-<Player
+<ComparePlayer
 	defaultUsernames={names.map((n) => n.replace("-", "#"))}
 	on:profileupdate={(ev) => onProfileUpdate(ev.detail.profiles)}
 />
