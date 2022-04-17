@@ -16,21 +16,33 @@
 
 <script lang="ts">
 	export let names: string[];
+	let profiles: (PlayerEntity | null)[] = [];
 
 	background.setXOffset(0.15);
 	background.setScale();
 
-	const onUpdateProfile = (profiles: (PlayerEntity | null)[]) => {
-		const params = profiles
+	const onProfileUpdate = (updatedProfiles: (PlayerEntity | null)[]) => {
+		const params = updatedProfiles
 			.filter((p) => !!p)
 			.map((p) => p?.slugName)
 			.join("-vs-");
+
+		profiles = updatedProfiles;
 
 		goto("/compare/player/" + params);
 	};
 </script>
 
+<svelte:head>
+	<title>
+		{profiles
+			.filter((p) => !!p)
+			.map((p) => p?.name)
+			.join(" vs ") || "Compare"} | Micestats
+	</title>
+</svelte:head>
+
 <Player
 	defaultUsernames={names.map((n) => n.replace("-", "#"))}
-	on:updateprofile={(ev) => onUpdateProfile(ev.detail.profiles)}
+	on:profileupdate={(ev) => onProfileUpdate(ev.detail.profiles)}
 />

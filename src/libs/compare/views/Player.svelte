@@ -8,11 +8,11 @@
 	import PlayerStats from "../components/PlayerStats/PlayerStats.svelte";
 
 	interface Events {
-		updateprofile: { profiles: (PlayerEntity | null)[] };
+		profileupdate: { profiles: (PlayerEntity | null)[] };
 	}
 	const dispatch = createEventDispatcher<Events>();
 	interface $$Events {
-		updateprofile: CustomEvent<Events["updateprofile"]>;
+		profileupdate: CustomEvent<Events["profileupdate"]>;
 	}
 
 	//#region props
@@ -34,7 +34,7 @@
 	//#endregion
 
 	$: if ($profileA || $profileB) {
-		dispatch("updateprofile", { profiles: [$profileA, $profileB] });
+		dispatch("profileupdate", { profiles: [$profileA, $profileB] });
 	}
 </script>
 
