@@ -8,13 +8,13 @@
 		profile: profileA,
 		username: usernameA,
 		isFetchingProfile: isFetchingProfileA,
-	} = useProfile("Owl#3124");
+	} = useProfile();
 
 	const {
 		profile: profileB,
 		username: usernameB,
 		isFetchingProfile: isFetchingProfileB,
-	} = useProfile("Raster");
+	} = useProfile();
 </script>
 
 <div class="text-center">
