@@ -29,7 +29,7 @@
 
 		profiles = updatedProfiles;
 
-		goto("/compare/player/" + params, { replaceState: true });
+		goto("/compare/player/" + params, { keepfocus: true, replaceState: true });
 	};
 </script>
 
